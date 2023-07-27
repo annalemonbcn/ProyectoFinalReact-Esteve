@@ -1,0 +1,7 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Victor+Mono:wght@400;700&display=swap');
+
+#logo-text{
+  font-family: 'Victor Mono';
+  font-weight: 400;
+}
