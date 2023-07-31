@@ -6,12 +6,12 @@ import "./NavBar_style.css";
 // Components
 import CartWidget from "../CartWidget";
 
-const NavBar = () => {
-  const [navbarOpen, setNavbarOpen] = useState(false);
+const NavBarOld = () => {
+  const [isNavbarOpen, setNavbarOpen] = useState(false);
 
   function toggleMenu() {
-    setNavbarOpen(!navbarOpen);
-    console.log(navbarOpen);
+    setNavbarOpen(!isNavbarOpen);
+    console.log(isNavbarOpen);
   }
 
   return (
@@ -59,52 +59,53 @@ const NavBar = () => {
           </button>
         </div>
 
-        <div className="items-center justify-between w-full md:flex md:w-auto md:order-1">
-          {/* Links list */}
-          <ul
-            className={
-              (navbarOpen ? " flex" : " hidden") +
-              " md:flex flex-col lg:gap-x-8 p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0"
-            }
-          >
-            <li>
-              <a
-                href="/"
-                className="block py-2 pl-3 pr-4 md:text-blue-700 md:hover:text-blue-700 md:p-0"
-                aria-current="page"
-              >
-                Home
-              </a>
-            </li>
-            <li>
-              <a
-                href="/"
-                className="block py-2 pl-3 pr-4 text-gray-900 md:hover:text-blue-700 md:p-0"
-              >
-                About me
-              </a>
-            </li>
-            <li>
-              <a
-                href="/"
-                className="block py-2 pl-3 pr-4 text-gray-900 md:hover:text-blue-700 md:p-0"
-              >
-                Equipment
-              </a>
-            </li>
-            <li>
-              <a
-                href="/"
-                className="block py-2 pl-3 pr-4 text-gray-900 md:hover:text-blue-700 md:p-0"
-              >
-                Shop
-              </a>
-            </li>
-          </ul>
-        </div>
+        {/* <div className="items-center justify-between w-full md:flex md:w-auto order-1 "> */}
+        {/* <div className="items-center justify-between w-full md:flex md:w-auto md:order-1"> */}
+        {/* Links list */}
+        <ul
+          className={
+            (isNavbarOpen ? "flex" : "hidden") +
+            " w-full md:flex flex-col lg:gap-x-8 p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0 absolute top-16 bg-white h-screen"
+          }
+        >
+          <li>
+            <a
+              href="/"
+              className="underline lg:no-underline underline-offset-4 block py-2 pl-3 pr-4 text-blue-700 md:hover:text-blue-700 md:p-0"
+              aria-current="page"
+            >
+              Home
+            </a>
+          </li>
+          <li>
+            <a
+              href="/"
+              className="block py-2 pl-3 pr-4 text-gray-900 md:hover:text-blue-700 md:p-0"
+            >
+              About me
+            </a>
+          </li>
+          <li>
+            <a
+              href="/"
+              className="block py-2 pl-3 pr-4 text-gray-900 md:hover:text-blue-700 md:p-0"
+            >
+              Equipment
+            </a>
+          </li>
+          <li>
+            <a
+              href="/"
+              className="block py-2 pl-3 pr-4 text-gray-900 md:hover:text-blue-700 md:p-0"
+            >
+              Shop
+            </a>
+          </li>
+        </ul>
+        {/* </div> */}
       </div>
     </nav>
   );
 };
 
-export default NavBar;
+export default NavBarOld;
