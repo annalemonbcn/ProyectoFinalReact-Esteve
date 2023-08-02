@@ -9,9 +9,19 @@ import CartWidget from "../CartWidget";
 const NavBar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
+  /**
+   * toggleMenu --> open or close a menu via component state
+   */
   function toggleMenu() {
     setNavbarOpen(!navbarOpen);
-    console.log(navbarOpen);
+  }
+
+  /**
+   * getCurrentPage --> use window.location to return the actual path
+   * @returns actual path from url
+   */
+  function getCurrentPage() {
+    return window.location.pathname;
   }
 
   return (
@@ -59,45 +69,49 @@ const NavBar = () => {
           </button>
         </div>
 
-        <div className="items-center justify-between w-full md:flex md:w-auto md:order-1">
+        <div
+          className={
+            (navbarOpen ? " flex" : " hidden") +
+            " lg:items-center justify-between w-full md:flex md:w-auto md:order-1 h-screen md:h-auto"
+          }
+          id="menu-list"
+        >
           {/* Links list */}
-          <ul
-            className={
-              (navbarOpen ? " flex" : " hidden") +
-              " md:flex flex-col lg:gap-x-8 p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0"
-            }
-          >
+          <ul className="md:flex flex-col lg:gap-x-8 p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0">
             <li>
               <a
                 href="/"
-                className="block py-2 pl-3 pr-4 md:text-blue-700 md:hover:text-blue-700 md:p-0"
-                aria-current="page"
+                className="block py-2 pl-3 pr-4 text-gray-900 md:hover:text-blue-700 md:p-0 relative"
+                aria-current={getCurrentPage() === "/" ? "page" : undefined}
               >
+                {getCurrentPage() === "/" && (
+                  <span className="gt">&gt; </span>
+                )}
                 Home
               </a>
             </li>
             <li>
               <a
-                href="/"
-                className="block py-2 pl-3 pr-4 text-gray-900 md:hover:text-blue-700 md:p-0"
+                href="/about"
+                className="block py-2 pl-3 pr-4 text-gray-900 md:hover:text-blue-700 md:p-0 relative"
+                aria-current={getCurrentPage() === "/about" ? "page" : undefined}
               >
-                About me
+                {getCurrentPage() === "/about" && (
+                  <span className="gt">&gt; </span>
+                )}
+                About
               </a>
             </li>
             <li>
               <a
-                href="/"
-                className="block py-2 pl-3 pr-4 text-gray-900 md:hover:text-blue-700 md:p-0"
+                href="/market"
+                className="block py-2 pl-3 pr-4 text-gray-900 md:hover:text-blue-700 md:p-0 relative"
+                aria-current={getCurrentPage() === "/market" ? "page" : undefined}
               >
-                Equipment
-              </a>
-            </li>
-            <li>
-              <a
-                href="/"
-                className="block py-2 pl-3 pr-4 text-gray-900 md:hover:text-blue-700 md:p-0"
-              >
-                Shop
+                {getCurrentPage() === "/market" && (
+                  <span className="gt">&gt; </span>
+                )}
+                 Market
               </a>
             </li>
           </ul>

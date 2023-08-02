@@ -1,6 +1,6 @@
 function CartWidget() {
   return (
-    <div className="flex justify-center items-center relative -left-5 cursor-pointer">
+    <div className="flex justify-center items-center relative w-10 -left-3 cursor-pointer">
       <div className="relative py-2">
         <div className="t-0 absolute left-3">
           <p className="flex h-2 w-2 items-center justify-center rounded-full bg-red-500 p-3 text-xs text-white">
