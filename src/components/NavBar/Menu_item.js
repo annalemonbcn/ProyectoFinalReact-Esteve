@@ -1,6 +1,6 @@
 import React from 'react'
 
-const MenuItem = ({ href, text, isActive }) => {
+const MenuItem = ({ href, text: title, isActive }) => {
   return (
     <li>
       <a
@@ -9,7 +9,7 @@ const MenuItem = ({ href, text, isActive }) => {
         aria-current={isActive ? "page" : undefined}
       >
         {isActive && <span className="gt">&gt; </span>}
-        {text}
+        {title}
       </a>
     </li>
   )
