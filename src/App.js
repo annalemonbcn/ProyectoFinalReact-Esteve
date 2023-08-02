@@ -3,12 +3,12 @@ import "./App.css";
 import ItemListContainer from "./components/ItemListContainer";
 
 // Components
-import NavBar from "./components/NavBar/NavBar";
+import Navbar from "./components/NavBar/NavBar";
 
 function App() {
   return (
     <>
-      <NavBar />
+      <Navbar />
       <ItemListContainer greeting="teacher" />
     </>
   );
