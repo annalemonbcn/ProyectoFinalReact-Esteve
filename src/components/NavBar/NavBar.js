@@ -36,7 +36,7 @@ const NavBar = () => {
         <a href="/" className="flex items-center">
           <img src="/logo.png" className="h-8 mr-3" alt="lemoninfilm Logo" />
           <span
-            className="self-center text-2xl font-semibold whitespace-nowrap text-slate-900"
+            className="self-center text-xl lg:text-2xl font-semibold whitespace-nowrap text-slate-900"
             id="logo-text"
           >
             lemoninfilm
