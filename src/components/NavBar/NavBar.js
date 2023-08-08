@@ -5,7 +5,7 @@ import "./NavBar_style.css";
 
 // Components
 import CartWidget from "./CartWidget/CartWidget";
-import MenuItem from "./Menu_item";
+import MenuItem from "./MenuItem";
 
 // Models
 import { MenuList } from "../../models/Menu_list";
@@ -64,7 +64,7 @@ const NavBar = () => {
               <MenuItem
                 key={index}
                 href={item.path}
-                text={item.title}
+                title={item.title}
                 isActive={getCurrentPage() === item.path}
               />
             ))}

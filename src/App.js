@@ -1,6 +1,6 @@
 // Styles
 import "./App.css";
-import ItemListContainer from "./components/ItemListContainer";
+import ItemListContainer from "./components/Containers/ItemListContainer";
 
 // Components
 import Navbar from "./components/NavBar/NavBar";
