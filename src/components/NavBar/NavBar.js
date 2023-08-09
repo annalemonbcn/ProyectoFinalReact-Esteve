@@ -5,7 +5,7 @@ import "./NavBar_style.css";
 
 // Components
 import CartWidget from "./CartWidget/CartWidget";
-import MenuItem from "./Menu_item";
+import MenuItem from "./MenuItem";
 
 // Models
 import { MenuList } from "../../models/Menu_list";
@@ -30,8 +30,8 @@ const NavBar = () => {
   }
 
   return (
-    <nav className="bg-slate-100">
-      <div className="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between p-4">
+    <nav className="bg-slate-100 fixed top-0 w-full z-50">
+      <div className="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between px-6 lg:px-4 py-3">
         {/* Logo  */}
         <a href="/" className="flex items-center">
           <img src="/logo.png" className="h-8 mr-3" alt="lemoninfilm Logo" />
@@ -64,7 +64,7 @@ const NavBar = () => {
               <MenuItem
                 key={index}
                 href={item.path}
-                text={item.title}
+                title={item.title}
                 isActive={getCurrentPage() === item.path}
               />
             ))}
