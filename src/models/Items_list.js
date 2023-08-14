@@ -4,7 +4,6 @@ export const ItemsList = [
   {
     id: 0,
     location: "Piazza delle Murate - Firenze",
-    camera: "Olympus OM-10",
     measures: "24 x 36cm",
     price: 50,
     image: "/images/img_01.jpg",
@@ -13,7 +12,6 @@ export const ItemsList = [
   {
     id: 1,
     location: "Scuola di cucina - Mercato Centrale Firenze",
-    camera: "Olympus OM-10",
     measures: "24 x 36cm",
     price: 50,
     image: "/images/img_02.jpg",
@@ -22,7 +20,6 @@ export const ItemsList = [
   {
     id: 2,
     location: "Palazzo Vecchio - Firenze",
-    camera: "Olympus OM-10",
     measures: "24 x 36cm",
     price: 50,
     image: "/images/img_03.jpg",
@@ -31,7 +28,6 @@ export const ItemsList = [
   {
     id: 3,
     location: "Barcelona Airport",
-    camera: "Olympus OM-10",
     measures: "24 x 36cm",
     price: 50,
     image: "/images/img_04.jpg",
@@ -40,7 +36,6 @@ export const ItemsList = [
   {
     id: 4,
     location: "Barcelona Airport",
-    camera: "Olympus OM-10",
     measures: "24 x 36cm",
     price: 50,
     image: "/images/img_01.jpg",
@@ -49,7 +44,6 @@ export const ItemsList = [
   {
     id: 5,
     location: "Barcelona Airport",
-    camera: "Olympus OM-10",
     measures: "24 x 36cm",
     price: 50,
     image: "/images/img_02.jpg",
@@ -58,7 +52,6 @@ export const ItemsList = [
   {
     id: 6,
     location: "Sant Jordi 2023 - Barcelona",
-    camera: "Olympus OM-10",
     measures: "24 x 36cm",
     price: 50,
     image: "/images/img_03.jpg",
@@ -67,7 +60,6 @@ export const ItemsList = [
   {
     id: 7,
     location: "Sant Jordi 2023 - Barcelona",
-    camera: "Olympus OM-10",
     measures: "24 x 36cm",
     price: 50,
     image: "/images/img_04.jpg",
@@ -76,7 +68,6 @@ export const ItemsList = [
   {
     id: 8,
     location: "Sant Jordi 2023 - Barcelona",
-    camera: "Olympus OM-10",
     measures: "24 x 36cm",
     price: 50,
     image: "/images/img_01.jpg",
@@ -85,7 +76,6 @@ export const ItemsList = [
   {
     id: 9,
     location: "Biblioteca Gabriel García Márquez - Barcelona",
-    camera: "Olympus OM-10",
     measures: "24 x 36cm",
     price: 50,
     image: "/images/img_02.jpg",
@@ -94,7 +84,6 @@ export const ItemsList = [
   {
     id: 9,
     location: "Biblioteca Gabriel García Márquez - Barcelona",
-    camera: "Olympus OM-10",
     measures: "24 x 36cm",
     price: 50,
     image: "/images/img_03.jpg",
@@ -103,7 +92,6 @@ export const ItemsList = [
   {
     id: 10,
     location: "Biblioteca Gabriel García Márquez - Barcelona",
-    camera: "Olympus OM-10",
     measures: "24 x 36cm",
     price: 50,
     image: "/images/img_04.jpg",
@@ -112,7 +100,6 @@ export const ItemsList = [
   {
     id: 11,
     location: "Biblioteca Gabriel García Márquez - Barcelona",
-    camera: "Olympus OM-10",
     measures: "24 x 36cm",
     price: 50,
     image: "/images/img_01.jpg",
