@@ -13,7 +13,6 @@ function ItemListView({ data }) {
               imgSrc={item.image}
               imgAlt={item.location}
               name={item.location}
-              camera={item.camera}
               measures={item.measures}
               path={item.path}
               price={item.price}
