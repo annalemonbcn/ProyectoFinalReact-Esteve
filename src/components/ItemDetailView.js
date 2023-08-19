@@ -27,11 +27,11 @@ const ItemDetailView = ({ data }) => {
             <div className="pt-2 lg:p-0" id="productInfo">
               <p className="font-bold">{data.category}</p>
               <p className="italic">{data.description}</p>
-              <div className="flex justify-between items-center mt-8">
+              <div className="flex items-center justify-between lg:gap-8 mt-8">
                 <p className="text-gray-500 font-bold text-lg">
                   {data.price} €
                 </p>
-                <div className="w-[50px] h-[50px] border-slate-500 border-solid border-[1px] flex justify-center relative top-[-5px] left-[-20px] hover:scale-110 transition duration-300 ease-in-out cursor-pointer">
+                <div className="w-[50px] h-[50px] border-slate-500 border-solid border-[1px] flex justify-center items-center relative left-[-20px] lg:left-0 hover:scale-110 transition duration-300 ease-in-out cursor-pointer">
                   <Cart />
                 </div>
               </div>
