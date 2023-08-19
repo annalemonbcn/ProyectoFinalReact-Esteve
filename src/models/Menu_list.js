@@ -1,14 +1,26 @@
 export const MenuList = [
+  // {
+  //   title: 'Home',
+  //   path: '/'
+  // },
+  // {
+  //   title: 'About',
+  //   path: '/about'
+  // },
+  // {
+  //   title: 'Market',
+  //   path: '/market'
+  // }
   {
-    title: 'Home',
+    title: 'All products',
     path: '/'
   },
   {
-    title: 'About',
-    path: '/about'
+    title: 'Jewelery',
+    path: '/category/jewelery'
   },
   {
-    title: 'Market',
-    path: '/market'
+    title: 'Electronics',
+    path: '/category/electronics'
   }
 ]

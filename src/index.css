@@ -2,9 +2,31 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Carrois+Gothic&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Victor+Mono:wght@400;700&display=swap');
 
 body{
   font-family: 'Montserrat';
   font-weight: 400;
+  @apply text-gray-700;
+}
+
+nav{
+  font-family: 'Victor Mono';
+}
+
+#logo-text{
+  font-family: 'Victor Mono';
+  font-weight: 400;
+}
+
+.menu-link{
+  font-family: 'Victor Mono';
+}
+
+.menu-link.active{
+  font-weight: 700;
+  color: rgb(29 78 216);
 }

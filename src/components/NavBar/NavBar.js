@@ -1,17 +1,17 @@
+// Hooks
 import { useState } from "react";
 
-// Style
-import "./NavBar_style.css";
-
 // Components
-import CartWidget from "./CartWidget/CartWidget";
+import CartWidget from "./CartWidget";
 import MenuItem from "./MenuItem";
 
 // Models
 import { MenuList } from "../../models/Menu_list";
-import HamburgerMenu from "./HamburgerMenu/HamburgerMenu";
+import HamburgerMenu from "./HamburgerMenu";
+
 
 const NavBar = () => {
+
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   /**
@@ -25,9 +25,9 @@ const NavBar = () => {
    * getCurrentPage --> use window.location to return the actual path
    * @returns actual path from url
    */
-  function getCurrentPage() {
-    return window.location.pathname;
-  }
+  // function getCurrentPage() {
+  //   return window.location.pathname;
+  // }
 
   return (
     <nav className="bg-slate-100 fixed top-0 w-full z-50">
@@ -39,7 +39,7 @@ const NavBar = () => {
             className="self-center text-xl lg:text-2xl font-semibold whitespace-nowrap text-slate-900"
             id="logo-text"
           >
-            lemoninfilm
+            <h1>lemoninfilm</h1>
           </span>
         </a>
 
@@ -65,7 +65,6 @@ const NavBar = () => {
                 key={index}
                 href={item.path}
                 title={item.title}
-                isActive={getCurrentPage() === item.path}
               />
             ))}
           </ul>

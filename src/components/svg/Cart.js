@@ -1,5 +1,3 @@
-import React from "react";
-
 const Cart = () => {
   return (
     <svg
@@ -8,7 +6,7 @@ const Cart = () => {
       viewBox="0 0 24 24"
       strokeWidth="1.5"
       stroke="currentColor"
-      className="file: h-6 w-6 cursor-pointer"
+      className="file: mt-4 h-6 w-6 cursor-pointer"
     >
       <path
         strokeLinecap="round"
