@@ -7,7 +7,6 @@ import { useParams } from "react-router-dom";
 // Components
 import ItemListView from "../ItemListView";
 
-
 const ItemListContainer = () => {
   // State
   const [data, setData] = useState([]);
@@ -15,24 +14,27 @@ const ItemListContainer = () => {
 
   // Effects
   useEffect(() => {
-    if (result.id) {
-      getProductsByCategory();
-    } else {
-      getAllProducts();
-    }
+    fetchData();
   }, [result.id]);
 
   // Actions
-  const getAllProducts = () => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => setData(json));
-  };
+  const fetchData = async () => {
+    try {
+      const response = await fetch("https://fakestoreapi.com/products");
+      const json = await response.json();
 
-  const getProductsByCategory = () => {
-    fetch(`https://fakestoreapi.com/products/category/${result.id}`)
-      .then((res) => res.json())
-      .then((json) => setData(json));
+      if (result.id) {
+        // Filter products by category if result.id exists
+        const filteredData = json.filter(
+          (product) => product.category === result.id
+        );
+        setData(filteredData);
+      } else {
+        setData(json);
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
   };
 
   // View
