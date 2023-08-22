@@ -12,16 +12,16 @@ const ItemDetailView = ({ data }) => {
             {data.title}
           </h2>
           <div className="flex flex-col lg:flex-nowrap lg:flex-row gap-5 mt-8 lg:mt-6">
-            <div className="bg-soft-grey lg:w-2/5 h-[500px] p-5 box-border">
+            <div className="bg-soft-grey lg:w-2/5 h-[500px] p-5 box-border flex justify-center items-center">
               <img
-                className="max-h-full mx-auto relative top-1/2 transform -translate-y-1/2"
+                className="max-h-full mx-auto"
                 src={data.image}
                 alt={data.title}
               />
             </div>
-            <div className="bg-soft-grey lg:w-2/5 h-[500px] p-5 box-border">
+            <div className="bg-soft-grey lg:w-2/5 h-[500px] p-5 box-border flex justify-center items-center">
               <img
-                className="max-h-full mx-auto relative top-1/2 transform -translate-y-1/2"
+                className="max-h-full mx-auto"
                 src={data.image}
                 alt={data.title}
               />
