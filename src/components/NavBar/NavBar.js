@@ -60,15 +60,20 @@ const NavBar = () => {
 
         <div
           className={
-            (navbarOpen ? " flex" : " hidden") +
-            " lg:items-center justify-between w-full md:flex md:w-auto md:order-1 h-screen md:h-auto"
+            (navbarOpen ? "opacity-100 h-screen" : "opacity-0 h-0") +
+            " transition-opacity transition-height ease-in duration-100 lg:items-center justify-between w-full md:flex md:w-auto md:order-1 md:border-0"
           }
           id="menu-list"
         >
           {/* Links list */}
           <ul className="md:flex flex-col lg:gap-x-8 p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0">
             {MenuList.map((item, index) => (
-              <MenuItem key={index} href={item.path} title={item.title} />
+              <MenuItem
+                key={index}
+                href={item.path}
+                title={item.title}
+                closeMenu={toggleMenu}
+              />
             ))}
           </ul>
         </div>
