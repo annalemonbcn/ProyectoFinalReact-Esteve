@@ -1,13 +1,13 @@
 // Components
 import ItemGridView from "./ItemGridView";
 
-function ItemListView({ data }) {
+function ItemListView({ products }) {
   return (
     <div className="flex flex-row flex-wrap">
-      {data.length === 0 ? (
+      {products.length === 0 ? (
         <p>Cargando</p>
       ) : (
-        data.map((item, i) => {
+        products.map((item, i) => {
           return (
             <ItemGridView
               key={i}

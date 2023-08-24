@@ -1,5 +1,5 @@
 // Routing
-import { BrowserRouter } from "react-router-dom"
+import { BrowserRouter } from "react-router-dom";
 
 // Styles
 import "./App.css";
@@ -8,11 +8,16 @@ import "./App.css";
 import Navbar from "./components/NavBar/NavBar";
 import Main from "./components/Main";
 
+// Context/provider
+import ProductsProvider from "./api/context/ProductsProvider";
+
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Main />
+      <ProductsProvider>
+        <Navbar />
+        <Main />
+      </ProductsProvider>
     </BrowserRouter>
   );
 }
