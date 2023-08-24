@@ -61,7 +61,7 @@ const NavBar = () => {
         <div
           className={
             (navbarOpen ? "opacity-100 h-screen" : "opacity-0 h-0") +
-            " transition-opacity transition-height ease-in duration-100 lg:items-center justify-between w-full md:flex md:w-auto md:order-1 md:border-0"
+            " lg:opacity-100 transition-opacity transition-height ease-in duration-100 lg:items-center justify-between w-full md:flex md:w-auto md:order-1 md:border-0"
           }
           id="menu-list"
         >
