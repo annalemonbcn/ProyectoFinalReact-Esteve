@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 
 // Components
-import Cart from "./svg/Cart";
+import CartSvg from "./svg/Cart";
 
 
 const ItemGridView = ({ imgSrc, imgAlt, name, price, id }) => {
@@ -20,7 +20,7 @@ const ItemGridView = ({ imgSrc, imgAlt, name, price, id }) => {
         </Link>
         <div className="flex items-center justify-between mt-6">
           <span className="text-gray-500 font-bold text-lg">{price} €</span>
-          <Cart />
+          <CartSvg />
         </div>
       </div>
     </div>

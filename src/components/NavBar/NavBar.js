@@ -2,12 +2,12 @@
 import { useState } from "react";
 
 // Components
-import CartWidget from "./CartWidget";
+import CartWidget from "../widgets/CartWidget";
 import MenuItem from "./MenuItem";
 
 // Models
 import { MenuList } from "../../models/Menu_list";
-import HamburgerMenu from "../svg/HamburgerMenu";
+import HamburgerMenuSvg from "../svg/HamburgerMenu";
 
 const NavBar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -54,7 +54,7 @@ const NavBar = () => {
             aria-expanded="false"
             onClick={toggleMenu}
           >
-            <HamburgerMenu />
+            <HamburgerMenuSvg />
           </button>
         </div>
 
