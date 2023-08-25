@@ -16,8 +16,6 @@ function ItemListView({ products }) {
               name={item.title}
               price={item.price}
               id={item.id}
-              // measures={item.measures}
-              // path={item.path}
             />
           );
         })

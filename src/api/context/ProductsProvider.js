@@ -1,8 +1,10 @@
+// Services
+import { fetchProducts } from "../services/apiService"
+
 // Context
 import { createContext, useState, useEffect } from "react"
-
 export const ProductsContext = createContext();
-const Provider = ProductsContext.Provider;
+
 
 // Provider
 const ProductsProvider = (props) => {
@@ -12,22 +14,28 @@ const ProductsProvider = (props) => {
 
   // Effects
   useEffect(() => {
-    // Realizar la solicitud a la API al cargar el componente
-    fetch("https://fakestoreapi.com/products")
-      .then((response) => response.json())
-      .then((data) => setProducts(data))
-      .catch((error) => console.error("Error fetching products:", error));
+    fetchData();
   }, []);
 
   // useEffect(() => {
   //   console.log("Updated products:", products);
   // }, [products]); // --> demuestra que products tiene valores
   
+  // Actions
+  const fetchData = async () => {
+    try {
+      const data = await fetchProducts();
+      setProducts(data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
+
 
   return(
-    <Provider value={products}>
+    <ProductsContext.Provider value={products}>
       {props.children}
-    </Provider>
+    </ProductsContext.Provider>
   )
 }
 

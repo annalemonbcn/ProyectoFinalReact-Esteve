@@ -28,7 +28,7 @@ const NavBar = () => {
   // }
 
   return (
-    <nav className="bg-slate-100 fixed top-0 w-full z-50">
+    <nav className="bg-slate-100 fixed top-0 w-full z-50 max-h-[72px]">
       <div className="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between px-6 lg:px-4 py-4">
         {/* Logo  */}
         <a href="/" className="flex items-center">
