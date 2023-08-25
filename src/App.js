@@ -10,13 +10,16 @@ import Main from "./components/Main";
 
 // Context/provider
 import ProductsProvider from "./api/context/ProductsProvider";
+import CheckoutProvider from "./api/context/CheckoutProvider";
 
 function App() {
   return (
     <BrowserRouter>
       <ProductsProvider>
-        <Navbar />
-        <Main />
+        <CheckoutProvider>
+          <Navbar />
+          <Main />
+        </CheckoutProvider>
       </ProductsProvider>
     </BrowserRouter>
   );
