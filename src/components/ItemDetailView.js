@@ -36,7 +36,7 @@ const ItemDetailView = ({ product }) => {
                   {product.price} €
                 </p>
               </div>
-              <ItemsToCart id={product.id} price={product.price} />
+              <ItemsToCart id={product.id} />
             </div>
           </div>
         </div>

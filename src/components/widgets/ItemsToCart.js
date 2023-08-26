@@ -8,7 +8,7 @@ import CartSvg from "../svg/Cart";
 import { CartContext } from "../../api/context/CartProvider";
 
 
-const ItemsToCart = ({ id, price }) => {
+const ItemsToCart = ({ id }) => {
 
   // Context
   const { addToCart } = useContext(CartContext);
@@ -45,7 +45,7 @@ const ItemsToCart = ({ id, price }) => {
         </button>
       </div>
       <div
-        onClick={() => addToCart(id, qty, price)}
+        onClick={() => addToCart(id, qty)}
         className="w-[50px] h-[50px] border-slate-500 border-solid border-[1px] flex justify-center items-center relative left-[-20px] lg:left-0 hover:scale-110 transition duration-300 ease-in-out cursor-pointer"
       >
         <CartSvg />
