@@ -1,16 +1,8 @@
-// Hooks
-import { useContext } from "react";
-
-// Context
-import { CartContext } from "../api/context/CartProvider";
-
 // Components
-import CartSvg from "./svg/Cart";
-import ItemsCount from "./widgets/ItemsCount";
+import ItemsToCart from "./widgets/ItemsToCart";
 
 const ItemDetailView = ({ product }) => {
-
-  const { addToCart } = useContext(CartContext); 
+  
 
   return (
     <>
@@ -44,13 +36,7 @@ const ItemDetailView = ({ product }) => {
                   {product.price} €
                 </p>
               </div>
-              <div className="flex items-center justify-between mt-6">
-                <ItemsCount />
-                <div className="w-[50px] h-[50px] border-slate-500 border-solid border-[1px] flex justify-center items-center relative left-[-20px] lg:left-0 hover:scale-110 transition duration-300 ease-in-out cursor-pointer">
-                  {/* <CartSvg onClick={() => addToCart(product.id, 3, product.price)} /> */}
-                  <button onClick={() => addToCart(product.id, 3, product.price)}>add</button>
-                </div>
-              </div>
+              <ItemsToCart id={product.id} price={product.price} />
             </div>
           </div>
         </div>
