@@ -1,9 +1,9 @@
 // Components
-import Cart from "./svg/Cart";
+import ItemsToCart from "./widgets/ItemsToCart";
 
 const ItemDetailView = ({ product }) => {
+  
 
-  console.log(product)
   return (
     <>
       {product.length === 0 ? (
@@ -35,10 +35,8 @@ const ItemDetailView = ({ product }) => {
                 <p className="text-gray-500 font-bold text-lg">
                   {product.price} €
                 </p>
-                <div className="w-[50px] h-[50px] border-slate-500 border-solid border-[1px] flex justify-center items-center relative left-[-20px] lg:left-0 hover:scale-110 transition duration-300 ease-in-out cursor-pointer">
-                  <Cart />
-                </div>
               </div>
+              <ItemsToCart id={product.id} />
             </div>
           </div>
         </div>

@@ -20,30 +20,30 @@ const ItemDetailContainer = () => {
 
   // Context
   const allProducts = useContext(ProductsContext);
-  console.log(allProducts)
+  // console.log(allProducts)
 
 
   // Effects
   useEffect(() => {
-    // fetchData(); // --> Petición fetch para un solo producto
+    fetchData(); // --> Petición fetch para un solo producto
     
     // Filter product in the array of products
-    const selectedProduct = allProducts.find(
-      (product) => product.id === parseInt(params.id)
-    );
-    setProduct(selectedProduct)
+    // const selectedProduct = allProducts.find(
+    //   (product) => product.id === parseInt(params.id)
+    // );
+    // setProduct(selectedProduct)
   }, [params.id, allProducts]);
 
   // Actions
   /** Peticion fetch para un solo producto */
-  // const fetchData = async () => {
-  //   try {
-  //     const data = await fetchSingleProduct(params.id);
-  //     setProduct(data);
-  //   } catch (error) {
-  //     console.error("Error fetching products:", error);
-  //   }
-  // };
+  const fetchData = async () => {
+    try {
+      const data = await fetchSingleProduct(params.id);
+      setProduct(data);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
 
   // View
   return <ItemDetailView product={product} />;

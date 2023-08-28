@@ -2,12 +2,12 @@
 import { useState } from "react";
 
 // Components
-import CartWidget from "./CartWidget";
+import CartWidget from "../widgets/CartWidget";
 import MenuItem from "./MenuItem";
 
 // Models
 import { MenuList } from "../../models/Menu_list";
-import HamburgerMenu from "../svg/HamburgerMenu";
+import HamburgerMenuSvg from "../svg/HamburgerMenu";
 
 const NavBar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -18,14 +18,6 @@ const NavBar = () => {
   function toggleMenu() {
     setNavbarOpen(!navbarOpen);
   }
-
-  /**
-   * getCurrentPage --> use window.location to return the actual path
-   * @returns actual path from url
-   */
-  // function getCurrentPage() {
-  //   return window.location.pathname;
-  // }
 
   return (
     <nav className="bg-slate-100 fixed top-0 w-full z-50 max-h-[72px]">
@@ -54,14 +46,14 @@ const NavBar = () => {
             aria-expanded="false"
             onClick={toggleMenu}
           >
-            <HamburgerMenu />
+            <HamburgerMenuSvg />
           </button>
         </div>
 
         <div
           className={
             (navbarOpen ? "opacity-100 h-screen" : "opacity-0 h-0") +
-            " opacity-100 transition-opacity transition-height ease-in duration-100 lg:items-center justify-between w-full md:flex md:w-auto md:order-1 md:border-0"
+            " lg:opacity-100 bg-slate-100 transition-opacity transition-height ease-in duration-100 lg:items-center justify-between w-full md:flex md:w-auto md:order-1 md:border-0"
           }
           id="menu-list"
         >

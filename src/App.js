@@ -10,13 +10,16 @@ import Main from "./components/Main";
 
 // Context/provider
 import ProductsProvider from "./api/context/ProductsProvider";
+import CartProvider from "./api/context/CartProvider";
 
 function App() {
   return (
     <BrowserRouter>
       <ProductsProvider>
-        <Navbar />
-        <Main />
+        <CartProvider>
+          <Navbar />
+          <Main />
+        </CartProvider>
       </ProductsProvider>
     </BrowserRouter>
   );
