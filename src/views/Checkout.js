@@ -5,20 +5,47 @@ import { useContext } from "react";
 import { CartContext } from "../api/context/CartProvider";
 import { ProductsContext } from "../api/context/ProductsProvider";
 
+// Components
+import CheckoutRow from "./CheckoutRow";
+
 const Checkout = () => {
   // Context: cart info
   const { cartItems, cartTotalProducts, cartTotalPrice } =
     useContext(CartContext);
-
-  console.log(`cartItems: ${cartItems}`);
-  if(cartItems.length > 0){
-    console.log(`First item id: ${cartItems[0].id}`)
-  }
+  console.log("cartItems", cartItems);
 
   // Context: all products
   const allProducts = useContext(ProductsContext);
-  console.log(allProducts);
 
+  // Vars
+  let cartProductsToPrint;
+  let subtotal;
+
+  // Actions
+  // Find product by id
+  const findProductById = (id) => {
+    return allProducts.find((product) => product.id === id);
+  };
+
+  // New array with complete info + qty
+  cartProductsToPrint = cartItems
+    .map((item) => {
+      const product = findProductById(item.productId);
+      if (product) {
+        return {
+          ...product,
+          qty: item.qty,
+        };
+      }
+      return null; // Manejar el caso en que no se encuentre el producto
+    })
+    .filter((product) => product !== null);
+
+  // Calculate the subtotal
+  subtotal = cartProductsToPrint.reduce(
+    (acc, product) => acc + product.price * product.qty,
+    0
+  );
 
   return (
     <>
@@ -30,36 +57,50 @@ const Checkout = () => {
             Checkout
           </h1>
           {/* Table */}
-          <div className="cartSummary w-full mt-6 border border-slate-200 rounded">
+          <div className="cartSummary w-full mt-16 border border-slate-200 rounded">
             {/* Titles */}
-            <div className="grid grid-cols-5 gap-4 text-center">
-              <div className="col-span-2 font-bold p-1.5">Product</div>
-              <div className="font-bold p-1.5">Price</div>
-              <div className="font-bold p-1.5">Quantity</div>
-              <div className="font-bold p-1.5">Total</div>
+            <div className="grid grid-cols-5 gap-4 gap-y-8">
+              <div className="col-span-2 font-bold p-3 text-center">
+                Product
+              </div>
+              <div className="font-bold p-3 text-center">Price</div>
+              <div className="font-bold p-3 text-center">Quantity</div>
+              <div className="font-bold p-3 text-center">Total</div>
+              <div className="col-span-5 border-t border-slate-200 mt-[-25px]"></div>
 
               {/* Products rows */}
-              <div>
-                <img
-                  className="w-10 h-10 object-contain mx-auto"
-                  src="ruta-a-la-imagen"
-                  alt="Product"
-                />
-              </div>
-              <div>Product ID: {cartItems[0].productId}</div>
-              <div>100 €</div>
-              <div>2</div>
-              <div>200 €</div>
-
-              {/* Agrega más filas de productos aquí si es necesario */}
+              {cartProductsToPrint.map((product, i) => {
+                return (
+                  <CheckoutRow
+                    key={i}
+                    imgSrc={product.image}
+                    name={product.title}
+                    price={product.price}
+                    qty={product.qty}
+                  />
+                );
+              })}
             </div>
           </div>
-
-          <p className="mt-20">
-            Cart items id: {cartItems[0].productId} - Qty: {cartItems[0].qty}
-          </p>
-          <p>Cart total items: {cartTotalProducts}</p>
-          <p>Cart total price: {cartTotalPrice}€ </p>
+          <div className="mt-10 w-full flex ">
+            <div className="flex-grow"></div>
+            <div className="w-1/2">
+              <h2 className="text-2xl font-bold border-b border-slate-900">
+                Total
+              </h2>
+              <div className="mt-4">
+                <p className="font-bold">
+                  Subtotal: <span className="font-normal">{subtotal} €</span>
+                </p>
+                <p className="font-bold">
+                  Envío: <span className="font-normal">10 €</span>
+                </p>
+                <p className="font-bold">
+                  Total: <span className="font-normal">{subtotal + 10} €</span>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </>

@@ -13,7 +13,7 @@ const CartProvider = (props) => {
 
 
   // Actions
-  const addToCart = (productId, qty, price) => {
+  const addToCart = (productId, qty) => {
     // Find existing product
     const existingProduct = cartItems.find(
       (item) => item.productId === productId
@@ -30,13 +30,7 @@ const CartProvider = (props) => {
 
     setCartTotalProducts(cartTotalProducts + qty);
   };
-
-  // useEffect(() => {
-  //   console.log('cartItems', cartItems)
-  //   console.log('cartTotalProducts', setCartTotalProducts)
-  //   console.log('cartTotalPrice', setCartTotalPrice)
-  // }, [cartItems, cartTotalProducts, cartTotalPrice])
-  
+ 
 
   const cartContextValue = {
     cartItems,
