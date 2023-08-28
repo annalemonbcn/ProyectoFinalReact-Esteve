@@ -4,13 +4,16 @@ export const CartContext = createContext();
 
 // Provider
 const CartProvider = (props) => {
-  // State
+
+  /** State */
+  // Products id
   const [cartItems, setCartItems] = useState([]);
+  // Total items in the cart
   const [cartTotalProducts, setCartTotalProducts] = useState(0);
-  const [cartTotalPrice, setCartTotalPrice] = useState(0);
+
 
   // Actions
-  const addToCart = (productId, qty, price) => {
+  const addToCart = (productId, qty) => {
     // Find existing product
     const existingProduct = cartItems.find(
       (item) => item.productId === productId
@@ -26,20 +29,12 @@ const CartProvider = (props) => {
     }
 
     setCartTotalProducts(cartTotalProducts + qty);
-    setCartTotalPrice(cartTotalProducts + qty * price);
   };
-
-  // useEffect(() => {
-  //   console.log('cartItems', cartItems)
-  //   console.log('cartTotalProducts', setCartTotalProducts)
-  //   console.log('cartTotalPrice', setCartTotalPrice)
-  // }, [cartItems, cartTotalProducts, cartTotalPrice])
-  
+ 
 
   const cartContextValue = {
     cartItems,
     cartTotalProducts,
-    cartTotalPrice,
     addToCart
   };
 
