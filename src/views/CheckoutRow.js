@@ -1,14 +1,14 @@
 const CheckoutRow = ({ imgSrc, name, price, qty }) => {
   return (
     <>
-      <div>
+      <div className="hidden lg:block">
         <img
           className="w-auto max-w-[200px] h-32 object-contain mx-auto"
           src={imgSrc}
           alt="Product"
         />
       </div>
-      <div className="flex items-center px-4">{name}</div>
+      <div className="flex col-span-2 lg:col-span-1 items-center px-4">{name}</div>
       <div className="flex items-center justify-center">{price} €</div>
       <div className="flex items-center justify-center">{qty}</div>
       <div className="flex items-center justify-center total">{price  * qty} €</div>

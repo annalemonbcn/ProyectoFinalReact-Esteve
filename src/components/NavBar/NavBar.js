@@ -19,14 +19,6 @@ const NavBar = () => {
     setNavbarOpen(!navbarOpen);
   }
 
-  /**
-   * getCurrentPage --> use window.location to return the actual path
-   * @returns actual path from url
-   */
-  // function getCurrentPage() {
-  //   return window.location.pathname;
-  // }
-
   return (
     <nav className="bg-slate-100 fixed top-0 w-full z-50 max-h-[72px]">
       <div className="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between px-6 lg:px-4 py-4">
@@ -61,7 +53,7 @@ const NavBar = () => {
         <div
           className={
             (navbarOpen ? "opacity-100 h-screen" : "opacity-0 h-0") +
-            " opacity-100 transition-opacity transition-height ease-in duration-100 lg:items-center justify-between w-full md:flex md:w-auto md:order-1 md:border-0"
+            " lg:opacity-100 bg-slate-100 transition-opacity transition-height ease-in duration-100 lg:items-center justify-between w-full md:flex md:w-auto md:order-1 md:border-0"
           }
           id="menu-list"
         >
