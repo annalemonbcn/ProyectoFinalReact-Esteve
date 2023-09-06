@@ -10,29 +10,18 @@ import ItemDetailView from "../ItemDetailView";
 // Services
 import { fetchSingleProduct } from "../../api/services/apiService";
 
-// Context
-import { ProductsContext } from "../../api/context/ProductsProvider";
 
 const ItemDetailContainer = () => {
+
   // State
   const [product, setProduct] = useState({});
   const params = useParams();
 
-  // Context
-  const allProducts = useContext(ProductsContext);
-  // console.log(allProducts)
-
-
+  
   // Effects
   useEffect(() => {
-    fetchData(); // --> Petición fetch para un solo producto
-    
-    // Filter product in the array of products
-    // const selectedProduct = allProducts.find(
-    //   (product) => product.id === parseInt(params.id)
-    // );
-    // setProduct(selectedProduct)
-  }, [params.id, allProducts]);
+     fetchData(); // --> Petición fetch para un solo producto
+  }, [params.id]);
 
   // Actions
   /** Peticion fetch para un solo producto */

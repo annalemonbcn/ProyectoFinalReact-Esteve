@@ -7,7 +7,6 @@ export const fetchProducts = async () => {
     console.error("An error occurred while fetching products:", error);
     throw error;
   }
-
 }
 
 export const fetchSingleProduct = async (id) => {

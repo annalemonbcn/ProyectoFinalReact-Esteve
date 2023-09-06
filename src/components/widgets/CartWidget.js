@@ -13,6 +13,7 @@ import { CartContext } from "../../api/context/CartProvider";
 
 function CartWidget() {
 
+  // Context
   const cartValues = useContext(CartContext);
 
   return (
