@@ -10,12 +10,12 @@ import ItemListView from "../ItemListView";
 const ItemListContainer = () => {
   // State
   const [data, setData] = useState([]);
-  const result = useParams();
+  const { id } = useParams();
 
   // Effects
   useEffect(() => {
     fetchData();
-  }, [result.id]);
+  }, [id]);
 
   // Actions
   const fetchData = async () => {
@@ -23,10 +23,10 @@ const ItemListContainer = () => {
       const response = await fetch("https://fakestoreapi.com/products");
       const json = await response.json();
 
-      if (result.id) {
-        // Filter products by category if result.id exists
+      if (id) {
+        // Filter products by category if id exists
         const filteredData = json.filter(
-          (product) => product.category === result.id
+          (product) => product.category === id
         );
         setData(filteredData);
       } else {
