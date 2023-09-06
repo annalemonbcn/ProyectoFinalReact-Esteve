@@ -2,12 +2,12 @@
 import { useState } from "react";
 
 // Components
-import CartWidget from "./CartWidget";
+import CartWidget from "../widgets/CartWidget";
 import MenuItem from "./MenuItem";
 
 // Models
 import { MenuList } from "../../models/Menu_list";
-import HamburgerMenu from "../svg/HamburgerMenu";
+import HamburgerMenuSvg from "../svg/HamburgerMenu";
 
 const NavBar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -19,16 +19,8 @@ const NavBar = () => {
     setNavbarOpen(!navbarOpen);
   }
 
-  /**
-   * getCurrentPage --> use window.location to return the actual path
-   * @returns actual path from url
-   */
-  // function getCurrentPage() {
-  //   return window.location.pathname;
-  // }
-
   return (
-    <nav className="bg-slate-100 fixed top-0 w-full z-50">
+    <nav className="bg-slate-100 fixed top-0 w-full z-50 max-h-[72px]">
       <div className="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between px-6 lg:px-4 py-4">
         {/* Logo  */}
         <a href="/" className="flex items-center">
@@ -54,7 +46,7 @@ const NavBar = () => {
             aria-expanded="false"
             onClick={toggleMenu}
           >
-            <HamburgerMenu />
+            <HamburgerMenuSvg />
           </button>
         </div>
 

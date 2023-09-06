@@ -1,5 +1,5 @@
 // Hooks
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 // Routing
 import { useParams } from "react-router-dom";
@@ -7,38 +7,38 @@ import { useParams } from "react-router-dom";
 // Components
 import ItemListView from "../ItemListView";
 
+// Context
+import { ProductsContext } from "../../api/context/ProductsProvider";
+
+
+
 const ItemListContainer = () => {
+
   // State
-  const [data, setData] = useState([]);
-  const { id } = useParams();
+  const [products, setProducts] = useState([]);
+
+  // Context
+  const allProducts  = useContext(ProductsContext);
+  
+  // Params
+  const params = useParams();
 
   // Effects
   useEffect(() => {
-    fetchData();
-  }, [id]);
-
-  // Actions
-  const fetchData = async () => {
-    try {
-      const response = await fetch("https://fakestoreapi.com/products");
-      const json = await response.json();
-
-      if (id) {
-        // Filter products by category if id exists
-        const filteredData = json.filter(
-          (product) => product.category === id
-        );
-        setData(filteredData);
-      } else {
-        setData(json);
-      }
-    } catch (error) {
-      console.error("An error occurred:", error);
+    if (!params.id) {
+      setProducts(allProducts);
+    } else {
+      // Filter products by category if result.id exists
+      const filteredProducts = allProducts.filter(
+        (product) => product.category === params.id
+      );
+      setProducts(filteredProducts);
     }
-  };
+  }, [params.id, allProducts]);
+
 
   // View
-  return <ItemListView data={data} />;
+  return <ItemListView products={products} />;
 };
 
 export default ItemListContainer;

@@ -1,4 +1,4 @@
-const HamburgerMenu = ({ openMenu }) => {
+const HamburgerMenuSvg = ({ openMenu }) => {
   return (
     <svg
       className="w-5 h-5"
@@ -18,4 +18,4 @@ const HamburgerMenu = ({ openMenu }) => {
   );
 };
 
-export default HamburgerMenu;
+export default HamburgerMenuSvg;
