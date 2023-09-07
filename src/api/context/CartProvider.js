@@ -16,6 +16,12 @@ const CartProvider = (props) => {
   const [cartTotalProducts, setCartTotalProducts] = useState(0);
 
   // Actions
+  /**
+   * Set to the state the specified qty items + id
+   * Set to the state the total qty items
+   * @param {*} productId
+   * @param {*} qty
+   */
   const addToCart = (productId, qty) => {
     try {
       // Find existing product
@@ -35,26 +41,39 @@ const CartProvider = (props) => {
 
       // Update total cart qty
       setCartTotalProducts(cartTotalProducts + qty);
+
+      // Toast
       toast.success("Product(s) added to your cart :)", {
         style: {
           background: "aquamarine",
-        }
+        },
       });
     } catch (error) {
+      // Toast
       toast.error(
-        "The products haven't  been added to you cart. Please try again", {
+        "The products haven't  been added to you cart. Please try again",
+        {
           style: {
-            background: "lightpink"
-          }
+            background: "lightpink",
+          },
         }
       );
     }
+  };
+
+  /**
+   * Reset the state: [] and 0
+   */
+  const clearCart = () => {
+    setCartItems([]);
+    setCartTotalProducts(0);
   };
 
   const cartContextValue = {
     cartItems,
     cartTotalProducts,
     addToCart,
+    clearCart
   };
 
   return (
