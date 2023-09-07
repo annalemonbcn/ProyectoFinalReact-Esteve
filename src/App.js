@@ -12,11 +12,16 @@ import Main from "./components/Main";
 import ProductsProvider from "./api/context/ProductsProvider";
 import CartProvider from "./api/context/CartProvider";
 
+// Toaster
+import { Toaster } from "sonner";
+
+
 function App() {
   return (
     <BrowserRouter>
       <ProductsProvider>
         <CartProvider>
+        <Toaster position="top-right" toastOptions={{ style: { top: '30px' } }} />
           <Navbar />
           <Main />
         </CartProvider>
