@@ -1,5 +1,5 @@
 // Hooks
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 
 // Routing
 import { useParams } from "react-router-dom";
@@ -28,7 +28,7 @@ const ItemDetailContainer = () => {
   const fetchData = async () => {
     try {
       const data = await fetchSingleProduct(params.id);
-      setProduct(data);
+      setProduct(data); 
     } catch (error) {
       console.error("Error fetching products:", error);
     }
