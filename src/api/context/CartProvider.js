@@ -4,6 +4,9 @@ import { createContext, useEffect, useState } from "react";
 // Toaster
 import { toast } from "sonner";
 
+// Routing
+import { useNavigate } from 'react-router-dom';
+
 // Context
 export const CartContext = createContext();
 
@@ -51,6 +54,10 @@ const CartProvider = (props) => {
         style: {
           background: "aquamarine",
         },
+        action: {
+          label: 'Go to cart',
+          onClick: goToCart,
+        }, 
       });
     } catch (error) {
       // Toast
@@ -142,6 +149,15 @@ const CartProvider = (props) => {
     return totalSum;
   };
   
+  /**
+   * Redirect to cart
+   */
+  const navigate = useNavigate();
+  const goToCart = () => {
+    navigate("/checkout");
+  };
+
+
   // Provider value
   const cartContextValue = {
     cartItems,
