@@ -1,16 +1,30 @@
 // Routing
 import { Link } from "react-router-dom";
 
-const CheckoutRow = ({ imgSrc, name, price, qty, id, setIsQtyChangedTrue }) => {
+// Hooks
+import { useRef } from "react";
 
-  const handleQtyChange = (e) => {
-    
-    const newQty = e.target.value;
-    
-    console.log(`El usuario ha modificado la cantidad para el ID: ${id}. La nueva cantidad es ${newQty}`);
 
-    // Set isQtyChanged state from parent to true
-    setIsQtyChangedTrue();
+const CheckoutRow = ({ imgSrc, name, price, qty, id, setIsQtyChanged,  auxSetItemsToUpdate }) => {
+
+  // UseRef
+  const qtyRef = useRef(null)
+
+  // onChange --> if user modify the qty
+  const handleQtyChange = () => {
+
+    // Get the new value
+    const newQty = qtyRef.current.value
+    
+    // set the product updated
+    const productUpdated = {
+      id,
+      newQty
+    }  
+    auxSetItemsToUpdate(productUpdated)
+
+    // Set isQtyChanged state from parent to true --> to make the button appear
+    setIsQtyChanged(true);
   };
 
 
@@ -30,8 +44,9 @@ const CheckoutRow = ({ imgSrc, name, price, qty, id, setIsQtyChangedTrue }) => {
       <input 
         type="number" 
         min="0" 
-        defaultValue={qty} 
+        defaultValue={qty}
         className="self-center justify-self-center text-center border border-slate-700 rounded-sm w-14 h-8"
+        ref={qtyRef}
         onChange={handleQtyChange}  
       />
       <div className="flex items-center justify-center total">{price  * qty} €</div>

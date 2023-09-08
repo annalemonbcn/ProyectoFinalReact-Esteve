@@ -10,10 +10,11 @@ import CheckoutRow from "./CheckoutRow";
 
 const Checkout = () => {
   // State
-  const [isQtyChanged, setIsQtyChanged] = useState(false);
+  const [isQtyChanged, setIsQtyChanged] = useState(false); // --> did the user modified the qty?
+  const [itemsToUpdate, setItemsToUpdate] = useState([]); // --> products that the user modified that needs to be updated
 
   // Context: cart info
-  const { cartItems, clearCart, updateItemsInCart } = useContext(CartContext);
+  const { cartItems, clearCart, updateCart } = useContext(CartContext);
 
   // Context: all products
   const allProducts = useContext(ProductsContext);
@@ -23,13 +24,15 @@ const Checkout = () => {
   let subtotal;
 
 
-
-  // Find product by id
+  // Find product by id in allProducts array
   const findProductById = (id) => {
     return allProducts.find((product) => product.id === id);
   };
 
-  // New array with complete info + qty
+  /**
+   * cartProductsToPrint --> array of products to print in the "table"
+   * New array with complete info + qty
+   */
   cartProductsToPrint = cartItems
     .map((item) => {
       const product = findProductById(item.productId);
@@ -46,16 +49,36 @@ const Checkout = () => {
     })
     .filter((product) => product !== null);
 
-  // Calculate the subtotal
+  // Calculate the cart subtotal
   subtotal = cartProductsToPrint.reduce(
     (acc, product) => acc + product.price * product.qty,
     0
   );
 
+  
+  /**
+   * Aux method to setItemsToUpdate
+   * Copy the original array and modifiy the qty for every item
+   * @param {*} objWithNewQty 
+   */
+  const auxSetItemsToUpdate = (objWithNewQty) => {
+    const existingProduct = itemsToUpdate.find(
+      (product) => product.id === objWithNewQty.id
+    );
 
-  // Actions
-  const setIsQtyChangedTrue = () => {
-    setIsQtyChanged(true);
+    if (existingProduct) {
+      // If obj exists, updates the qty
+      const newItems = itemsToUpdate.map((obj) => {
+        if (obj.id === objWithNewQty.id) {
+          return { ...obj, newQty: objWithNewQty.newQty };
+        }
+        return obj;
+      });
+
+      setItemsToUpdate(newItems);
+    } else {
+      setItemsToUpdate([...itemsToUpdate, objWithNewQty]);
+    }
   };
 
 
@@ -83,17 +106,21 @@ const Checkout = () => {
 
               {/* Products rows */}
               {cartProductsToPrint.map((product, i) => {
-                return (
-                  <CheckoutRow
-                    key={i}
-                    id={product.id}
-                    imgSrc={product.image}
-                    name={product.title}
-                    price={product.price}
-                    qty={product.qty}
-                    setIsQtyChangedTrue={setIsQtyChangedTrue}
-                  />
-                );
+                if (product.qty > 0) {
+                  return (
+                    <CheckoutRow
+                      key={i}
+                      id={product.id}
+                      imgSrc={product.image}
+                      name={product.title}
+                      price={product.price}
+                      qty={product.qty}
+                      setIsQtyChanged={setIsQtyChanged}
+                      auxSetItemsToUpdate={auxSetItemsToUpdate}
+                    />
+                  );
+                }
+                return null;
               })}
 
               {/* Buttons  */}
@@ -101,7 +128,9 @@ const Checkout = () => {
               <div className="col-span-2 flex justify-end items-center px-4">
                 {isQtyChanged ? (
                   <button
-                    className="text-sm font-bold border border-black rounded-lg bg-white px-3 py-1.5 mb-4 mr-4">
+                    onClick={() => updateCart(itemsToUpdate)}
+                    className="text-sm font-bold border border-black rounded-lg bg-white px-3 py-1.5 mb-4 mr-4"
+                  >
                     Update cart
                   </button>
                 ) : null}
