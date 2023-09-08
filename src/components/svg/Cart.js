@@ -1,4 +1,4 @@
-const Cart = () => {
+const CartSvg = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -18,4 +18,4 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default CartSvg;
