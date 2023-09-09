@@ -1,17 +1,19 @@
 // Hooks
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 
 // Context
 import { CartContext } from "../api/context/CartProvider";
 import { ProductsContext } from "../api/context/ProductsProvider";
 
 // Components
-import CheckoutRow from "./CheckoutRow";
+import CheckoutRow from "../views/CheckoutRow";
+import CheckoutForm from "./CheckoutForm";
 
 const Checkout = () => {
   // State
   const [isQtyChanged, setIsQtyChanged] = useState(false); // --> did the user modified the qty?
   const [itemsToUpdate, setItemsToUpdate] = useState([]); // --> products that the user modified that needs to be updated
+  const [showForm, setShowForm] = useState(false);
 
   // Context: cart info
   const { cartItems, clearCart, updateCart } = useContext(CartContext);
@@ -19,10 +21,12 @@ const Checkout = () => {
   // Context: all products
   const allProducts = useContext(ProductsContext);
 
+  // Ref
+  const checkoutForm = useRef()
+
   // Vars
   let cartProductsToPrint;
   let subtotal;
-
 
   // Find product by id in allProducts array
   const findProductById = (id) => {
@@ -55,11 +59,10 @@ const Checkout = () => {
     0
   );
 
-  
   /**
    * Aux method to setItemsToUpdate
    * Copy the original array and modifiy the qty for every item
-   * @param {*} objWithNewQty 
+   * @param {*} objWithNewQty
    */
   const auxSetItemsToUpdate = (objWithNewQty) => {
     const existingProduct = itemsToUpdate.find(
@@ -79,6 +82,14 @@ const Checkout = () => {
     } else {
       setItemsToUpdate([...itemsToUpdate, objWithNewQty]);
     }
+  };
+
+  const finishOrder = () => {
+    setShowForm(true);
+
+    setTimeout(() => {
+      checkoutForm.current.scrollIntoView({ behavior: 'smooth' });
+    }, 10);
   };
 
 
@@ -144,6 +155,7 @@ const Checkout = () => {
             </div>
           </div>
 
+          {/* Cart summary  */}
           <div className="mt-10 w-full flex ">
             <div className="hidden lg:block flex-grow"></div>
             <div className="w-full lg:w-1/2">
@@ -170,11 +182,21 @@ const Checkout = () => {
                   <p className="font-normal ml-6">{subtotal + 10} €</p>
                 </div>
               </div>
-              <button className="bg-black text-white font-bold w-full uppercase px-5 py-2.5 mt-6">
+              <button
+                onClick={finishOrder}
+                className="bg-black text-white font-bold w-full uppercase px-5 py-2.5 mt-6"
+              >
                 Finish order
               </button>
             </div>
           </div>
+
+          {/* Cart form */}
+          {showForm ? (
+            <div ref={checkoutForm}>
+              <CheckoutForm />
+            </div>
+          ) : null}
         </div>
       )}
     </>
