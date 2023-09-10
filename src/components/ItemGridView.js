@@ -20,7 +20,9 @@ const ItemGridView = ({ imgSrc, imgAlt, name, price, id }) => {
         </Link>
         <div className="flex items-center justify-between mt-6">
           <span className="text-gray-500 font-bold text-lg">{price} €</span>
-          <CartSvg />
+          <Link to={`/item/${id}`}>
+            <CartSvg />
+          </Link>
         </div>
       </div>
     </div>

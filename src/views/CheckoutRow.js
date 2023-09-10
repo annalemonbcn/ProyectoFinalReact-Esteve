@@ -39,7 +39,11 @@ const CheckoutRow = ({ imgSrc, name, price, qty, id, setIsQtyChanged,  auxSetIte
         />
       </Link>
       </div>
-      <div className="flex col-span-2 lg:col-span-1 items-center px-4">{name}</div>
+      <div className="flex col-span-2 lg:col-span-1 items-center px-4">
+        <Link to={`/item/${id}`}>
+          {name}
+        </Link>
+      </div>
       <div className="flex items-center justify-center">{price} €</div>
       <input 
         type="number" 

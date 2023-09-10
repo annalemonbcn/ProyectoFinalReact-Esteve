@@ -10,7 +10,7 @@ const ItemDetailView = ({ product }) => {
         <p>Cargando</p>
       ) : (
         <div>
-          <h2 className="text-xl lg:text-2xl text-gray-600 font-semibold mt-6 lg:mt-0">
+          <h2 className="text-xl lg:text-2xl text-gray-600 font-semibold">
             {product.title}
           </h2>
           <div className="flex flex-col lg:flex-nowrap lg:flex-row gap-5 mt-8 lg:mt-6">

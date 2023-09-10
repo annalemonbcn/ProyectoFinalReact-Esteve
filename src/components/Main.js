@@ -10,7 +10,7 @@ import Checkout from "./Checkout";
 const Main = () => {
 
   return (
-    <main className="px-5 lg:px-20 pt-5 lg:pt-16 mt-[70px] mb-16 lg:mb-4">
+    <main className="px-5 lg:px-20 pt-16 lg:pt-16 mt-[50px] lg:mt-[70px] mb-16 lg:mb-4">
       <Routes>
         <Route path="/" element={<ItemListContainer />} />
         <Route path="/category/:id" element={<ItemListContainer />} />
