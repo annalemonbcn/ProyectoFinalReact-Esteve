@@ -131,8 +131,8 @@ const Checkout = () => {
             })}
 
             {/* Buttons  */}
-            <div className="col-span-3"></div>
-            <div className="col-span-2 flex justify-end items-center px-4">
+            <div className="lg:col-span-3"></div>
+            <div className="col-span-4 lg:col-span-2 flex justify-end items-center px-4">
               {isQtyChanged ? (
                 <button
                   onClick={() => updateCart(itemsToUpdate)}
