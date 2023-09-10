@@ -14,6 +14,7 @@ const Checkout = () => {
   const [isQtyChanged, setIsQtyChanged] = useState(false); // --> did the user modified the qty?
   const [itemsToUpdate, setItemsToUpdate] = useState([]); // --> products that the user modified that needs to be updated
   const [showForm, setShowForm] = useState(false);
+  const [token, setToken] = useState(null);
 
   // Context: cart info
   const { cartItems, clearCart, updateCart } = useContext(CartContext);
@@ -22,11 +23,12 @@ const Checkout = () => {
   const allProducts = useContext(ProductsContext);
 
   // Ref
-  const checkoutForm = useRef()
+  const checkoutForm = useRef();
 
   // Vars
   let cartProductsToPrint;
   let subtotal;
+  const shippingTax = 10;
 
   // Find product by id in allProducts array
   const findProductById = (id) => {
@@ -88,76 +90,71 @@ const Checkout = () => {
     setShowForm(true);
 
     setTimeout(() => {
-      checkoutForm.current.scrollIntoView({ behavior: 'smooth' });
+      checkoutForm.current.scrollIntoView({ behavior: "smooth" });
     }, 10);
   };
 
+  // Render
+  if (cartItems.length > 0 && !token) {
+    return (
+      <>
+        <h1 className="text-2xl font-bold w-full border-b border-slate-900">
+          Checkout
+        </h1>
+        {/* Table */}
+        <div className="w-full mt-8 lg:mt-16 border border-slate-200 rounded">
+          {/* Titles */}
+          <div className="grid grid-cols-5 lg:gap-y-4 gap-y-8">
+            <div className="col-span-2 font-bold p-1 lg:p-3 px-4">Product</div>
+            <div className="font-bold p-1 lg:p-3 text-center">Price</div>
+            <div className="font-bold p-1 lg:p-3 text-center">Quantity</div>
+            <div className="font-bold p-1 lg:p-3 text-center">Total</div>
+            <div className="col-span-5 border-t border-slate-200 mt-[-25px] lg:mt-[-15px]"></div>
 
-  return (
-    <>
-      {cartItems.length === 0 ? (
-        <p>Your checkout is empty</p>
-      ) : (
-        // <div className="lg:px-20">
-        <div className="xl:px-20">
-          <h1 className="text-2xl font-bold w-full border-b border-slate-900">
-            Checkout
-          </h1>
-          {/* Table */}
-          <div className="cartSummary w-full mt-8 lg:mt-16 border border-slate-200 rounded">
-            {/* Titles */}
-            <div className="grid grid-cols-5 lg:gap-y-4 gap-y-8">
-              <div className="col-span-2 font-bold p-1 lg:p-3 px-4">
-                Product
-              </div>
-              <div className="font-bold p-1 lg:p-3 text-center">Price</div>
-              <div className="font-bold p-1 lg:p-3 text-center">Quantity</div>
-              <div className="font-bold p-1 lg:p-3 text-center">Total</div>
-              <div className="col-span-5 border-t border-slate-200 mt-[-25px] lg:mt-[-15px]"></div>
+            {/* Products rows */}
+            {cartProductsToPrint.map((product, i) => {
+              if (product.qty > 0) {
+                return (
+                  <CheckoutRow
+                    key={i}
+                    id={product.id}
+                    imgSrc={product.image}
+                    name={product.title}
+                    price={product.price}
+                    qty={product.qty}
+                    setIsQtyChanged={setIsQtyChanged}
+                    auxSetItemsToUpdate={auxSetItemsToUpdate}
+                  />
+                );
+              }
+              return null;
+            })}
 
-              {/* Products rows */}
-              {cartProductsToPrint.map((product, i) => {
-                if (product.qty > 0) {
-                  return (
-                    <CheckoutRow
-                      key={i}
-                      id={product.id}
-                      imgSrc={product.image}
-                      name={product.title}
-                      price={product.price}
-                      qty={product.qty}
-                      setIsQtyChanged={setIsQtyChanged}
-                      auxSetItemsToUpdate={auxSetItemsToUpdate}
-                    />
-                  );
-                }
-                return null;
-              })}
-
-              {/* Buttons  */}
-              <div className="col-span-3"></div>
-              <div className="col-span-2 flex justify-end items-center px-4">
-                {isQtyChanged ? (
-                  <button
-                    onClick={() => updateCart(itemsToUpdate)}
-                    className="text-sm font-bold border border-black rounded-lg bg-white px-3 py-1.5 mb-4 mr-4"
-                  >
-                    Update cart
-                  </button>
-                ) : null}
+            {/* Buttons  */}
+            <div className="col-span-3"></div>
+            <div className="col-span-2 flex justify-end items-center px-4">
+              {isQtyChanged ? (
                 <button
-                  onClick={clearCart}
-                  className="text-sm font-bold border border-black rounded-lg  bg-white px-3 py-1.5 mb-4"
+                  onClick={() => updateCart(itemsToUpdate)}
+                  className="text-sm font-bold border border-black rounded-lg bg-white px-3 py-1.5 mb-4 mr-4"
                 >
-                  Empty cart
+                  Update cart
                 </button>
-              </div>
+              ) : null}
+              <button
+                onClick={clearCart}
+                className="text-sm font-bold border border-black rounded-lg  bg-white px-3 py-1.5 mb-4"
+              >
+                Empty cart
+              </button>
             </div>
           </div>
+        </div>
 
-          {/* Cart summary  */}
-          <div className="mt-10 w-full flex ">
-            <div className="hidden lg:block flex-grow"></div>
+        {/* Cart summary  */}
+        {!showForm && !token ? (
+          <div className="mt-10 w-full">
+            {/* Total summary */}
             <div className="w-full lg:w-1/2">
               <h2 className="text-2xl font-bold border-b border-slate-900">
                 Total
@@ -173,7 +170,7 @@ const Checkout = () => {
                   <p className="font-bold min-w-[100px] lg:min-w-[80px]">
                     Shipping:
                   </p>
-                  <p className="font-normal ml-6">10 €</p>
+                  <p className="font-normal ml-6">{shippingTax} €</p>
                 </div>
                 <div className="flex items-center justify-start">
                   <p className="font-bold min-w-[100px] lg:min-w-[80px]">
@@ -190,17 +187,37 @@ const Checkout = () => {
               </button>
             </div>
           </div>
+        ) : null}
 
-          {/* Cart form */}
-          {showForm ? (
-            <div ref={checkoutForm}>
-              <CheckoutForm />
+        {/* Form */}
+        {showForm && !token ? (
+          <div className="mt-10 w-full">
+            <div className="w-full lg:w-1/2">
+              <div ref={checkoutForm}>
+                <CheckoutForm setToken={setToken} />
+              </div>
             </div>
-          ) : null}
-        </div>
-      )}
-    </>
-  );
+          </div>
+        ) : null}
+      </>
+    );
+  } else if (cartItems.length === 0 && token) {
+    return (
+      <div>
+        <h3 className="font-bold text-2xl">Thank you for your order!</h3>
+        <p className="mt-4">
+          We have received your request and it will be processed shortly.
+        </p>
+        <p>You will shortly receive an email with a summary of your order.</p>
+        <p>Please, for changes or cancellations, keep this purchase ID.</p>
+        <p className="mt-4">
+          <span className="font-bold">Purchase ID:</span> {token}
+        </p>
+      </div>
+    );
+  } else if (cartItems.length === 0) {
+    return <p>Your cart is empty</p>;
+  }
 };
 
 export default Checkout;

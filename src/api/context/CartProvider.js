@@ -62,7 +62,7 @@ const CartProvider = (props) => {
     } catch (error) {
       // Toast
       toast.error(
-        "The products couldn't been added to you cart. Please try again",
+        `There was an error while adding the products to your cart: ${error}`,
         {
           style: {
             background: "lightpink",
@@ -116,7 +116,7 @@ const CartProvider = (props) => {
       });
     } catch (error) {
       // Toast
-      toast.error("The cart couldn't be updated.  Please try again", {
+      toast.error(`The cart couldn't be updated. Please try again. ${error}`, {
         style: {
           background: "lightpink",
         },
