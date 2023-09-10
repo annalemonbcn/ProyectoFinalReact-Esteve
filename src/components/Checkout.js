@@ -97,7 +97,7 @@ const Checkout = () => {
   // Render
   if (cartItems.length > 0 && !token) {
     return (
-      <>
+      <div className="xl:px-20">
         <h1 className="text-2xl font-bold w-full border-b border-slate-900">
           Checkout
         </h1>
@@ -199,11 +199,11 @@ const Checkout = () => {
             </div>
           </div>
         ) : null}
-      </>
+      </div>
     );
   } else if (cartItems.length === 0 && token) {
     return (
-      <div>
+      <div className="xl:px-20">
         <h3 className="font-bold text-2xl">Thank you for your order!</h3>
         <p className="mt-4">
           We have received your request and it will be processed shortly.
@@ -216,8 +216,12 @@ const Checkout = () => {
       </div>
     );
   } else if (cartItems.length === 0) {
-    return <p>Your cart is empty</p>;
-  }
+    return (
+      <div className="xl:px-20">
+        <p>Your cart is empty</p>;
+      </div>
+    )
+}
 };
 
 export default Checkout;
