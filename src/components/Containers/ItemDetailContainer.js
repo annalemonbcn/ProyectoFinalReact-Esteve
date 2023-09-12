@@ -4,35 +4,61 @@ import { useState, useEffect } from "react";
 // Routing
 import { useParams } from "react-router-dom";
 
+// Services
+import { fetchSingleProductFromFirebase } from "../../api/services/firebaseService";
+
+// db
+import { db } from "../../db/firebase";
+
+// Firestore
+import {getDoc, doc, collection } from "firebase/firestore";
+
+// Toaster
+import { toast } from "sonner";
+
+
 // Components
 import ItemDetailView from "../ItemDetailView";
 
-// Services
-import { fetchSingleProduct } from "../../api/services/apiService";
-
 
 const ItemDetailContainer = () => {
-
   // State
   const [product, setProduct] = useState({});
+
+  // Params
   const params = useParams();
 
   
   // Effects
   useEffect(() => {
-     fetchData(); // --> Petición fetch para un solo producto
+    getSingleProduct();
   }, [params.id]);
 
   // Actions
-  /** Peticion fetch para un solo producto */
-  const fetchData = async () => {
+  /** Fetch a single product from the firestore db */
+  const getSingleProduct = async () => {
     try {
-      const data = await fetchSingleProduct(params.id);
-      setProduct(data); 
+      // Collection
+      const picturesCollection = collection(db, 'pictures');
+  
+      // Create docRef
+      const docRef = doc(picturesCollection, params.id);
+  
+      // Fetch product from firestore
+      const fetchedProduct = await fetchSingleProductFromFirebase(docRef, params.id);
+      setProduct(fetchedProduct);
     } catch (error) {
-      console.error("Error fetching products:", error);
-    }
-  };
+      toast.error(
+        `An error occurred while loading the product: ${error}`,
+        {
+          style: {
+            background: "lightpink",
+          },
+        }
+      );
+    }  
+  }
+
 
   // View
   return <ItemDetailView product={product} />;

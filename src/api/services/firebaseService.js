@@ -1,5 +1,5 @@
 // Firestore
-import { getDocs } from "firebase/firestore";
+import { getDocs, getDoc } from "firebase/firestore";
 
 export const fetchProductsFromFirestore = async (productsQuery) => {
   try {
@@ -13,16 +13,15 @@ export const fetchProductsFromFirestore = async (productsQuery) => {
   } catch (error) {
     throw error;
   }
+};
 
-}
-
-export const fetchSingleProduct = async (id) => {
+export const fetchSingleProductFromFirebase = async (docRef, id) => {
   try {
-    const response = await fetch(`https://fakestoreapi.com/products/${id}`)
-    const data = await response.json();
-    return data;
+    const docSnap = await getDoc(docRef);
+    const product = docSnap.data();
+    product.id = id;
+    return product;
   } catch (error) {
-    console.error("An error occurred while fetching products:", error);
     throw error;
   }
-}
+};

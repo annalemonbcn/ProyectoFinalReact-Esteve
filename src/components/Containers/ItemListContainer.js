@@ -13,6 +13,9 @@ import { getDocs, collection, query, where } from "firebase/firestore";
 // Services
 import { fetchProductsFromFirestore } from "../../api/services/firebaseService";
 
+// Toaster
+import { toast } from "sonner";
+
 // Components
 import ItemListView from "../ItemListView";
 
@@ -28,34 +31,50 @@ const ItemListContainer = () => {
 
   // Effects
   useEffect(() => {
-    fetchAllProducts();
+    getAllProducts();
     console.log('products', products)
   }, [params.id]);
 
 
   // Actions
-  const fetchAllProducts = async () => {
+  /**
+   * Fetch all products from firestore db
+   */
+  const getAllProducts = async () => {
     // Collection
-    const productsCollection = collection(db, "pictures");
+    const picturesCollection = collection(db, "pictures");
 
     // Query to filter the products
     let productsQuery;
 
     if (params.id) {
       // If 'id' param in the URL, apply a filter
-      productsQuery = query(productsCollection, where('category', '==', params.id));
+      productsQuery = query(picturesCollection, where('category', '==', params.id));
     } else {
       // If no 'id' param in the URL, get all the products
-      productsQuery = productsCollection;
+      productsQuery = picturesCollection;
     }
 
     // Fetch products from firestore
     try {
       const productsFetched = await fetchProductsFromFirestore(productsQuery);
       console.log('productsFetched', productsFetched);
-      setProducts(productsFetched); // Actualiza el estado con los productos
+      setProducts(productsFetched);
+      // Toast
+      toast.success("Products loaded! Welcome :)", {
+        style: {
+          background: "aquamarine",
+        }
+      });
     } catch (error) {
-      console.error('An error occurred while getting the products:', error);
+      toast.error(
+        `An error occurred while loading the products: ${error}`,
+        {
+          style: {
+            background: "lightpink",
+          },
+        }
+      );
     }
   }
 
