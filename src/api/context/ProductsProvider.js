@@ -1,89 +1,50 @@
 // Services
 import { fetchProductsFromFirestore } from "../services/firebaseService"
 
-// db
+// firestore
 import { db } from "../../db/firebase";
+import { collection } from "firebase/firestore";
 
-// Firestore
-import { collection, query, where } from "firebase/firestore";
-
+// Toaster
+import { toast } from "sonner";
 
 // Context
-import { createContext, useState, useEffect, useParams } from "react"
+import { createContext, useState, useEffect } from "react"
 export const ProductsContext = createContext();
 
 
-// Provider for api
-// const ProductsProvider = (props) => {
-
-//   // State
-//   const [products, setProducts] = useState([]);
-
-//   // Effects
-//   useEffect(() => {
-//     fetchData();
-//   }, []);
-
-//   // useEffect(() => {
-//   //   console.log("Updated products:", products);
-//   // }, [products]); // --> demuestra que products tiene valores
-  
-//   // Actions
-//   const fetchData = async () => {
-//     try {
-//       const data = await fetchProducts();
-//       setProducts(data);
-//     } catch (error) {
-//       console.error("Error fetching products:", error);
-//     }
-//   };
-
-
-//   return(
-//     <ProductsContext.Provider value={products}>
-//       {props.children}
-//     </ProductsContext.Provider>
-//   )
-// }
-
+// Provider
 const ProductsProvider = (props) => {
+
   // State
   const [products, setProducts] = useState([]);
-
-  // Params
-  const params = useParams();  
 
   // Effects
   useEffect(() => {
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   console.log("Updated products:", products);
-  // }, [products]); // --> demuestra que products tiene valores
   
   // Actions
   const fetchData = async () => {
-    // Collection
-    const picturesCollection = collection(db, "pictures");
-
-    // Query to filter the products
-    let productsQuery;
-
-    // Set query if params
-    if (params.id) {
-      // If 'id' param in the URL, apply a filter
-      productsQuery = query(picturesCollection, where('size', '==', params.id));
-    } else {
-      // If no 'id' param in the URL, get all the products
-      productsQuery = picturesCollection;
-    }
-
-    // Fetch products from firestore
+    const productsCollection = collection(db, "pictures");
     try {
-      const data = await fetchProductsFromFirestore(productsQuery);
+      const data = await fetchProductsFromFirestore(productsCollection);
       setProducts(data);
+      toast.success("Products loaded :)", {
+        style: {
+          background: "aquamarine",
+        }
+      });
     } catch (error) {
+      toast.error(
+        `There was an error while loading the products: ${error}`,
+        {
+          style: {
+            background: "lightpink",
+          },
+        }
+      );
       console.error("Error fetching products:", error);
     }
   };
