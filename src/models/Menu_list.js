@@ -16,11 +16,11 @@ export const MenuList = [
     path: '/'
   },
   {
-    title: 'Jewelery',
-    path: '/category/jewelery'
+    title: '35mm',
+    path: '/category/35mm'
   },
   {
-    title: 'Electronics',
-    path: '/category/electronics'
+    title: '120',
+    path: '/category/120'
   }
 ]

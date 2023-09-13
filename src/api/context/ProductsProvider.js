@@ -1,5 +1,12 @@
 // Services
-import { fetchProducts } from "../services/apiService"
+import { fetchProductsFromFirestore } from "../services/firebaseService"
+
+// firestore
+import { db } from "../../db/firebase";
+import { collection } from "firebase/firestore";
+
+// Toaster
+import { toast } from "sonner";
 
 // Context
 import { createContext, useState, useEffect } from "react"
@@ -17,16 +24,27 @@ const ProductsProvider = (props) => {
     fetchData();
   }, []);
 
-  // useEffect(() => {
-  //   console.log("Updated products:", products);
-  // }, [products]); // --> demuestra que products tiene valores
   
   // Actions
   const fetchData = async () => {
+    const productsCollection = collection(db, "pictures");
     try {
-      const data = await fetchProducts();
+      const data = await fetchProductsFromFirestore(productsCollection);
       setProducts(data);
+      toast.success("Products loaded :)", {
+        style: {
+          background: "aquamarine",
+        }
+      });
     } catch (error) {
+      toast.error(
+        `There was an error while loading the products: ${error}`,
+        {
+          style: {
+            background: "lightpink",
+          },
+        }
+      );
       console.error("Error fetching products:", error);
     }
   };

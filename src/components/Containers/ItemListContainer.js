@@ -10,32 +10,28 @@ import ItemListView from "../ItemListView";
 // Context
 import { ProductsContext } from "../../api/context/ProductsProvider";
 
-
-
 const ItemListContainer = () => {
-
   // State
   const [products, setProducts] = useState([]);
 
-  // Context
-  const allProducts  = useContext(ProductsContext);
-  
   // Params
   const params = useParams();
 
+  // Context
+  const allProducts = useContext(ProductsContext);
+
   // Effects
   useEffect(() => {
+    // Filter products by size if params.id exists
     if (!params.id) {
       setProducts(allProducts);
     } else {
-      // Filter products by category if result.id exists
       const filteredProducts = allProducts.filter(
-        (product) => product.category === params.id
+        (product) => product.size === params.id
       );
       setProducts(filteredProducts);
     }
   }, [params.id, allProducts]);
-
 
   // View
   return <ItemListView products={products} />;

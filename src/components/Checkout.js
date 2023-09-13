@@ -218,7 +218,7 @@ const Checkout = () => {
   } else if (cartItems.length === 0) {
     return (
       <div className="xl:px-20">
-        <p>Your cart is empty</p>;
+        <p>Your cart is empty</p>
       </div>
     )
 }
