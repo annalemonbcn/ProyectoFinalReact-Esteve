@@ -55,7 +55,7 @@ const NavBar = () => {
             navbarOpen
               ? "opacity-100 h-screen md:h-auto bg-slate-100 absolute left-0 top-[72px] md:relative md:left-auto md:top-auto"
               : "opacity-0"
-          } transition-all lg:opacity-100 ease-in duration-100 lg:items-center justify-between w-full md:flex md:w-auto md:order-1 md:border-0 bg-slate-100`}
+          } transition-all md:opacity-100 ease-in duration-100 md:items-center justify-between w-full md:flex md:w-auto md:order-1 md:border-0 bg-slate-100`}
           id="menu-list"
         >
           {/* Links list */}
