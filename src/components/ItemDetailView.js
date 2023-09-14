@@ -1,3 +1,9 @@
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
+
+import ImageZoom from "react-image-zooom";
+
+
 // Components
 import ItemsToCart from "./widgets/ItemsToCart";
 
@@ -14,19 +20,22 @@ const ItemDetailView = ({ product }) => {
           </h2>
           <div className="flex flex-col lg:flex-nowrap lg:flex-row gap-5 mt-8 lg:mt-6">
             <div className="bg-soft-grey lg:w-2/5 h-[500px] p-5 box-border flex justify-center items-center">
+              {/* <Zoom> */}
+                <ImageZoom 
+                // <img 
+                  className="max-h-full mx-auto"
+                  src={product.image}
+                  alt={product.title}
+                />
+              {/* </Zoom> */}
+            </div>
+            {/* <div className="bg-soft-grey lg:w-2/5 h-[500px] p-5 box-border flex justify-center items-center">
               <img
                 className="max-h-full mx-auto"
                 src={product.image}
                 alt={product.title}
               />
-            </div>
-            <div className="bg-soft-grey lg:w-2/5 h-[500px] p-5 box-border flex justify-center items-center">
-              <img
-                className="max-h-full mx-auto"
-                src={product.image}
-                alt={product.title}
-              />
-            </div>
+            </div> */}
             <div className="pt-2 lg:p-0 lg:w-1/5" id="productInfo">
               <p className="italic">{product.description}</p>
               <div className="mt-4">
