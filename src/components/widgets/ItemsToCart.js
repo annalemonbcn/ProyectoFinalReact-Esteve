@@ -28,7 +28,7 @@ const ItemsToCart = ({ id }) => {
   };
 
   return (
-    <div className="flex items-center justify-between mt-4">
+    <div className="flex items-center justify-between md:justify-start lg:justify-between mt-4">
       <div className="flex items-center justify-between gap-3">
         <button
           className="flex justify-center items-center font-bold text-xl w-[30px]"
@@ -46,7 +46,7 @@ const ItemsToCart = ({ id }) => {
       </div>
       <div
         onClick={() => addToCart(id, qty)}
-        className="w-[50px] h-[50px] border-slate-500 border-solid border-[1px] flex justify-center items-center relative left-[-20px] lg:left-0 hover:scale-110 transition duration-300 ease-in-out cursor-pointer"
+        className="w-[50px] h-[50px] border-slate-500 border-solid border-[1px] flex justify-center items-center relative left-[-20px] md:left-20 lg:left-0 hover:scale-110 transition duration-300 ease-in-out cursor-pointer"
       >
         <CartSvg />
       </div>
