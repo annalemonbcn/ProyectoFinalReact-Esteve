@@ -7,6 +7,7 @@ import "./App.css";
 // Components
 import Navbar from "./components/NavBar/NavBar";
 import Main from "./components/Main";
+import Footer from "./components/Footer";
 
 // Context/provider
 import ProductsProvider from "./api/context/ProductsProvider";
@@ -24,6 +25,7 @@ function App() {
         <Toaster position="top-right" toastOptions={{ style: { top: '70px' } }} />
           <Navbar />
           <Main />
+          <Footer />
         </CartProvider>
       </ProductsProvider>
     </BrowserRouter>
