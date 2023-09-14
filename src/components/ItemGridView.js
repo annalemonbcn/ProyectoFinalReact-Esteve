@@ -18,7 +18,7 @@ const ItemGridView = ({ imgSrc, imgAlt, name, price, id }) => {
         <Link to={`/item/${id}`}>
           <h5 className="text-gray-700 italic ">{name}</h5>
         </Link>
-        <div className="flex items-center justify-between mt-2 md: mt-4 xl:mt-4">
+        <div className="flex items-center justify-between mt-2 md:mt-4">
           <span className="text-gray-500 font-bold text-lg">{price} €</span>
           <Link to={`/item/${id}`}>
             <CartSvg />

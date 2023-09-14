@@ -31,7 +31,7 @@ const ItemDetailView = ({ product }) => {
             {product.title}
           </h2>
           <div className="flex flex-col lg:flex-nowrap lg:flex-row gap-10 mt-8 lg:mt-6">
-            <div className="bg-soft-grey lg:w-3/5 h-[340px] lg:h-[500px] p-5 lg:p-8 box-border flex justify-center items-center lg:order-1">
+            <div className="bg-soft-grey lg:w-3/5 h-[340px] md:h-[430px] lg:h-[500px] p-5 lg:p-8 box-border flex justify-center items-center lg:order-1">
               {imgLoaded ? (
                  <ImageZoom 
                    className={`w-auto ${
@@ -42,7 +42,7 @@ const ItemDetailView = ({ product }) => {
                  />
               ) : null}
             </div>
-            <div className="pt-2 lg:p-0 lg:w-1/5 lg:order-3">
+            <div className="pt-2 lg:p-0 mt-4 lg:mt-0 lg:w-1/5 lg:order-3">
               <p>
                 <span className="font-bold">Size:</span> {product.size}
               </p>
@@ -61,7 +61,7 @@ const ItemDetailView = ({ product }) => {
               </div>
               <ItemsToCart id={product.id} />
             </div>
-            <div className="pt-2 lg:p-0 lg:w-1/5 lg:order-2">
+            <div className="pt-2 lg:p-0 mt-4 lg:mt-0 lg:w-1/5 lg:order-2">
               <p>{product.description}</p>
               <p className='mt-3'><span className='font-bold'>Exhibition tip:</span> {product.exhibition_tip}</p>
               <p><span className='font-bold'>Print size:</span> {product.print_size}</p>
