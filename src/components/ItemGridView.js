@@ -14,7 +14,7 @@ const ItemGridView = ({ imgSrc, imgAlt, name, price, id }) => {
         </Link>
       </div>
 
-      <div className="pb-8 xl:pb-5 px-4 mt- lg:mt-6">
+      <div className="pb-8 xl:pb-5 px-4 mt-4 lg:mt-6">
         <Link to={`/item/${id}`}>
           <h5 className="text-gray-700 italic ">{name}</h5>
         </Link>
