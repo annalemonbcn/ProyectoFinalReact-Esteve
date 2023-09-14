@@ -28,7 +28,7 @@ const ItemsToCart = ({ id }) => {
   };
 
   return (
-    <div className="flex items-center justify-between mt-6">
+    <div className="flex items-center justify-between mt-4">
       <div className="flex items-center justify-between gap-3">
         <button
           className="flex justify-center items-center font-bold text-xl w-[30px]"
