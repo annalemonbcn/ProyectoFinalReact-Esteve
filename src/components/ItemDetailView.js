@@ -24,7 +24,8 @@ const ItemDetailView = ({ product }) => {
                 <ImageZoom 
                 // <img 
                   className="max-h-full mx-auto"
-                  src={product.image}
+                  // src={product.image}
+                  src="https://picsum.photos/seed/000/1920/1080"
                   alt={product.title}
                 />
               {/* </Zoom> */}
