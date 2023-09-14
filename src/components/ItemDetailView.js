@@ -6,8 +6,20 @@ import ImageZoom from "react-image-zooom";
 
 // Components
 import ItemsToCart from "./widgets/ItemsToCart";
+import { useEffect, useState } from 'react';
 
 const ItemDetailView = ({ product }) => {
+
+  const [imgLoaded, setImgLoaded] = useState(false);
+
+  useEffect(() => {
+    if(product.image){
+      setImgLoaded(true);
+    }
+  }, [product])
+  
+ 
+  
   console.log('product', product)
   return (
     <>
@@ -21,13 +33,15 @@ const ItemDetailView = ({ product }) => {
           <div className="flex flex-col lg:flex-nowrap lg:flex-row gap-5 mt-8 lg:mt-6">
             <div className="bg-soft-grey lg:w-2/5 h-[500px] p-5 box-border flex justify-center items-center">
               {/* <Zoom> */}
-                <ImageZoom 
-                // <img 
-                  className="max-h-full mx-auto"
-                  // src={product.image}
-                  src="https://picsum.photos/seed/000/1920/1080"
-                  alt={product.title}
-                />
+              {imgLoaded ? (
+                 <ImageZoom 
+                 // <img 
+                   className="max-h-full mx-auto"
+                   src={product.image}
+                   // src="https://picsum.photos/seed/000/1920/1080"
+                   alt={product.title}
+                 />
+              ) : null}
               {/* </Zoom> */}
             </div>
             {/* <div className="bg-soft-grey lg:w-2/5 h-[500px] p-5 box-border flex justify-center items-center">
