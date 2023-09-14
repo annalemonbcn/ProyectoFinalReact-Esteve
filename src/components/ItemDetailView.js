@@ -31,13 +31,13 @@ const ItemDetailView = ({ product }) => {
             {product.title}
           </h2>
           <div className="flex flex-col lg:flex-nowrap lg:flex-row gap-10 mt-8 lg:mt-6">
-            <div className="bg-soft-grey lg:w-3/5 h-[500px] p-5 box-border flex justify-center items-center lg:order-1">
+            <div className="bg-soft-grey lg:w-3/5 h-[340px] lg:h-[500px] p-5 lg:p-8 box-border flex justify-center items-center lg:order-1">
               {imgLoaded ? (
                  <ImageZoom 
-                 // <img 
-                   className="w-auto h-full"
+                   className={`w-auto ${
+                    product.orientation === 'landscape' ? 'h-auto' : (product.orientation === 'vertical' || product.orientation === 'square') ? 'h-full' : ''
+                  } md:h-full`}
                    src={product.image}
-                   // src="https://picsum.photos/seed/000/1920/1080"
                    alt={product.title}
                  />
               ) : null}
