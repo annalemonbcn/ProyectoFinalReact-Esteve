@@ -19,11 +19,12 @@ Here is a working live demo : https://iharsh234.github.io/WebApp/
 - [Introduction](#introduction)
 - [Built with](#built-with)
 - [Getting started](#getting-started)
-- [Acknowledgments](#acknowledgments)
+- [Final conclusions](#final-conclusions)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ## 📋 Introduction
+<a name="introduction"></a>
 
 This is the final Coderhouse project for the React Js course.
 This is a photography e-commerce that offers the possibility of purchasing them through this platform.
@@ -35,6 +36,7 @@ This is a photography e-commerce that offers the possibility of purchasing them 
 </p>
 
 ## 🛠️ Built with
+<a name="built-with"></a>
 
 List of technologies used to develop this app:
 
@@ -48,6 +50,7 @@ List of technologies used to develop this app:
 - All information about the different products is stored in Firestore. Likewise, the information for each order is collected in Firebase Storage. Both products belong to <a href="https://firebase.google.com/">Firebase</a>
 
 ## 🔨 Getting started
+<a name="getting-started"></a>
 
 - Fork the repo
 - Clone the repo:
@@ -57,14 +60,13 @@ git clone https://github.com/annalemonbcn/react-final-project
 
 - Navigate into the project files
 - Open swith VSC
-- Install dependencies:
-```sh
-npm i
-```
+- Install dependencies: `npm i`
 - Run the app: `npm start`
 - Enjoy :)
 
 <!-- - `yarn` to install dependencies -->
 
 ## 🙏🏻 Final conclusions
+<a name="final-conclusions"></a>
+
 Dpecial thanks to Horacio Alfredo Gutierrez Estevez as well as the rest of the tutors for his good lessons in class, his patience in resolving doubts and, above all, for the good humor he has shown throughout this course.
