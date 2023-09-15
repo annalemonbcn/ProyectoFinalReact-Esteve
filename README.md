@@ -57,7 +57,7 @@ List of technologies used to develop this app:
 ## 🔨 Getting started
 
 - Fork the repo
-- Clone the repo: `git clone https://github.com/annalemonbcn/react-final-project`
+- Clone the repo: `git clone https://github.com/annalemonbcn/ProyectoFinalReact-Esteve`
 - Navigate into the project files
 - Open swith VSC
 - Install dependencies: `npm i`
