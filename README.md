@@ -23,8 +23,8 @@ Here is a working live demo : https://iharsh234.github.io/WebApp/
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## 📋 Introduction
 <a name="introduction"></a>
+## 📋 Introduction
 
 This is the final Coderhouse project for the React Js course.
 This is a photography e-commerce that offers the possibility of purchasing them through this platform.
@@ -35,8 +35,8 @@ This is a photography e-commerce that offers the possibility of purchasing them 
   <img src = "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/mobile_mockup_02.jpg?alt=media&token=d3ec3b15-d8ba-47d7-a9c3-f86405ae1aac" width=450>
 </p>
 
-## 🛠️ Built with
 <a name="built-with"></a>
+## 🛠️ Built with
 
 List of technologies used to develop this app:
 
@@ -49,8 +49,8 @@ List of technologies used to develop this app:
 - The <a href="https://sonner.emilkowal.ski/">Sonner library</a> is used for toast notifications
 - All information about the different products is stored in Firestore. Likewise, the information for each order is collected in Firebase Storage. Both products belong to <a href="https://firebase.google.com/">Firebase</a>
 
-## 🔨 Getting started
 <a name="getting-started"></a>
+## 🔨 Getting started
 
 - Fork the repo
 - Clone the repo:
@@ -66,7 +66,7 @@ git clone https://github.com/annalemonbcn/react-final-project
 
 <!-- - `yarn` to install dependencies -->
 
-## 🙏🏻 Final conclusions
 <a name="final-conclusions"></a>
+## 🙏🏻 Final conclusions
 
 Dpecial thanks to Horacio Alfredo Gutierrez Estevez as well as the rest of the tutors for his good lessons in class, his patience in resolving doubts and, above all, for the good humor he has shown throughout this course.
