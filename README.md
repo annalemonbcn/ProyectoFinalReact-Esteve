@@ -1,6 +1,6 @@
-<h1 align="center">lemoninfilm.com</h1> <br>
+<h1 align="center">lemoninfilm - Anna Esteve</h1> <br>
 <p align="center">
-  <img alt="lemoninfilm_mockup" title="GitPoint" src="https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/desktop_mockup.png?alt=media&token=cfb13144-146a-4ef0-ab27-b015b870709c" width="600">
+  <img alt="lemoninfilm_mockup" title="lemoninfilm" src="https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/desktop_mockup.png?alt=media&token=cfb13144-146a-4ef0-ab27-b015b870709c" width="600">
 </p>
 
 <div align="center">
@@ -12,7 +12,7 @@
 
 ## 🖥️ Demo
 
-Here is a working live demo : https://iharsh234.github.io/WebApp/
+Here is a working live demo : https://lemoninfilm.vercel.app/
 
 ## Table of Contents
 
