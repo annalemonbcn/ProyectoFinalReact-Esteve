@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+<h1 align="center">lemoninfilm.com</h1> <br>
+<p align="center">
+  <img alt="lemoninfilm_mockup" title="GitPoint" src="https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/desktop_mockup.png?alt=media&token=cfb13144-146a-4ef0-ab27-b015b870709c" width="600">
+</p>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <img src="https://www.svgrepo.com/show/327388/logo-react.svg" width="60" height="60">
+  <img src="https://www.svgrepo.com/show/354430/tailwindcss.svg" width="60" height="60">
+  <img src="https://www.svgrepo.com/show/373595/firebase.svg" width="60" height="60">
+</div>
+<p align="center"> Built with React, Tailwind and more.</p>
 
-## Available Scripts
+## 🖥️ Demo
 
-In the project directory, you can run:
+Here is a working live demo : https://iharsh234.github.io/WebApp/
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- [Introduction](#introduction)
+- [Built with](#built-with)
+- [Getting started](#getting-started)
+- [Final conclusions](#final-conclusions)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-### `npm test`
+<a name="introduction"></a>
+## 📋 Introduction
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This is the final Coderhouse project for the React Js course.
+This is a photography e-commerce that offers the possibility of purchasing them through this platform.
 
-### `npm run build`
+**Responsive design**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<p align="center">
+  <img src = "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/mobile_mockup_02.jpg?alt=media&token=d3ec3b15-d8ba-47d7-a9c3-f86405ae1aac" width=450>
+</p>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<a name="built-with"></a>
+## 🛠️ Built with
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+List of technologies used to develop this app:
 
-### `npm run eject`
+- <a href="https://react.dev/">React Js</a>
+- <a href="https://create-react-app.dev/">Create React App</a> for starting the file system
+- <a href="https://tailwindcss.com/">Tailwind CSS</a> for styling
+- <a href="https://reactrouter.com/en/main">React-router-dom</a> for everything related to routing and matching URLs
+- The forms have been created with <a href="https://formik.org/">Formik</a>. Also its validation is done with <a href="https://www.npmjs.com/package/yup">Yup</a>
+- Since it is a photography e-commerce, the <a href="https://www.npmjs.com/package/react-image-zoom">react-image-zoom</a> library has been used to offer a quality zoom to the user
+- The <a href="https://sonner.emilkowal.ski/">Sonner library</a> is used for toast notifications
+- All information about the different products is stored in Firestore. Likewise, the information for each order is collected in Firebase Storage. Both products belong to <a href="https://firebase.google.com/">Firebase</a>
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<p align="center">
+  <img src = "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/tablet_mockup_02.jpg?alt=media&token=0c4241bb-6f0f-4b9f-8c5c-f0eb2288a537" width=450>
+</p>
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<a name="getting-started"></a>
+## 🔨 Getting started
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- Fork the repo
+- Clone the repo: `git clone https://github.com/annalemonbcn/react-final-project`
+- Navigate into the project files
+- Open swith VSC
+- Install dependencies: `npm i`
+- Run the app: `npm start`
+- Enjoy :)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+<!-- - `yarn` to install dependencies -->
 
-## Learn More
+<a name="final-conclusions"></a>
+## 🙏🏻 Final conclusions
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Dpecial thanks to Horacio Alfredo Gutierrez Estevez as well as the rest of the tutors for his good lessons in class, his patience in resolving doubts and, above all, for the good humor he has shown throughout this course.
