@@ -22,7 +22,7 @@ function App() {
     <BrowserRouter>
       <ProductsProvider>
         <CartProvider>
-        <Toaster position="top-right" toastOptions={{ style: { top: '70px' } }} />
+          <Toaster position="top-right" toastOptions={{ style: { top: '70px' } }} />
           <Navbar />
           <Main />
           <Footer />

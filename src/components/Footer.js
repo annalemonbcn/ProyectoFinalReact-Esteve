@@ -2,9 +2,9 @@ import Instagram from "./svg/Instagram";
 
 const Footer = () => {
   return (
-    <footer className="bg-slate-100 mt-4 w-full fixed bottom-0">
+    <footer className="bg-slate-100 mt-4 w-full">
       <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-        <span className="text-sm text-gray-700 sm:text-center">
+        <span className="text-xs text-gray-700 sm:text-center">
           © 2023{" "}
           <a href="/" className="hover:underline">
             lemoninfilm
