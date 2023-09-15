@@ -1,3 +1,4 @@
+// Svg component
 import Instagram from "./svg/Instagram";
 
 const Footer = () => {

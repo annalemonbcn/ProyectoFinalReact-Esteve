@@ -8,7 +8,7 @@ import CartSvg from "../svg/Cart";
 import { CartContext } from "../../api/context/CartProvider";
 
 
-const ItemsToCart = ({ id }) => {
+const ItemsCount = ({ id }) => {
 
   // Context
   const { addToCart } = useContext(CartContext);
@@ -54,4 +54,4 @@ const ItemsToCart = ({ id }) => {
   );
 };
 
-export default ItemsToCart;
+export default ItemsCount;

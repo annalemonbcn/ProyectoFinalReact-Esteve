@@ -1,5 +1,5 @@
 // Hooks
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 // Toaster
 import { toast } from "sonner";
@@ -17,10 +17,6 @@ const CartProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
   // Total items in the cart
   const [cartTotalProducts, setCartTotalProducts] = useState(0);
-
-  useEffect(() => {
-    console.log("cartItems", cartItems);
-  }, [cartItems]);
 
   // Cart methods
   /**

@@ -2,7 +2,7 @@
 import { useContext } from "react";
 
 // Context
-import { CartContext } from "../api/context/CartProvider";
+import { CartContext } from "../../api/context/CartProvider";
 
 // Toaster
 import { toast } from "sonner";
@@ -14,7 +14,7 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
 // Db firestore
-import { db } from "../db/firebase";
+import { db } from "../../db/firebase";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 
 
@@ -101,11 +101,6 @@ const CheckoutForm = ({ setToken }) => {
         initialValues={initialCredentials}
         // Yup validation schema
         validationSchema={loginSchema}
-        // onSubmit event
-        // onSubmit={async (values) => {
-        //   await new Promise((r) => setTimeout(r, 1000));
-        //   alert(JSON.stringify(values, null, 2));
-        // }}
         onSubmit={(values) => onBuy(values)}
       >
         {/* Obtain props from Formik */}
@@ -113,9 +108,7 @@ const CheckoutForm = ({ setToken }) => {
           values,
           touched,
           errors,
-          isSubmitting,
-          handleChange,
-          handleBlur,
+          isSubmitting
         }) => (
           // Return
           <Form className="mt-6 flex flex-col text-sm">
@@ -169,7 +162,7 @@ const CheckoutForm = ({ setToken }) => {
             >
               Place order
             </button>
-            {isSubmitting ? <p>Validating your credentials...</p> : null}
+            {isSubmitting ? <p className="mt-2">Validating your credentials...</p> : null}
           </Form>
         )}
       </Formik>

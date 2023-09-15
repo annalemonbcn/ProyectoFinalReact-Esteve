@@ -11,14 +11,14 @@ import { fetchSingleProductFromFirebase } from "../../api/services/firebaseServi
 import { db } from "../../db/firebase";
 
 // Firestore
-import {getDoc, doc, collection } from "firebase/firestore";
+import { doc, collection } from "firebase/firestore";
 
 // Toaster
 import { toast } from "sonner";
 
 
 // Components
-import ItemDetailView from "../ItemDetailView";
+import ItemDetailView from "../views/ItemDetailView";
 
 
 const ItemDetailContainer = () => {

@@ -6,8 +6,8 @@ import { CartContext } from "../api/context/CartProvider";
 import { ProductsContext } from "../api/context/ProductsProvider";
 
 // Components
-import CheckoutRow from "../views/CheckoutRow";
-import CheckoutForm from "./CheckoutForm";
+import CheckoutRow from "./CheckoutRow";
+import CheckoutForm from "./forms/CheckoutForm";
 
 const Checkout = () => {
   // State
@@ -220,8 +220,8 @@ const Checkout = () => {
       <div className="xl:px-20">
         <p>Your cart is empty</p>
       </div>
-    )
-}
+    );
+  }
 };
 
 export default Checkout;

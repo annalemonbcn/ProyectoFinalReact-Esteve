@@ -5,12 +5,10 @@ import { useEffect, useState } from 'react';
 import ImageZoom from "react-image-zooom";
 
 // Components
-import ItemsToCart from "./widgets/ItemsToCart";
+import ItemsCount from "../widgets/ItemsCount";
 
 const ItemDetailView = ({ product }) => {
   
-  console.log('product', product)
-
   // State
   const [imgLoaded, setImgLoaded] = useState(false);
 
@@ -59,7 +57,7 @@ const ItemDetailView = ({ product }) => {
               <div className="text-gray-500 font-bold text-xl mt-4">
                 {product.price} €
               </div>
-              <ItemsToCart id={product.id} />
+              <ItemsCount id={product.id} />
             </div>
             <div className="pt-2 lg:p-0 mt-4 lg:mt-0 lg:w-1/5 lg:order-2">
               <p>{product.description}</p>

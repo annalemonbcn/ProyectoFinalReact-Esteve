@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 
 // Components
-import CartSvg from "./svg/Cart";
+import CartSvg from "../svg/Cart";
 
 
 const ItemGridView = ({ imgSrc, imgAlt, name, price, id }) => {

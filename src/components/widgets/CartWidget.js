@@ -11,7 +11,7 @@ import { useContext } from "react";
 import { CartContext } from "../../api/context/CartProvider";
 
 
-function CartWidget() {
+const CartWidget = () => {
 
   // Context
   const cartValues = useContext(CartContext);

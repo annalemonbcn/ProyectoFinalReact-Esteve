@@ -5,10 +5,11 @@ import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 
 // Components
-import ItemListView from "../ItemListView";
+import ItemListView from "../views/ItemListView";
 
 // Context
 import { ProductsContext } from "../../api/context/ProductsProvider";
+
 
 const ItemListContainer = () => {
   // State
