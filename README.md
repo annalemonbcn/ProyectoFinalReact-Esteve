@@ -49,15 +49,15 @@ List of technologies used to develop this app:
 - The <a href="https://sonner.emilkowal.ski/">Sonner library</a> is used for toast notifications
 - All information about the different products is stored in Firestore. Likewise, the information for each order is collected in Firebase Storage. Both products belong to <a href="https://firebase.google.com/">Firebase</a>
 
+<p align="center">
+  <img src = "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/tablet_mockup_02.jpg?alt=media&token=0c4241bb-6f0f-4b9f-8c5c-f0eb2288a537" width=450>
+</p>
+
 <a name="getting-started"></a>
 ## 🔨 Getting started
 
 - Fork the repo
-- Clone the repo:
-```sh
-git clone https://github.com/annalemonbcn/react-final-project
-```
-
+- Clone the repo: `git clone https://github.com/annalemonbcn/react-final-project`
 - Navigate into the project files
 - Open swith VSC
 - Install dependencies: `npm i`
