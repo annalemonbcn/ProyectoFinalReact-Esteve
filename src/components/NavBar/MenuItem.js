@@ -4,10 +4,8 @@ import { NavLink } from 'react-router-dom'
 const MenuItem = ({ href, title, closeMenu }) => {
 
   const handleClick = () => {
-    // Cierra el menú
     closeMenu();
   };
-
 
   return (
     <li>

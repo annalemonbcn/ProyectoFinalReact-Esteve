@@ -7,6 +7,7 @@ import ImageZoom from "react-image-zooom";
 // Components
 import ItemsCount from "../widgets/ItemsCount";
 
+
 const ItemDetailView = ({ product }) => {
   
   // State
@@ -33,8 +34,8 @@ const ItemDetailView = ({ product }) => {
               {imgLoaded ? (
                  <ImageZoom 
                    className={`w-auto ${
-                    product.orientation === 'landscape' ? 'h-auto' : (product.orientation === 'vertical' || product.orientation === 'square') ? 'h-full' : ''
-                  } md:h-full`}
+                    product.orientation === 'landscape' ? 'h-auto md:h-full' : (product.orientation === 'vertical' || product.orientation === 'square') ? 'h-full' : ''
+                  } `}
                    src={product.image}
                    alt={product.title}
                  />

@@ -10,7 +10,7 @@ import CheckoutRow from "./CheckoutRow";
 import CheckoutForm from "./forms/CheckoutForm";
 
 const Checkout = () => {
-  // State
+  // States
   const [isQtyChanged, setIsQtyChanged] = useState(false); // --> did the user modified the qty?
   const [itemsToUpdate, setItemsToUpdate] = useState([]); // --> products that the user modified that needs to be updated
   const [showForm, setShowForm] = useState(false);
@@ -30,10 +30,6 @@ const Checkout = () => {
   let subtotal;
   const shippingTax = 10;
 
-  // Find product by id in allProducts array
-  const findProductById = (id) => {
-    return allProducts.find((product) => product.id === id);
-  };
 
   /**
    * cartProductsToPrint --> array of products to print in the "table"
@@ -41,7 +37,8 @@ const Checkout = () => {
    */
   cartProductsToPrint = cartItems
     .map((item) => {
-      const product = findProductById(item.productId);
+      // const product = findProductById(item.productId);
+      const product = allProducts.find((product) => product.id === item.productId)
       if (product) {
         return {
           title: product.title,

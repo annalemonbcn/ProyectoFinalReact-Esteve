@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useRef } from "react";
 
 
-const CheckoutRow = ({ imgSrc, name, price, qty, id, setIsQtyChanged,  auxSetItemsToUpdate }) => {
+const CheckoutRow = ({ imgSrc, name, price, qty, id, setIsQtyChanged, auxSetItemsToUpdate }) => {
 
   // UseRef
   const qtyRef = useRef(null)

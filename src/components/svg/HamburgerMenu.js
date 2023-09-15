@@ -1,4 +1,4 @@
-const HamburgerMenuSvg = ({ openMenu }) => {
+const HamburgerMenuSvg = () => {
   return (
     <svg
       className="w-5 h-5"

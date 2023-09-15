@@ -13,7 +13,7 @@ const NavBar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   /**
-   * toggleMenu --> open or close a menu via component state
+   * Open or close a menu via component state
    */
   function toggleMenu() {
     setNavbarOpen(!navbarOpen);

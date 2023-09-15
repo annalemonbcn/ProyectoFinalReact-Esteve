@@ -5,7 +5,7 @@ import { createContext, useState } from "react";
 import { toast } from "sonner";
 
 // Routing
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 // Context
 export const CartContext = createContext();
@@ -18,8 +18,8 @@ const CartProvider = (props) => {
   // Total items in the cart
   const [cartTotalProducts, setCartTotalProducts] = useState(0);
 
-  // Cart methods
   /**
+   * addToCart *
    * Set to the state the specified qty items + id
    * Set to the state the total qty items
    * @param {*} productId
@@ -51,24 +51,23 @@ const CartProvider = (props) => {
           background: "aquamarine",
         },
         action: {
-          label: 'Go to cart',
+          label: "Go to cart",
           onClick: goToCart,
-        }, 
+        },
       });
     } catch (error) {
       // Toast
-      toast.error(
-        `There was an error while adding the products to your cart: ${error}`,
-        {
-          style: {
-            background: "lightpink",
-          },
-        }
-      );
+      toast.error("There was an error while adding the products to your cart", {
+        style: {
+          background: "lightpink",
+        },
+      });
+      console.error("Error adding products to cart:", error);
     }
   };
 
   /**
+   * updateCart *
    * Update the cart with the new qty
    * @param {*} newCartItems  --> array with info of the updated products
    */
@@ -88,7 +87,7 @@ const CartProvider = (props) => {
           item.qty = existingItem.newQty;
 
           // qty = 0 don't push into auxArray just to delete the product
-          if(item.qty > 0){
+          if (item.qty > 0) {
             // Push item into aux array
             auxCartItems.push(item);
           }
@@ -112,15 +111,17 @@ const CartProvider = (props) => {
       });
     } catch (error) {
       // Toast
-      toast.error(`The cart couldn't be updated. Please try again. ${error}`, {
+      toast.error("The cart couldn't be updated. Please try again", {
         style: {
           background: "lightpink",
         },
       });
+      console.error("Error updating the cart:", error);
     }
   };
 
   /**
+   * clearCart
    * Reset the state: [] and 0
    */
   const clearCart = () => {
@@ -129,12 +130,13 @@ const CartProvider = (props) => {
   };
 
   /**
+   * sumTotalQty
    * Loop the cartItems array and sum all the qty
    * @returns totalSum
    */
   const sumTotalQty = () => {
     let totalSum = 0;
-    
+
     cartItems.forEach((item) => {
       if (typeof item.qty === "string") {
         totalSum += parseInt(item.qty);
@@ -144,7 +146,7 @@ const CartProvider = (props) => {
     });
     return totalSum;
   };
-  
+
   /**
    * Redirect to cart
    */
@@ -152,7 +154,6 @@ const CartProvider = (props) => {
   const goToCart = () => {
     navigate("/checkout");
   };
-
 
   // Provider value
   const cartContextValue = {
@@ -162,8 +163,6 @@ const CartProvider = (props) => {
     updateCart,
     clearCart,
   };
-
-
 
   return (
     <CartContext.Provider value={cartContextValue}>

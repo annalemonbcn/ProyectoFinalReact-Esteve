@@ -1,6 +1,12 @@
 // Firestore
-import { getDocs, getDoc } from "firebase/firestore";
+import { getDocs, getDoc, addDoc } from "firebase/firestore";
 
+/**
+ * fetchProductsFromFirestore *
+ * Fetch request to firestore service to get all the products
+ * @param {*} productsQuery 
+ * @returns aux --> array with product info + product.id merged
+ */
 export const fetchProductsFromFirestore = async (productsQuery) => {
   try {
     const allDocs = await getDocs(productsQuery);
@@ -15,6 +21,13 @@ export const fetchProductsFromFirestore = async (productsQuery) => {
   }
 };
 
+/**
+ * fetchSingleProductFromFirebase *
+ * Fetch request to firestore service to get a single product
+ * @param {*} docRef 
+ * @param {*} id 
+ * @returns product with info
+ */
 export const fetchSingleProductFromFirebase = async (docRef, id) => {
   try {
     const docSnap = await getDoc(docRef);
@@ -25,3 +38,19 @@ export const fetchSingleProductFromFirebase = async (docRef, id) => {
     throw error;
   }
 };
+
+/**
+ * addDocToFirebase *
+ * Add a doc into orders collection
+ * @param {*} collection 
+ * @param {*} order 
+ * @returns tokenId from firebase
+ */
+export const addDocToFirebase = async (collection, order) => {
+  try {
+    const docRef = await addDoc(collection, order);
+    return docRef.id;
+  } catch (error) {
+    throw error;
+  }
+}

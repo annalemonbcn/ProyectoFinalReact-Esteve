@@ -16,10 +16,8 @@ import { doc, collection } from "firebase/firestore";
 // Toaster
 import { toast } from "sonner";
 
-
 // Components
 import ItemDetailView from "../views/ItemDetailView";
-
 
 const ItemDetailContainer = () => {
   // State
@@ -28,37 +26,37 @@ const ItemDetailContainer = () => {
   // Params
   const params = useParams();
 
-  
   // Effects
   useEffect(() => {
     getSingleProduct();
   }, [params.id]);
 
-  // Actions
-  /** Fetch a single product from the firestore db */
+  /**
+   * Aux method to fetch a single product from the firestore db
+   */
   const getSingleProduct = async () => {
     try {
       // Collection
-      const picturesCollection = collection(db, 'pictures');
-  
+      const picturesCollection = collection(db, "pictures");
+
       // Create docRef
       const docRef = doc(picturesCollection, params.id);
-  
+
       // Fetch product from firestore
-      const fetchedProduct = await fetchSingleProductFromFirebase(docRef, params.id);
+      const fetchedProduct = await fetchSingleProductFromFirebase(
+        docRef,
+        params.id
+      );
       setProduct(fetchedProduct);
     } catch (error) {
-      toast.error(
-        `An error occurred while loading the product: ${error}`,
-        {
-          style: {
-            background: "lightpink",
-          },
-        }
-      );
-    }  
-  }
-
+      toast.error("An error occurred while loading the product info", {
+        style: {
+          background: "lightpink",
+        },
+      });
+      console.error("Error loading product:", error);
+    }
+  };
 
   // View
   return <ItemDetailView product={product} />;

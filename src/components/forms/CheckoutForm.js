@@ -15,9 +15,12 @@ import * as Yup from "yup";
 
 // Db firestore
 import { db } from "../../db/firebase";
-import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+import { collection, serverTimestamp } from "firebase/firestore";
 
+// Services
+import { addDocToFirebase } from "../../api/services/firebaseService";
 
+// Yup form validation
 const loginSchema = Yup.object().shape({
   name: Yup.string().required("Name is required!"),
   email: Yup.string()
@@ -25,11 +28,8 @@ const loginSchema = Yup.object().shape({
     .required("Email is required!"),
 });
 
-
-
 const CheckoutForm = ({ setToken }) => {
-
-  // Values
+  // Form values
   const initialCredentials = {
     name: "",
     email: "",
@@ -38,55 +38,47 @@ const CheckoutForm = ({ setToken }) => {
   // Context: cart info
   const { cartItems, clearCart } = useContext(CartContext);
 
-  // Actions
-  const onBuy = (values) => {
-
+  /**
+   * onSubmit function --> send values to firestore
+   * @param {*} values --> name, email, serverTimestamp, products
+   */
+  const onBuy = async (values) => {
     // Ref to Orders collection
     const ordersCollection = collection(db, "orders");
-    
-    console.log('values', values);
 
     // Order object
     const order = {
       user: {
         name: values.name,
-        email: values.email
+        email: values.email,
       },
       date: serverTimestamp(),
-      products: cartItems
-    }
+      products: cartItems,
+    };
 
     // Push the order into the collection
-    const pushOrder = addDoc(ordersCollection, order)
-    pushOrder
-      .then((res) => {
-        console.log(res);
+    try {
+      const tokenId = await addDocToFirebase(ordersCollection, order);
+      // Set token form firebase response
+      setToken(tokenId);
+      // Toast
+      toast.success("Your order has been sent :)", {
+        style: {
+          background: "aquamarine",
+        },
+      });
+      // Clean cart
+      clearCart();
+    } catch (error) {
+      toast.error("Error when placing the order. Try again.", {
+        style: {
+          background: "lightpink",
+        },
+      });
+      console.error("Error placing order:", error);
+    }
+  };
 
-        // Send token from firestore to parent
-        setToken(res.id);
-
-        // Toast
-        toast.success("Your order has been sent :)", {
-          style: {
-            background: "aquamarine",
-          } 
-        });
-        
-        // Clean cart
-        clearCart();
-      })
-      .catch((err) => {
-        toast.error(
-          err,
-          {
-            style: {
-              background: "lightpink",
-            },
-          }
-        );
-      })
-  }
-  
   return (
     <>
       <h2 className="text-2xl font-bold border-b border-slate-900">
@@ -104,12 +96,7 @@ const CheckoutForm = ({ setToken }) => {
         onSubmit={(values) => onBuy(values)}
       >
         {/* Obtain props from Formik */}
-        {({
-          values,
-          touched,
-          errors,
-          isSubmitting
-        }) => (
+        {({ values, touched, errors, isSubmitting }) => (
           // Return
           <Form className="mt-6 flex flex-col text-sm">
             <div className="flex items-center">
@@ -162,7 +149,9 @@ const CheckoutForm = ({ setToken }) => {
             >
               Place order
             </button>
-            {isSubmitting ? <p className="mt-2">Validating your credentials...</p> : null}
+            {isSubmitting ? (
+              <p className="mt-2">Validating your credentials...</p>
+            ) : null}
           </Form>
         )}
       </Formik>

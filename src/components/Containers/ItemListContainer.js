@@ -10,7 +10,6 @@ import ItemListView from "../views/ItemListView";
 // Context
 import { ProductsContext } from "../../api/context/ProductsProvider";
 
-
 const ItemListContainer = () => {
   // State
   const [products, setProducts] = useState([]);
@@ -23,6 +22,14 @@ const ItemListContainer = () => {
 
   // Effects
   useEffect(() => {
+    auxSetProducts();
+  }, [params.id, allProducts]);
+
+  /**
+   * Aux method to fetch all the products from the firestore db
+   * Filter them by params for the different categories
+   */
+  const auxSetProducts = () => {
     // Filter products by size if params.id exists
     if (!params.id) {
       setProducts(allProducts);
@@ -32,7 +39,7 @@ const ItemListContainer = () => {
       );
       setProducts(filteredProducts);
     }
-  }, [params.id, allProducts]);
+  };
 
   // View
   return <ItemListView products={products} />;

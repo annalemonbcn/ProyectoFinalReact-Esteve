@@ -1,5 +1,5 @@
 // Services
-import { fetchProductsFromFirestore } from "../services/firebaseService"
+import { fetchProductsFromFirestore } from "../services/firebaseService";
 
 // firestore
 import { db } from "../../db/firebase";
@@ -9,13 +9,11 @@ import { collection } from "firebase/firestore";
 import { toast } from "sonner";
 
 // Context
-import { createContext, useState, useEffect } from "react"
+import { createContext, useState, useEffect } from "react";
 export const ProductsContext = createContext();
-
 
 // Provider
 const ProductsProvider = (props) => {
-
   // State
   const [products, setProducts] = useState([]);
 
@@ -24,8 +22,10 @@ const ProductsProvider = (props) => {
     fetchData();
   }, []);
 
-  
-  // Actions
+  /**
+   * fetchData *
+   * aux method to fetch data from firebase
+   */
   const fetchData = async () => {
     const productsCollection = collection(db, "pictures");
     try {
@@ -34,27 +34,23 @@ const ProductsProvider = (props) => {
       toast.success("Products loaded :)", {
         style: {
           background: "aquamarine",
-        }
+        },
       });
     } catch (error) {
-      toast.error(
-        `There was an error while loading the products: ${error}`,
-        {
-          style: {
-            background: "lightpink",
-          },
-        }
-      );
+      toast.error("There was an error loading the products", {
+        style: {
+          background: "lightpink",
+        },
+      });
       console.error("Error fetching products:", error);
     }
   };
 
-
-  return(
+  return (
     <ProductsContext.Provider value={products}>
       {props.children}
     </ProductsContext.Provider>
-  )
-}
+  );
+};
 
 export default ProductsProvider;
