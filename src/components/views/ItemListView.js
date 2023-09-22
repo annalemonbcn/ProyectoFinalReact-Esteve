@@ -1,6 +1,9 @@
 // Proptypes
 import PropTypes from 'prop-types';
 
+// Loader
+import { Loader } from 'rsuite';
+
 // Components
 import ItemGridView from "./ItemGridView";
 
@@ -8,7 +11,7 @@ function ItemListView({ products }) {
   return (
     <div className="flex flex-row flex-wrap">
       {products.length === 0 ? (
-        <p>Cargando</p>
+        <Loader content="Loading products..." />
       ) : (
         products.map((product, i) => {
           return (
