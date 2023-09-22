@@ -1,3 +1,6 @@
+// Proptypes
+import PropTypes from 'prop-types';
+
 // Routing
 import { Link } from "react-router-dom";
 
@@ -6,7 +9,6 @@ import CartSvg from "../svg/Cart";
 
 
 const ItemGridView = ({ imgSrc, imgAlt, name, price, id, orientation }) => {
-  console.log('orientation:', orientation)
     return (
     <div className="w-full md:w-1/2 lg:w-1/3 md:px-2 xl:p-6 box-border mb-6 lg:mb-0 lg:hover:scale-110 transition duration-300 ease-in-out itemsContainer">
       <div className="bg-soft-grey w-full h-[400px] p-5 box-border flex justify-center items-center">
@@ -28,6 +30,15 @@ const ItemGridView = ({ imgSrc, imgAlt, name, price, id, orientation }) => {
       </div>
     </div>
   );
+};
+
+ItemGridView.propTypes = {
+  imgSrc: PropTypes.string.isRequired,
+  imgAlt: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  orientation: PropTypes.string.isRequired
 };
 
 export default ItemGridView;

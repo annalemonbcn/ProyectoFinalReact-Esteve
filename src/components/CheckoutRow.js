@@ -1,3 +1,6 @@
+// Proptypes
+import PropTypes from 'prop-types';
+
 // Routing
 import { Link } from "react-router-dom";
 
@@ -57,6 +60,16 @@ const CheckoutRow = ({ imgSrc, name, price, qty, id, setIsQtyChanged, auxSetItem
       <div className="col-span-5 border-t border-slate-200 gap-0"></div>
     </>
   );
+};
+
+CheckoutRow.propTypes = {
+  imgSrc: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  qty: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  setIsQtyChanged: PropTypes.func.isRequired,
+  auxSetItemsToUpdate: PropTypes.func.isRequired,
 };
 
 export default CheckoutRow;
