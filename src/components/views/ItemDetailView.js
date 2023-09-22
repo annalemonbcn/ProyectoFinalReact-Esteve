@@ -34,8 +34,8 @@ const ItemDetailView = ({ product }) => {
               {imgLoaded ? (
                  <ImageZoom 
                    className={`w-auto ${
-                    product.orientation === 'landscape' ? 'h-auto md:h-full' : (product.orientation === 'vertical' || product.orientation === 'square') ? 'h-full' : ''
-                  } `}
+                    product.orientation === 'landscape' ? 'h-auto md:h-[96%]' : (product.orientation === 'vertical' || product.orientation === 'square') ? 'h-[92%] md:h-full' : ''
+                  }`}
                    src={product.image}
                    alt={product.title}
                  />
