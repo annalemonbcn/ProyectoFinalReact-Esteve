@@ -2,14 +2,14 @@
 import { useContext, useRef, useState } from "react";
 
 // Context
-import { CartContext } from "../api/context/CartProvider";
-import { ProductsContext } from "../api/context/ProductsProvider";
+import { CartContext } from "../../api/context/CartProvider";
+import { ProductsContext } from "../../api/context/ProductsProvider";
 
 // Components
-import CheckoutRow from "./CheckoutRow";
-import CheckoutForm from "./forms/CheckoutForm";
+import CheckoutRow from "../views/CheckoutViewRow";
+import CheckoutForm from "../forms/CheckoutForm";
 
-const Checkout = () => {
+const CheckoutContainer = () => {
   // States
   const [isQtyChanged, setIsQtyChanged] = useState(false); // --> did the user modified the qty?
   const [itemsToUpdate, setItemsToUpdate] = useState([]); // --> products that the user modified that needs to be updated
@@ -221,4 +221,4 @@ const Checkout = () => {
   }
 };
 
-export default Checkout;
+export default CheckoutContainer;

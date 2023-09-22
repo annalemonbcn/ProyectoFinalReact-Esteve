@@ -15,7 +15,6 @@ const CheckoutRow = ({ imgSrc, name, price, qty, id, setIsQtyChanged, auxSetItem
 
   // onChange --> if user modify the qty
   const handleQtyChange = () => {
-
     // Get the new value
     const newQty = qtyRef.current.value
     
