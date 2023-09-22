@@ -1,3 +1,6 @@
+// Proptypes
+import PropTypes from 'prop-types';
+
 const CheckoutSummary = ({ subtotal, shippingTax, setShowForm, scrollToCheckoutForm }) => {
   const finishOrder = () => {
     setShowForm(true);
@@ -32,3 +35,10 @@ const CheckoutSummary = ({ subtotal, shippingTax, setShowForm, scrollToCheckoutF
 };
 
 export default CheckoutSummary;
+
+CheckoutSummary.propTypes = {
+  subtotal: PropTypes.number.isRequired,
+  shippingTax: PropTypes.number.isRequired,
+  setShowForm: PropTypes.func.isRequired,
+  scrollToCheckoutForm: PropTypes.func.isRequired,
+};

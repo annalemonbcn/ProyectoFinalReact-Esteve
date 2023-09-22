@@ -1,3 +1,6 @@
+// Proptypes
+import PropTypes from "prop-types";
+
 // Hooks
 import { useState, useContext, useRef } from "react";
 
@@ -5,12 +8,12 @@ import { useState, useContext, useRef } from "react";
 import { CartContext } from "../../api/context/CartProvider";
 
 // Components
-import CheckoutRow from "./CheckoutViewRow";
+import CheckoutViewRow from "./CheckoutViewRow";
 import CheckoutSummary from "./CheckoutSummary";
 import CheckoutForm from "../forms/CheckoutForm";
+import CheckoutToken from "./CheckoutToken";
 
 const CheckoutView = ({ products, subtotal, shippingTax }) => {
-
   // Ref
   const checkoutFormRef = useRef();
 
@@ -48,21 +51,26 @@ const CheckoutView = ({ products, subtotal, shippingTax }) => {
     }
   };
 
+  /**
+   * Aux method to setShowForm to false when the cart is updated
+   */
   const auxUpdateCart = () => {
     updateCart(itemsToUpdate);
-    setShowForm(false)
-  }
+    setShowForm(false);
+  };
 
+  /**
+   * Aux method to scroll to form
+   */
   const scrollToCheckoutForm = () => {
     if (checkoutFormRef.current) {
       setTimeout(() => {
         checkoutFormRef.current.scrollIntoView({
-          behavior: 'smooth',
+          behavior: "smooth",
         });
-      }, 10);
+      }, 90);
     }
   };
-
 
   // Render
   if (products.length > 0) {
@@ -76,9 +84,7 @@ const CheckoutView = ({ products, subtotal, shippingTax }) => {
         <div className="w-full mt-8 lg:mt-16 border border-slate-200 rounded">
           {/* Titles */}
           <div className="grid grid-cols-5 lg:gap-y-4 gap-y-8">
-            <div className="col-span-2 font-bold p-1 lg:p-3 px-4">
-              Product
-            </div>
+            <div className="col-span-2 font-bold p-1 lg:p-3 px-4">Product</div>
             <div className="font-bold p-1 lg:p-3 text-center">Price</div>
             <div className="font-bold p-1 lg:p-3 text-center">Quantity</div>
             <div className="font-bold p-1 lg:p-3 text-center">Total</div>
@@ -88,7 +94,7 @@ const CheckoutView = ({ products, subtotal, shippingTax }) => {
             {products.map((product, i) => {
               if (product.qty > 0) {
                 return (
-                  <CheckoutRow
+                  <CheckoutViewRow
                     key={i}
                     id={product.id}
                     imgSrc={product.image}
@@ -124,45 +130,31 @@ const CheckoutView = ({ products, subtotal, shippingTax }) => {
           </div>
         </div>
 
-        {!showForm ? (
-          // Cart summary
-          <div className="mt-10 w-full">
-            <div className="w-full lg:w-1/2">
+        <div className="mt-10 w-full">
+          <div className="w-full lg:w-1/2">
+            {!showForm ? (
+              // Cart summary
               <CheckoutSummary
                 subtotal={subtotal}
                 shippingTax={shippingTax}
                 setShowForm={setShowForm}
                 scrollToCheckoutForm={scrollToCheckoutForm}
               />
-            </div>
-          </div>
-        ) : (
-          // Form
-          <div className="mt-10 w-full">
-            <div className="w-full lg:w-1/2">
+            ) : (
+              // Form
               <div ref={checkoutFormRef}>
                 <CheckoutForm setToken={setToken} />
               </div>
-            </div>
+            )}
           </div>
-        )}         
+        </div>
       </div>
     );
   } else if (token) {
-    return (
-      <div className="xl:px-20">
-        <h3 className="font-bold text-2xl">Thank you for your order!</h3>
-        <p className="mt-4">
-          We have received your request and it will be processed shortly.
-        </p>
-        <p>You will shortly receive an email with a summary of your order.</p>
-        <p>Please, for changes or cancellations, keep this purchase ID.</p>
-        <p className="mt-4">
-          <span className="font-bold">Purchase ID:</span> {token}
-        </p>
-      </div>
-    );
+    // Token message
+    return <CheckoutToken token={token} />;
   } else {
+    // Cart empty
     return (
       <div className="xl:px-20">
         <p>Your cart is empty</p>
@@ -172,3 +164,9 @@ const CheckoutView = ({ products, subtotal, shippingTax }) => {
 };
 
 export default CheckoutView;
+
+CheckoutView.propTypes = {
+  products: PropTypes.array.isRequired,
+  subtotal: PropTypes.number.isRequired,
+  shippingTax: PropTypes.number.isRequired,
+};
