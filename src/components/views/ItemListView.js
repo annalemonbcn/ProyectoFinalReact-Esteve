@@ -7,15 +7,16 @@ function ItemListView({ products }) {
       {products.length === 0 ? (
         <p>Cargando</p>
       ) : (
-        products.map((item, i) => {
+        products.map((product, i) => {
           return (
             <ItemGridView
               key={i}
-              imgSrc={item.image}
-              imgAlt={item.title}
-              name={item.title}
-              price={item.price}
-              id={item.id}
+              imgSrc={product.image}
+              imgAlt={product.title}
+              name={product.title}
+              price={product.price}
+              id={product.id}
+              orientation={product.orientation}
             />
           );
         })
