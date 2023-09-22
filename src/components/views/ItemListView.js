@@ -1,3 +1,6 @@
+// Proptypes
+import PropTypes from 'prop-types';
+
 // Components
 import ItemGridView from "./ItemGridView";
 
@@ -24,5 +27,9 @@ function ItemListView({ products }) {
     </div>
   );
 }
+
+ItemListView.propTypes = {
+  products: PropTypes.array.isRequired
+};
 
 export default ItemListView;

@@ -1,3 +1,6 @@
+// Proptypes
+import PropTypes from 'prop-types';
+
 // Hooks
 import { useEffect, useState } from 'react';
 
@@ -9,7 +12,7 @@ import ItemsCount from "../widgets/ItemsCount";
 
 
 const ItemDetailView = ({ product }) => {
-  
+ 
   // State
   const [imgLoaded, setImgLoaded] = useState(false);
 
@@ -72,6 +75,10 @@ const ItemDetailView = ({ product }) => {
       )}
     </>
   );
+};
+
+ItemDetailView.propTypes = {
+  product: PropTypes.object.isRequired
 };
 
 export default ItemDetailView;
