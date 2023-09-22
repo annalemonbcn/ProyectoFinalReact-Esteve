@@ -1,6 +1,9 @@
 // Hooks
 import { useState } from "react";
 
+// Routing
+import { NavLink } from "react-router-dom";
+
 // Components
 import CartWidget from "../widgets/CartWidget";
 import MenuItem from "./MenuItem";
@@ -23,7 +26,7 @@ const NavBar = () => {
     <nav className="bg-slate-100 fixed top-0 w-full z-50 max-h-[72px]">
       <div className="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between px-6 lg:px-4 py-4">
         {/* Logo  */}
-        <a href="/" className="flex items-center">
+        <NavLink to="/" className="flex items-center">
           <img src="/logo.png" className="h-8 mr-3" alt="lemoninfilm Logo" />
           <span
             className="self-center text-xl lg:text-2xl font-semibold whitespace-nowrap text-slate-900"
@@ -31,7 +34,7 @@ const NavBar = () => {
           >
             <h1>lemoninfilm</h1>
           </span>
-        </a>
+        </NavLink>
 
         <div className="flex md:order-2 items-center">
           {/* Cart widget */}
@@ -59,7 +62,7 @@ const NavBar = () => {
           id="menu-list"
         >
           {/* Links list */}
-         <ul
+          <ul
             className={`md:flex flex-col lg:gap-x-8 p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0 ${
               navbarOpen ? "block" : "hidden"
             }`}
