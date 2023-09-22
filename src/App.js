@@ -16,6 +16,9 @@ import CartProvider from "./api/context/CartProvider";
 // Toaster
 import { Toaster } from "sonner";
 
+// R-suite styles
+import 'rsuite/dist/rsuite-no-reset.min.css';
+
 
 function App() {
   return (

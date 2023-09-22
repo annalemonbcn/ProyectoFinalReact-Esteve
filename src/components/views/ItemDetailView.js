@@ -7,6 +7,9 @@ import { useEffect, useState } from 'react';
 // ImageZoom component
 import ImageZoom from "react-image-zooom";
 
+// Loader
+import { Loader } from 'rsuite';
+
 // Components
 import ItemsCount from "../widgets/ItemsCount";
 
@@ -25,8 +28,8 @@ const ItemDetailView = ({ product }) => {
   
   return (
     <>
-      {product.length === 0 ? (
-        <p>Cargando</p>
+      {!product ? (
+        <Loader content="Loading product..." />
       ) : (
         <div>
           <h2 className="text-xl lg:text-2xl text-gray-600 font-semibold">
