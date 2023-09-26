@@ -8,14 +8,13 @@ import { Link } from "react-router-dom";
 import { useRef } from "react";
 
 
-const CheckoutRow = ({ imgSrc, name, price, qty, id, setIsQtyChanged, auxSetItemsToUpdate }) => {
+const CheckoutViewRow = ({ imgSrc, name, price, qty, id, setIsQtyChanged, auxSetItemsToUpdate }) => {
 
   // UseRef
   const qtyRef = useRef(null)
 
   // onChange --> if user modify the qty
   const handleQtyChange = () => {
-
     // Get the new value
     const newQty = qtyRef.current.value
     
@@ -62,14 +61,14 @@ const CheckoutRow = ({ imgSrc, name, price, qty, id, setIsQtyChanged, auxSetItem
   );
 };
 
-CheckoutRow.propTypes = {
+CheckoutViewRow.propTypes = {
+  id: PropTypes.string.isRequired,
   imgSrc: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   qty: PropTypes.number.isRequired,
-  id: PropTypes.string.isRequired,
   setIsQtyChanged: PropTypes.func.isRequired,
   auxSetItemsToUpdate: PropTypes.func.isRequired,
 };
 
-export default CheckoutRow;
+export default CheckoutViewRow;
