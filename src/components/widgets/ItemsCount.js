@@ -8,7 +8,7 @@ import DrawerComp from "./DrawerComp";
 // Context
 import { CartContext } from "../../api/context/CartProvider";
 
-const ItemsCount = ({ id }) => {
+const ItemsCount = ({ id, title, price, image }) => {
   // Context
   const { addToCart } = useContext(CartContext);
 
@@ -28,8 +28,12 @@ const ItemsCount = ({ id }) => {
   };
 
   const auxAddToCart = () => {
-    addToCart(id, qty);
-    setIsDrawerOpen(true);
+    try{
+      addToCart(id, title, price, image, qty);
+      setIsDrawerOpen(true);
+    } catch(error){
+      throw error;
+    }
   };
 
   return (
