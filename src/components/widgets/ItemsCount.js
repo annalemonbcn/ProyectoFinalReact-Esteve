@@ -5,8 +5,12 @@ import { useState, useContext } from "react";
 import CartSvg from "../svg/Cart";
 import DrawerComp from "./DrawerComp";
 
+// Toaster
+import { toast } from "sonner";
+
 // Context
 import { CartContext } from "../../api/context/CartProvider";
+
 
 const ItemsCount = ({ id, title, price, image }) => {
   // Context
@@ -32,8 +36,13 @@ const ItemsCount = ({ id, title, price, image }) => {
       await addToCart(id, title, price, image, qty);
       setIsDrawerOpen(true);
     } catch (error) {
-      // Manejo de errores si addToCart falla
-      console.error('Error al agregar al carrito:', error);
+      // Toast
+      toast.error("There was an error while adding the products to your cart", {
+        style: {
+          background: "lightpink",
+        },
+      });
+      console.error("Error adding products to cart:", error);
     }
   };
 
