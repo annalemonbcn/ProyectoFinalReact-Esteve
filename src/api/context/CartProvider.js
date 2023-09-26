@@ -46,15 +46,15 @@ const CartProvider = (props) => {
       setCartTotalProducts(cartTotalProducts + qty);
 
       // Toast
-      toast.success("Product(s) added to your cart :)", {
-        style: {
-          background: "aquamarine",
-        },
-        action: {
-          label: "Go to cart",
-          onClick: goToCart,
-        },
-      });
+      // toast.success("Product(s) added to your cart :)", {
+      //   style: {
+      //     background: "aquamarine",
+      //   },
+      //   action: {
+      //     label: "Go to cart",
+      //     onClick: goToCart,
+      //   },
+      // });
     } catch (error) {
       // Toast
       toast.error("There was an error while adding the products to your cart", {
