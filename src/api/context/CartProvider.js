@@ -17,7 +17,7 @@ const CartProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
   // Total items in the cart
   const [cartTotalProducts, setCartTotalProducts] = useState(0);
-
+  
   /**
    * addToCart *
    * Set to the state the specified qty items + id
@@ -25,7 +25,7 @@ const CartProvider = (props) => {
    * @param {*} productId
    * @param {*} qty
    */
-  const addToCart = (productId, qty) => {
+  const addToCart = (productId, title, price, image, qty) => {
     try {
       // Find existing product
       const existingProduct = cartItems.find(
@@ -39,22 +39,11 @@ const CartProvider = (props) => {
         );
         setCartItems(updatedCartItems);
       } else {
-        setCartItems([...cartItems, { productId, qty }]);
+        setCartItems([...cartItems, { productId, title, price, image, qty }]);
       }
 
       // Update total cart qty
       setCartTotalProducts(cartTotalProducts + qty);
-
-      // Toast
-      toast.success("Product(s) added to your cart :)", {
-        style: {
-          background: "aquamarine",
-        },
-        action: {
-          label: "Go to cart",
-          onClick: goToCart,
-        },
-      });
     } catch (error) {
       // Toast
       toast.error("There was an error while adding the products to your cart", {
@@ -162,6 +151,7 @@ const CartProvider = (props) => {
     addToCart,
     updateCart,
     clearCart,
+    goToCart
   };
 
   return (

@@ -64,7 +64,7 @@ const ItemDetailView = ({ product }) => {
               <div className="text-gray-500 font-bold text-xl mt-4">
                 {product.price} €
               </div>
-              <ItemsCount id={product.id} />
+              <ItemsCount id={product.id} title={product.title} price={product.price} image={product.image} />
             </div>
             <div className="pt-2 lg:p-0 mt-4 lg:mt-0 lg:w-1/5 lg:order-2">
               <p>{product.description}</p>
