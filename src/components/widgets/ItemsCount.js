@@ -27,12 +27,13 @@ const ItemsCount = ({ id, title, price, image }) => {
     }
   };
 
-  const auxAddToCart = () => {
-    try{
-      addToCart(id, title, price, image, qty);
+  const auxAddToCart = async () => {
+    try {
+      await addToCart(id, title, price, image, qty);
       setIsDrawerOpen(true);
-    } catch(error){
-      throw error;
+    } catch (error) {
+      // Manejo de errores si addToCart falla
+      console.error('Error al agregar al carrito:', error);
     }
   };
 
