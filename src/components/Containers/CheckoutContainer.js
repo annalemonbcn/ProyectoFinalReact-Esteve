@@ -9,11 +9,6 @@ import { ProductsContext } from "../../api/context/ProductsProvider";
 import CheckoutView from "../views/CheckoutView";
 
 const CheckoutContainerNew = () => {
-  // Vars
-  let cartProductsToPrint;
-  let subtotal;
-  const shippingTax = 10;
-
   // Context: cart info
   const { cartItems } = useContext(CartContext);
 
@@ -24,7 +19,7 @@ const CheckoutContainerNew = () => {
    * cartProductsToPrint --> array of products to print in the "table"
    * New array with complete info + qty
    */
-  cartProductsToPrint = cartItems
+  const cartProductsToPrint = cartItems
     .map((item) => {
       // const product = findProductById(item.productId);
       const product = allProducts.find(
@@ -44,11 +39,14 @@ const CheckoutContainerNew = () => {
     .filter((product) => product !== null);
 
   // Calculate the cart subtotal
-  subtotal = cartProductsToPrint.reduce(
+  const subtotal = cartProductsToPrint.reduce(
     (acc, product) => acc + product.price * product.qty,
     0
   );
 
+  const shippingTax = 10;
+
+  
   return (
     <CheckoutView
       products={cartProductsToPrint}
