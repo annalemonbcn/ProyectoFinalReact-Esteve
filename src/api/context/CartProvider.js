@@ -10,7 +10,6 @@ import { useNavigate } from "react-router-dom";
 // Context
 export const CartContext = createContext();
 
-
 // Provider
 const CartProvider = (props) => {
   /** State */
@@ -18,7 +17,6 @@ const CartProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
   // Total items in the cart
   const [cartTotalProducts, setCartTotalProducts] = useState(0);
-  
 
   // Update cartTotalProducts everytime cartItems is modified
   useEffect(() => {
@@ -112,6 +110,20 @@ const CartProvider = (props) => {
   };
 
   /**
+   * calculateSubtotal *
+   * Reduce the cartItems array to calculate the subtotal of the cart
+   * @returns subtotal
+   */
+  const calculateSubtotal = () => {
+    const subtotal = cartItems.reduce(
+      (acc, product) => acc + product.price * product.qty,
+      0
+    );
+
+    return subtotal;
+  };
+
+  /**
    * clearCart
    * Reset the state: [] and 0
    */
@@ -128,7 +140,8 @@ const CartProvider = (props) => {
   const sumTotalQty = () => {
     const totalProducts = cartItems.reduce((total, item) => {
       // Check if qty is a string and parseInt to number
-      const qty = typeof item.qty === 'string' ? parseInt(item.qty, 10) : item.qty;
+      const qty =
+        typeof item.qty === "string" ? parseInt(item.qty, 10) : item.qty;
       return total + qty;
     }, 0);
     return totalProducts;
@@ -149,7 +162,7 @@ const CartProvider = (props) => {
     addToCart,
     updateCart,
     clearCart,
-    goToCart
+    goToCart,
   };
 
   return (
