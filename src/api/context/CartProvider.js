@@ -17,6 +17,11 @@ const CartProvider = (props) => {
   const [cartItems, setCartItems] = useState([]);
   // Total items in the cart
   const [cartTotalProducts, setCartTotalProducts] = useState(0);
+  // Subtotal
+  const [subtotal, setSubtotal] = useState(0);
+
+  // Const vars
+  const shippingTax = 10;
 
   // Update cartTotalProducts everytime cartItems is modified
   useEffect(() => {
@@ -120,7 +125,7 @@ const CartProvider = (props) => {
       0
     );
 
-    return subtotal;
+    setSubtotal(subtotal);
   };
 
   /**
@@ -159,10 +164,12 @@ const CartProvider = (props) => {
   const cartContextValue = {
     cartItems,
     cartTotalProducts,
+    subtotal,
+    shippingTax,
     addToCart,
     updateCart,
     clearCart,
-    goToCart,
+    goToCart
   };
 
   return (

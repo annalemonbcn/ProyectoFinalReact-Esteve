@@ -13,7 +13,7 @@ import CheckoutSummary from "./CheckoutSummary";
 import CheckoutForm from "../forms/CheckoutForm";
 import CheckoutToken from "./CheckoutToken";
 
-const CheckoutView = ({ products, subtotal, shippingTax }) => {
+const CheckoutView = () => {
   // Ref
   const checkoutFormRef = useRef();
 
@@ -24,7 +24,7 @@ const CheckoutView = ({ products, subtotal, shippingTax }) => {
   const [token, setToken] = useState(null);
 
   // Context: cart info
-  const { clearCart, updateCart } = useContext(CartContext);
+  const { cartItems, shippingTax, subtotal, clearCart, updateCart } = useContext(CartContext);
 
   /**
    * Aux method to setItemsToUpdate
@@ -73,7 +73,7 @@ const CheckoutView = ({ products, subtotal, shippingTax }) => {
   };
 
   // Render
-  if (products.length > 0) {
+  if (cartItems.length > 0) {
     return (
       <div className="xl:px-20">
         <h1 className="text-2xl font-bold w-full border-b border-slate-900">
@@ -91,16 +91,16 @@ const CheckoutView = ({ products, subtotal, shippingTax }) => {
             <div className="col-span-5 border-t border-slate-200 mt-[-25px] lg:mt-[-15px]"></div>
 
             {/* Products rows */}
-            {products.map((product, i) => {
-              if (product.qty > 0) {
+            {cartItems.map((item, i) => {
+              if (item.qty > 0) {
                 return (
                   <CheckoutViewRow
                     key={i}
-                    id={product.id}
-                    imgSrc={product.image}
-                    name={product.title}
-                    price={product.price}
-                    qty={product.qty}
+                    id={item.id}
+                    imgSrc={item.image}
+                    name={item.title}
+                    price={item.price}
+                    qty={item.qty}
                     setIsQtyChanged={setIsQtyChanged}
                     auxSetItemsToUpdate={auxSetItemsToUpdate}
                   />
@@ -164,9 +164,3 @@ const CheckoutView = ({ products, subtotal, shippingTax }) => {
 };
 
 export default CheckoutView;
-
-CheckoutView.propTypes = {
-  products: PropTypes.array.isRequired,
-  subtotal: PropTypes.number.isRequired,
-  shippingTax: PropTypes.number.isRequired,
-};
