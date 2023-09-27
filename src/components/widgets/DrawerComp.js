@@ -9,11 +9,7 @@ import { CartContext } from "../../api/context/CartProvider";
 
 const DrawerComp = ({ open, setIsDrawerOpen }) => {
 
-  let size = "full";
-
-  if (window.innerWidth >= 768){
-     size = "xs";
-  }
+  let size = "xs";
 
   const { cartItems, goToCart } = useContext(CartContext);
 
@@ -23,7 +19,7 @@ const DrawerComp = ({ open, setIsDrawerOpen }) => {
   );
 
   return (
-    <Drawer open={open} size={size} onClose={() => setIsDrawerOpen(false)}>
+    <Drawer open={open} size={window.innerWidth >= 768 ? "xs" : "full"} onClose={() => setIsDrawerOpen(false)}>
       <Drawer.Header>
         <Drawer.Title>Summary</Drawer.Title>
       </Drawer.Header>
