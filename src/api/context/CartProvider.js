@@ -1,5 +1,5 @@
 // Hooks
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 // Toaster
 import { toast } from "sonner";
@@ -10,6 +10,7 @@ import { useNavigate } from "react-router-dom";
 // Context
 export const CartContext = createContext();
 
+
 // Provider
 const CartProvider = (props) => {
   /** State */
@@ -18,6 +19,13 @@ const CartProvider = (props) => {
   // Total items in the cart
   const [cartTotalProducts, setCartTotalProducts] = useState(0);
   
+
+  // Update cartTotalProducts everytime cartItems is modified
+  useEffect(() => {
+    const totalProducts = sumTotalQty();
+    setCartTotalProducts(totalProducts);
+  }, [cartItems]);
+
   /**
    * addToCart *
    * Set to the state the specified qty items + id
@@ -41,9 +49,6 @@ const CartProvider = (props) => {
       } else {
         setCartItems([...cartItems, { productId, title, price, image, qty }]);
       }
-
-      // Update total cart qty
-      setCartTotalProducts(cartTotalProducts + qty);
     } catch (error) {
       // Toast
       toast.error("There was an error while adding the products to your cart", {
@@ -67,13 +72,13 @@ const CartProvider = (props) => {
 
       // Loop cartItems
       for (const item of cartItems) {
-        const existingItem = newCartItems.find(
+        const itemWithNewQty = newCartItems.find(
           (newItem) => newItem.id === item.productId
         );
 
-        // If is an item to update, modify quantity
-        if (existingItem) {
-          item.qty = existingItem.newQty;
+        // Modify quantity with the newQty
+        if (itemWithNewQty) {
+          item.qty = itemWithNewQty.newQty;
 
           // qty = 0 don't push into auxArray just to delete the product
           if (item.qty > 0) {
@@ -88,9 +93,6 @@ const CartProvider = (props) => {
 
       // Set cartItems
       setCartItems(auxCartItems);
-
-      // Set cartTotalItems
-      setCartTotalProducts(sumTotalQty());
 
       // Toast
       toast.success("Your cart has been updated", {
@@ -120,20 +122,16 @@ const CartProvider = (props) => {
 
   /**
    * sumTotalQty
-   * Loop the cartItems array and sum all the qty
-   * @returns totalSum
+   * Reduce cartItems array to sum all the qty
+   * @returns totalProducts
    */
   const sumTotalQty = () => {
-    let totalSum = 0;
-
-    cartItems.forEach((item) => {
-      if (typeof item.qty === "string") {
-        totalSum += parseInt(item.qty);
-      } else {
-        totalSum += item.qty;
-      }
-    });
-    return totalSum;
+    const totalProducts = cartItems.reduce((total, item) => {
+      // Check if qty is a string and parseInt to number
+      const qty = typeof item.qty === 'string' ? parseInt(item.qty, 10) : item.qty;
+      return total + qty;
+    }, 0);
+    return totalProducts;
   };
 
   /**
