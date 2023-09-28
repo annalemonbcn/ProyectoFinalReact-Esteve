@@ -12,7 +12,7 @@ import About from "./pages/About";
 const Main = () => {
 
   return (
-    <main className="px-5 xl:px-20 pt-16 lg:pt-16 mt-[50px] lg:mt-[70px] mb-16 lg:mb-4">
+    <main className="px-5 xl:px-20 pt-8 mb-16 lg:mb-4">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />

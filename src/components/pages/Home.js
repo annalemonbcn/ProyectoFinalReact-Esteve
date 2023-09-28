@@ -6,7 +6,9 @@ const Home = () => {
 
   return (
     <div className="bg-cover bg-center bg-no-repeat w-screen h-screen absolute top-0 left-0" style={{ backgroundImage: `url(${imgUrl})` }}>
-      
+      <p className="text-white absolute bottom-3 flex justify-center w-full">
+        <a href="https://www.instagram.com/lemoninfilm">@lemoninfilm</a>
+        </p>
     </div>
   )
 }
