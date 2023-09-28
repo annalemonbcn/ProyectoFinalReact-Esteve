@@ -7,7 +7,10 @@ import { NavLink } from "react-router-dom";
 // Components
 import CartWidget from "../widgets/CartWidget";
 import MenuItem from "./MenuItem";
+
+// Icons
 import ArrowUpLineIcon from "@rsuite/icons/ArrowUpLine";
+import ArrowDownLineIcon from "@rsuite/icons/ArrowDownLine";
 
 // Models
 import { MenuList } from "../../models/Menu_list";
@@ -16,6 +19,15 @@ import HamburgerMenuSvg from "../svg/HamburgerMenu";
 const ArrowUpLineSvg = ({ size }) => (
   <ArrowUpLineIcon style={{ fontSize: size, color: "white" }} />
 );
+const ArrowDownLineSvg = ({ size }) => (
+  <ArrowDownLineIcon style={{ fontSize: size, color: "white" }} />
+);
+
+const ArrowIcon = ({ size, direction }) => {
+  const IconComponent =
+    direction === "up" ? ArrowUpLineIcon : ArrowDownLineIcon;
+  return <IconComponent style={{ fontSize: size, color: "white" }} />;
+};
 
 const NavBar = () => {
   const [handleHover, setHandleHover] = useState(false);
@@ -28,23 +40,17 @@ const NavBar = () => {
     setNavbarOpen(!navbarOpen);
   }
 
+  /**
+   * Open or close the navbar via component state
+   */
   function toggleHover() {
     setHandleHover(!handleHover);
   }
 
-  function handleOnMouseEnter() {
-
-  }
-
-  function handleOnMouseLeave() {
-
-  }
-
-
   return (
     <>
       <div className="nav-container z-[1000]">
-      <nav
+        <nav
           className={`w-full z-50 max-h-[72px] bg-slate-100 transition-all duration-100 
          ${handleHover ? "translate-y-0" : "translate-y-[-100%]"}
           `}
@@ -114,12 +120,12 @@ const NavBar = () => {
         </nav>
       </div>
       <div
-        className={`absolute top-[20px] flex justify-center w-full arrow-icon ${
-          handleHover ? "z-0" : "z-[1000]"
-        }`}
+        className={`absolute top-[20px] flex justify-center w-full arrow-icon z-[1000]
+        ${handleHover ? "top-[90px]" : ""}
+        `}
         onClick={toggleHover}
       >
-        <ArrowUpLineSvg size="1.5em" />
+        <ArrowIcon size="1.5em" direction={handleHover ? "down" : "up"} />
       </div>
     </>
   );
