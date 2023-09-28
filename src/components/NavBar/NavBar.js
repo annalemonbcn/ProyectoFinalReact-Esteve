@@ -32,6 +32,15 @@ const NavBar = () => {
     setHandleHover(!handleHover);
   }
 
+  function handleOnMouseEnter() {
+
+  }
+
+  function handleOnMouseLeave() {
+
+  }
+
+
   return (
     <>
       <div className="nav-container z-[1000]">
@@ -40,6 +49,8 @@ const NavBar = () => {
          ${handleHover ? "translate-y-0" : "translate-y-[-100%]"}
           `}
           id="navbar"
+          onMouseEnter={() => setHandleHover(true)}
+          onMouseLeave={() => setHandleHover(false)}
         >
           <div className="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between px-6 lg:px-4 py-4">
             {/* Logo  */}
