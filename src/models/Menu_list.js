@@ -1,14 +1,14 @@
 export const MenuList = [
   {
-    title: 'All products',
+    title: 'Home',
     path: '/'
   },
   {
-    title: '35mm',
-    path: '/category/35mm'
+    title: 'About',
+    path: '/about'
   },
   {
-    title: '120',
-    path: '/category/120'
+    title: 'Market',
+    path: '/market'
   }
 ]
