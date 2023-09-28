@@ -31,6 +31,10 @@ nav{
   color: rgb(29 78 216);
 }
 
+.filter-nav .active{
+  border-bottom: 1px solid #374151;
+}
+
 footer{
   font-family: 'Victor Mono';
 }
