@@ -16,7 +16,7 @@ function ItemListView({ products }) {
       <h2 className="font-bold text-2xl text-center">Market</h2>
       <ul className="flex items-center justify-center gap-4 my-8">
         <li className="filter-nav">
-          <NavLink to="/">
+          <NavLink to="/market">
             All
           </NavLink>
         </li>
