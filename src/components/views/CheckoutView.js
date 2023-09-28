@@ -1,77 +1,28 @@
 // Proptypes
 import PropTypes from "prop-types";
 
-// Hooks
-import { useState, useContext, useRef } from "react";
-
-// Context
-import { CartContext } from "../../api/context/CartProvider";
-
 // Components
 import CheckoutViewRow from "./CheckoutViewRow";
 import CheckoutSummary from "./CheckoutSummary";
 import CheckoutForm from "../forms/CheckoutForm";
 import CheckoutToken from "./CheckoutToken";
 
-const CheckoutView = () => {
-  // Ref
-  const checkoutFormRef = useRef();
-
-  //State
-  const [isQtyChanged, setIsQtyChanged] = useState(false); // --> did the user modified the qty?
-  const [itemsToUpdate, setItemsToUpdate] = useState([]); // --> products that the user modified that needs to be updated
-  const [showForm, setShowForm] = useState(false);
-  const [token, setToken] = useState(null);
-
-  // Context: cart info
-  const { cartItems, shippingTax, subtotal, clearCart, updateCart } = useContext(CartContext);
-
-  /**
-   * Aux method to setItemsToUpdate
-   * Copy the original array and modifiy the qty for every item
-   * @param {*} objWithNewQty
-   */
-  const auxSetItemsToUpdate = (objWithNewQty) => {
-    const existingProduct = itemsToUpdate.find(
-      (product) => product.id === objWithNewQty.id
-    );
-
-    if (existingProduct) {
-      // If obj exists, updates the qty
-      const newItems = itemsToUpdate.map((obj) => {
-        if (obj.id === objWithNewQty.id) {
-          return { ...obj, newQty: objWithNewQty.newQty };
-        }
-        return obj;
-      });
-
-      setItemsToUpdate(newItems);
-    } else {
-      setItemsToUpdate([...itemsToUpdate, objWithNewQty]);
-    }
-  };
-
-  /**
-   * Aux method to setShowForm to false when the cart is updated
-   */
-  const auxUpdateCart = () => {
-    updateCart(itemsToUpdate);
-    setShowForm(false);
-  };
-
-  /**
-   * Aux method to scroll to form
-   */
-  const scrollToCheckoutForm = () => {
-    if (checkoutFormRef.current) {
-      setTimeout(() => {
-        checkoutFormRef.current.scrollIntoView({
-          behavior: "smooth",
-        });
-      }, 90);
-    }
-  };
-
+const CheckoutView = ({
+  cartItems,
+  shippingTax,
+  subtotal,
+  clearCart,
+  updateCart,
+  isQtyChanged,
+  setIsQtyChanged,
+  showForm,
+  setShowForm,
+  scrollToCheckoutForm,
+  token,
+  setToken,
+  checkoutFormRef,
+  auxSetItemsToUpdate,
+}) => {
   // Render
   if (cartItems.length > 0) {
     return (
@@ -96,7 +47,7 @@ const CheckoutView = () => {
                 return (
                   <CheckoutViewRow
                     key={i}
-                    id={item.id}
+                    id={item.productId}
                     imgSrc={item.image}
                     name={item.title}
                     price={item.price}
@@ -114,7 +65,7 @@ const CheckoutView = () => {
             <div className="col-span-4 lg:col-span-2 flex justify-end items-center px-4">
               {isQtyChanged ? (
                 <button
-                  onClick={auxUpdateCart}
+                  onClick={updateCart}
                   className="text-sm font-bold border border-black rounded-lg bg-white px-3 py-1.5 mb-4 mr-4"
                 >
                   Update cart
@@ -162,5 +113,23 @@ const CheckoutView = () => {
     );
   }
 };
+
+CheckoutView.propTypes = {
+  cartItems: PropTypes.array.isRequired,
+  shippingTax: PropTypes.number.isRequired,
+  subtotal: PropTypes.number.isRequired,
+  clearCart: PropTypes.func.isRequired,
+  updateCart: PropTypes.func.isRequired,
+  isQtyChanged: PropTypes.bool.isRequired,
+  setIsQtyChanged: PropTypes.func.isRequired,
+  showForm: PropTypes.bool.isRequired,
+  setShowForm: PropTypes.func.isRequired,
+  scrollToCheckoutForm: PropTypes.func.isRequired,
+  token: PropTypes.string,
+  setToken: PropTypes.func.isRequired,
+  checkoutFormRef: PropTypes.object.isRequired,
+  auxSetItemsToUpdate: PropTypes.func.isRequired,
+};
+
 
 export default CheckoutView;

@@ -23,10 +23,12 @@ const CartProvider = (props) => {
   // Const vars
   const shippingTax = 10;
 
-  // Update cartTotalProducts everytime cartItems is modified
   useEffect(() => {
+    // Update cartTotalProducts everytime cartItems is modified
     const totalProducts = sumTotalQty();
     setCartTotalProducts(totalProducts);
+    // Calculate subtotal everytime cartItems is modified
+    calculateSubtotal();
   }, [cartItems]);
 
   /**
@@ -169,7 +171,7 @@ const CartProvider = (props) => {
     addToCart,
     updateCart,
     clearCart,
-    goToCart
+    goToCart,
   };
 
   return (
