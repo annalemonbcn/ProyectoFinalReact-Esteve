@@ -13,6 +13,23 @@ body{
   @apply text-gray-700;
 }
 
+.nav-container:hover #navbar {
+  transform: translateY(0);
+}
+
+.arrow-icon{
+  animation: bounce .5s alternate infinite ease-in;
+}
+
+@keyframes bounce{
+  0%{
+    transform: translateY(-40%);
+  }
+  100%{
+    transform: translateY(0%);
+  }
+}
+
 nav{
   font-family: 'Victor Mono';
 }
