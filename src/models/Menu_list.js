@@ -27,8 +27,8 @@ export const MenuList = [
     title: '120',
     path: '/category/120'
   },
-  {
-    title: 'About',
-    path: '/about'
-  },
+  // {
+  //   title: 'About',
+  //   path: '/about'
+  // },
 ]
