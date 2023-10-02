@@ -46,14 +46,14 @@ List of technologies used to develop this app:
 - <a href="https://tailwindcss.com/">Tailwind CSS</a> for styling
 - <a href="https://reactrouter.com/en/main">React-router-dom</a> for everything related to routing and matching URLs
 - All information about the different products is stored in Firestore. Likewise, the information for each order is collected in Firebase Storage. Both products belong to <a href="https://firebase.google.com/">Firebase</a>
-- <a href="https://rsuitejs.com/">React Suite</a> has been used to implement different functionalities, including the Loader component
+- <a href="https://rsuitejs.com/">React Suite</a> has been used to implement different functionalities, including the Loader and Drawer components
 - The forms have been created with <a href="https://formik.org/">Formik</a>. Also its validation is done with <a href="https://www.npmjs.com/package/yup">Yup</a>
 - Since it is a photography e-commerce, the <a href="https://www.npmjs.com/package/react-image-zoom">react-image-zoom</a> library has been used to offer a quality zoom to the user
 - The <a href="https://sonner.emilkowal.ski/">Sonner library</a> is used for toast notifications
 
 
 <p align="center">
-  <img src = "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/tablet_mockup_02.jpg?alt=media&token=0c4241bb-6f0f-4b9f-8c5c-f0eb2288a537" width=450>
+  <img src = "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/tablet_mockup_02.jpg?alt=media&token=0c4241bb-6f0f-4b9f-8c5c-f0eb2288a537" width=700>
 </p>
 
 <a name="getting-started"></a>
@@ -65,6 +65,7 @@ List of technologies used to develop this app:
 - Open swith VSC
 - Install dependencies: `npm i`
 - Run the app: `npm start`
+- Open the live in your port: http://localhost:3000/
 - Enjoy :)
 
 <!-- - `yarn` to install dependencies -->
