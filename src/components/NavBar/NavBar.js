@@ -31,8 +31,8 @@ const NavBar = () => {
         }`}
       >
         {MenuList.map((item, index) => (
-          <li>
-            <MenuItem key={index} href={item.path} title={item.title} setNavVisible={setNavVisible} />
+          <li key={index}>
+            <MenuItem href={item.path} title={item.title} setNavVisible={setNavVisible} />
           </li>
         ))}
       </ul>

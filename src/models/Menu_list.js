@@ -16,8 +16,12 @@ export const MenuList = [
     path: '/category/barcelona'
   },
   {
-    title: '35mm',
-    path: '/category/35mm'
+    title: 'landscape',
+    path: '/category/landscape'
+  },
+  {
+    title: 'vertical',
+    path: '/category/vertical'
   },
   {
     title: '120',
