@@ -11,7 +11,7 @@ const MenuItem = ({ href, title, setNavVisible }) => {
     <NavLink
       to={href}
       onClick={handleClick}
-      className="uppercase block py-2 pl-3 pr-4 text-lg md:text-sm lg:text-base text-gray-900 md:hover:text-blue-700 md:p-0 relative menu-link"
+      className="uppercase block py-2 pl-3 pr-4 text-md md:text-sm lg:text-base text-gray-900 md:hover:text-blue-700 md:p-0 relative menu-link"
     >
       {title}
     </NavLink>

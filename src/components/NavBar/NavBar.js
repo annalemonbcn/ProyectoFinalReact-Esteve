@@ -23,11 +23,11 @@ const NavBar = () => {
         MENU
       </p>
       <ul
-        className={`flex items-center justify-center gap-8 mb-12 md:mb-8 bg-soft-grey md:bg-transparent relative transition-all ease-in-out duration-700 
+        className={`flex items-center justify-center  mb-12 md:mb-8 bg-soft-grey md:bg-transparent relative transition-all ease-in-out duration-700 
         ${
           navVisible
             ? "h-auto top-0 flex-col gap-1 opacity-100"
-            : "opacity-0 md:opacity-100 h-0 md:h-auto top-[-100vh] md:top-0"
+            : "opacity-0 md:opacity-100 h-0 md:h-auto top-[-100vh] md:top-0 md:gap-8"
         }`}
       >
         {MenuList.map((item, index) => (
