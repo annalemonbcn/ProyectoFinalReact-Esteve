@@ -35,7 +35,7 @@ const ItemListContainer = () => {
       setProducts(allProducts);
     } else {
       const filteredProducts = allProducts.filter(
-        (product) => product.size === params.id
+        (product) => product.categories.includes(params.id)
       );
       setProducts(filteredProducts);
     }
