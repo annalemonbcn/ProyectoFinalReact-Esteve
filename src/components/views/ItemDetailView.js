@@ -16,12 +16,21 @@ import ItemsCount from "../widgets/ItemsCount";
 const ItemDetailView = ({ product }) => {
   // State
   const [imgLoaded, setImgLoaded] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     if (product.image) {
       setImgLoaded(true);
     }
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
   }, [product]);
+
+  const handleWindowResize = () => {
+    setWindowWidth(window.innerWidth);
+  };
 
   return (
     <>
@@ -34,18 +43,35 @@ const ItemDetailView = ({ product }) => {
           </h2>
           <div className="flex flex-col lg:flex-nowrap lg:flex-row gap-10 mt-8 lg:mt-6">
             <div className="bg-soft-grey lg:w-3/5 h-[340px] md:h-[450px] lg:h-[500px] p-5 lg:p-8 box-border flex justify-center items-center lg:order-1">
-              <img
-                className={`w-auto ${
-                  product.orientation === "landscape"
-                    ? "h-auto md:h-[96%]"
-                    : product.orientation === "vertical" ||
-                      product.orientation === "square"
-                    ? "h-[92%] md:h-full"
-                    : ""
-                }`}
-                src={product.image}
-                alt={product.title}
-              />
+              {windowWidth >= 768 ? (
+                imgLoaded ? (
+                  <ImageZoom
+                    className={`w-auto ${
+                      product.orientation === "landscape"
+                        ? "h-auto md:h-[96%]"
+                        : product.orientation === "vertical" ||
+                          product.orientation === "square"
+                        ? "h-[92%] md:h-full"
+                        : ""
+                    }`}
+                    src={product.image}
+                    alt={product.title}
+                  />
+                ) : null
+              ) : (
+                <img
+                  className={`w-auto ${
+                    product.orientation === "landscape"
+                      ? "h-auto md:h-[96%]"
+                      : product.orientation === "vertical" ||
+                        product.orientation === "square"
+                      ? "h-[92%] md:h-full"
+                      : ""
+                  }`}
+                  src={product.image}
+                  alt={product.title}
+                />
+              )}
             </div>
             <div className="pt-2 lg:p-0 mt-4 lg:mt-0 lg:w-1/5 lg:order-3">
               <p>
