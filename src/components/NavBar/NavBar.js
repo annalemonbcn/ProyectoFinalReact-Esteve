@@ -23,11 +23,9 @@ const NavBar = () => {
   }
 
   return (
-    <nav className="bg-slate-100 fixed top-0 w-full z-50 max-h-[72px]">
-      <div className="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between px-6 lg:px-4 py-4">
-        {/* Logo  */}
+    <nav className="w-full">
+      {/* <div className="max-w-screen-xl mx-auto flex flex-wrap items-center justify-between px-6 lg:px-4 py-4">
         <NavLink to="/" className="flex items-center">
-          <img src="/logo.png" className="h-8 mr-3" alt="lemoninfilm Logo" />
           <span
             className="self-center text-xl lg:text-2xl font-semibold whitespace-nowrap text-slate-900"
             id="logo-text"
@@ -37,10 +35,8 @@ const NavBar = () => {
         </NavLink>
 
         <div className="flex md:order-2 items-center">
-          {/* Cart widget */}
           <CartWidget />
 
-          {/* Hamburger menu */}
           <button
             data-collapse-toggle="navbar-default"
             type="button"
@@ -61,7 +57,6 @@ const NavBar = () => {
           } transition-all md:opacity-100 ease-in duration-100 md:items-center justify-between w-full md:flex md:w-auto md:order-1 md:border-0 bg-slate-100`}
           id="menu-list"
         >
-          {/* Links list */}
           <ul
             className={`md:flex flex-col lg:gap-x-8 p-4 md:p-0 mt-4 md:flex-row md:space-x-8 md:mt-0 md:border-0 ${
               navbarOpen ? "block" : "hidden"
@@ -78,7 +73,19 @@ const NavBar = () => {
             ))}
           </ul>
         </div>
-      </div>
+      </div> */}
+      <ul className="flex items-center justify-center gap-8 my-8">
+        {MenuList.map((item, index) => (
+          <li>
+            <MenuItem
+              key={index}
+              href={item.path}
+              title={item.title}
+              className="filter-nav"
+            />
+          </li>
+        ))}
+      </ul>
     </nav>
   );
 };
