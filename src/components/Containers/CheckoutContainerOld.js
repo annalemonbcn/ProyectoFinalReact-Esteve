@@ -2,14 +2,14 @@
 import { useContext, useRef, useState } from "react";
 
 // Context
-import { CartContext } from "../api/context/CartProvider";
-import { ProductsContext } from "../api/context/ProductsProvider";
+import { CartContext } from "../../api/context/CartProvider";
+import { ProductsContext } from "../../api/context/ProductsProvider";
 
 // Components
-import CheckoutRow from "./CheckoutRow";
-import CheckoutForm from "./forms/CheckoutForm";
+import CheckoutRow from "../views/CheckoutViewRow";
+import CheckoutForm from "../forms/CheckoutForm";
 
-const Checkout = () => {
+const CheckoutContainer = () => {
   // States
   const [isQtyChanged, setIsQtyChanged] = useState(false); // --> did the user modified the qty?
   const [itemsToUpdate, setItemsToUpdate] = useState([]); // --> products that the user modified that needs to be updated
@@ -30,7 +30,6 @@ const Checkout = () => {
   let subtotal;
   const shippingTax = 10;
 
-
   /**
    * cartProductsToPrint --> array of products to print in the "table"
    * New array with complete info + qty
@@ -38,7 +37,9 @@ const Checkout = () => {
   cartProductsToPrint = cartItems
     .map((item) => {
       // const product = findProductById(item.productId);
-      const product = allProducts.find((product) => product.id === item.productId)
+      const product = allProducts.find(
+        (product) => product.id === item.productId
+      );
       if (product) {
         return {
           title: product.title,
@@ -221,4 +222,4 @@ const Checkout = () => {
   }
 };
 
-export default Checkout;
+export default CheckoutContainer;

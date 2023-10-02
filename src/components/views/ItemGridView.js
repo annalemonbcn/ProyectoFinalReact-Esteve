@@ -1,16 +1,27 @@
+// Proptypes
+import PropTypes from 'prop-types';
+
 // Routing
 import { Link } from "react-router-dom";
+
+// Lazyload image
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 // Components
 import CartSvg from "../svg/Cart";
 
 
-const ItemGridView = ({ imgSrc, imgAlt, name, price, id }) => {
+const ItemGridView = ({ imgSrc, imgAlt, name, price, id, orientation }) => {
     return (
     <div className="w-full md:w-1/2 lg:w-1/3 md:px-2 xl:p-6 box-border mb-6 lg:mb-0 lg:hover:scale-110 transition duration-300 ease-in-out itemsContainer">
       <div className="bg-soft-grey w-full h-[400px] p-5 box-border flex justify-center items-center">
         <Link to={`/item/${id}`}>
-          <img className="max-h-[360px] mx-auto" src={imgSrc} alt={imgAlt} />
+          <LazyLoadImage 
+            className={`mx-auto max-h-[360px] ${orientation === 'square' ? 'max-h-[330px]' : '' }`}
+            src={imgSrc}
+            alt={imgAlt}
+            effect="opacity"
+          />
         </Link>
       </div>
 
@@ -27,6 +38,15 @@ const ItemGridView = ({ imgSrc, imgAlt, name, price, id }) => {
       </div>
     </div>
   );
+};
+
+ItemGridView.propTypes = {
+  imgSrc: PropTypes.string.isRequired,
+  imgAlt: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  id: PropTypes.string.isRequired,
+  orientation: PropTypes.string.isRequired
 };
 
 export default ItemGridView;

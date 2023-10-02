@@ -29,6 +29,7 @@ const loginSchema = Yup.object().shape({
 });
 
 const CheckoutForm = ({ setToken }) => {
+  
   // Form values
   const initialCredentials = {
     name: "",

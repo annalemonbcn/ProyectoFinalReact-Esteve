@@ -1,3 +1,6 @@
+// Proptypes
+import PropTypes from 'prop-types';
+
 // Routing
 import { Link } from "react-router-dom";
 
@@ -5,16 +8,15 @@ import { Link } from "react-router-dom";
 import { useRef } from "react";
 
 
-const CheckoutRow = ({ imgSrc, name, price, qty, id, setIsQtyChanged, auxSetItemsToUpdate }) => {
+const CheckoutViewRow = ({ imgSrc, name, price, qty, id, setIsQtyChanged, auxSetItemsToUpdate }) => {
 
   // UseRef
   const qtyRef = useRef(null)
 
   // onChange --> if user modify the qty
   const handleQtyChange = () => {
-
     // Get the new value
-    const newQty = qtyRef.current.value
+    const newQty = parseInt(qtyRef.current.value)
     
     // set the product updated
     const productUpdated = {
@@ -59,4 +61,14 @@ const CheckoutRow = ({ imgSrc, name, price, qty, id, setIsQtyChanged, auxSetItem
   );
 };
 
-export default CheckoutRow;
+CheckoutViewRow.propTypes = {
+  id: PropTypes.string.isRequired,
+  imgSrc: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  qty: PropTypes.number.isRequired,
+  setIsQtyChanged: PropTypes.func.isRequired,
+  auxSetItemsToUpdate: PropTypes.func.isRequired,
+};
+
+export default CheckoutViewRow;

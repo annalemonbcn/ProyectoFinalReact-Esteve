@@ -5,7 +5,7 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import url("https://fonts.googleapis.com/css2?family=Carrois+Gothic&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Victor+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap');
 
 body{
   font-family: 'Montserrat';
@@ -13,24 +13,23 @@ body{
   @apply text-gray-700;
 }
 
-nav{
-  font-family: 'Victor Mono';
+header, nav{
+  font-family: 'Inconsolata';
 }
 
 #logo-text{
-  font-family: 'Victor Mono';
+  font-family: 'Inconsolata';
   font-weight: 400;
 }
 
 .menu-link{
-  font-family: 'Victor Mono';
+  font-family: 'Inconsolata';
 }
 
 .menu-link.active{
   font-weight: 700;
-  color: rgb(29 78 216);
 }
 
 footer{
-  font-family: 'Victor Mono';
+  font-family: 'Inconsolata';
 }
