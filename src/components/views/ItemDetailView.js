@@ -43,7 +43,7 @@ const ItemDetailView = ({ product }) => {
           </h2>
           <div className="flex flex-col lg:flex-nowrap lg:flex-row gap-10 mt-8 lg:mt-6">
             <div className="bg-soft-grey lg:w-3/5 h-[340px] md:h-[450px] lg:h-[500px] p-5 lg:p-8 box-border flex justify-center items-center lg:order-1">
-              {windowWidth >= 768 ? (
+              {windowWidth >= 1024 ? (
                 imgLoaded ? (
                   <ImageZoom
                     className={`w-auto ${
