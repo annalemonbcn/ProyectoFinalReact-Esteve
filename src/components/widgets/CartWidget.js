@@ -15,7 +15,7 @@ const CartWidget = () => {
   const cartValues = useContext(CartContext);
 
   return (
-    <div className="absolute right-3 md:right-24">
+    <div className="md:absolute right-3 md:right-24">
       <NavLink
         className="flex justify-center items-center relative w-10 -left-3 cursor-pointer"
         to="/checkout"
