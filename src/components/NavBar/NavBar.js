@@ -24,16 +24,15 @@ const NavBar = () => {
       </p>
       <ul
         className={`flex items-center justify-center gap-8 mb-12 md:mb-8 bg-soft-grey md:bg-transparent relative transition-all ease-in-out duration-700 
-        ${navVisible ? "h-auto top-0 flex-col gap-1 opacity-100" : "opacity-0 md:opacity-100 h-0 md:h-auto top-[-100vh] md:top-0"}`}
+        ${
+          navVisible
+            ? "h-auto top-0 flex-col gap-1 opacity-100"
+            : "opacity-0 md:opacity-100 h-0 md:h-auto top-[-100vh] md:top-0"
+        }`}
       >
         {MenuList.map((item, index) => (
           <li>
-            <MenuItem
-              key={index}
-              href={item.path}
-              title={item.title}
-              className="filter-nav"
-            />
+            <MenuItem key={index} href={item.path} title={item.title} setNavVisible={setNavVisible} />
           </li>
         ))}
       </ul>

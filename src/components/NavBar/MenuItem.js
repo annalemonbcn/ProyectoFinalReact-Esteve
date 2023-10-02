@@ -1,9 +1,10 @@
 // Routing
 import { NavLink } from "react-router-dom";
 
-const MenuItem = ({ href, title, closeMenu }) => {
+// const MenuItem = ({ href, title, closeMenu }) => {
+const MenuItem = ({ href, title, setNavVisible }) => {
   const handleClick = () => {
-    closeMenu();
+    setNavVisible(false);
   };
 
   return (
