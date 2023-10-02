@@ -5,18 +5,16 @@ import { Routes, Route } from "react-router-dom";
 import ItemListContainer from "./Containers/ItemListContainer";
 import ItemDetailContainer from "./Containers/ItemDetailContainer";
 import CheckoutContainer from "./Containers/CheckoutContainer";
-import Home from "./pages/Home";
 import About from "./pages/About";
 
 
 const Main = () => {
 
   return (
-    <main className="px-5 xl:px-20 pt-16 lg:pt-16 mt-[50px] lg:mt-[70px] mb-16 lg:mb-4">
+    <main className="px-5 xl:px-20 mb-16 lg:mb-4">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<ItemListContainer />} />
         <Route path="/about" element={<About />} />
-        <Route path="/market" element={<ItemListContainer />} />
         <Route path="/category/:id" element={<ItemListContainer />} />
         <Route path="/item/:id" element={<ItemDetailContainer />} />
         <Route path="/checkout" element={<CheckoutContainer />} />
