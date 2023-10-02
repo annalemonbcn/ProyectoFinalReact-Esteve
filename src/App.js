@@ -9,6 +9,7 @@ import Navbar from "./components/NavBar/NavBar";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
+import CartWidget from "./components/widgets/CartWidget";
 
 // Context/provider
 import ProductsProvider from "./api/context/ProductsProvider";
