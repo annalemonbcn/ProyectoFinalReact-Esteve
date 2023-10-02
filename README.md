@@ -33,7 +33,7 @@ This is a photography e-commerce that offers the possibility of purchasing them 
 **Responsive design**
 
 <p align="center">
-  <img src = "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/mobile_mockup_02.jpg?alt=media&token=d3ec3b15-d8ba-47d7-a9c3-f86405ae1aac" width=450>
+  <img src = "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/mobile_mockup_02.jpg?alt=media&token=d3ec3b15-d8ba-47d7-a9c3-f86405ae1aac" width=700>
 </p>
 
 <a name="built-with"></a>
