@@ -12,13 +12,12 @@ const Main = () => {
 
   return (
     <main className="px-5 xl:px-20 mb-16 lg:mb-4">
-      <Routes>
+       <Routes>
         <Route path="/" element={<ItemListContainer />} />
         <Route path="/about" element={<About />} />
         <Route path="/category/:id" element={<ItemListContainer />} />
         <Route path="/item/:id" element={<ItemDetailContainer />} />
         <Route path="/checkout" element={<CheckoutContainer />} />
-        <Route path="*" element={<h1>404</h1>} />
       </Routes>
     </main>
   );
