@@ -15,7 +15,7 @@ const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
 
   // Params
-  const params = useParams();
+  const { id } = useParams();
 
   // Context
   const allProducts = useContext(ProductsContext);
@@ -23,7 +23,7 @@ const ItemListContainer = () => {
   // Effects
   useEffect(() => {
     auxSetProducts();
-  }, [params.id, allProducts]);
+  }, [id, allProducts]);
 
   /**
    * Aux method to fetch all the products from the firestore db
@@ -31,11 +31,11 @@ const ItemListContainer = () => {
    */
   const auxSetProducts = () => {
     // Filter products by size if params.id exists
-    if (!params.id) {
+    if (!id) {
       setProducts(allProducts);
     } else {
       const filteredProducts = allProducts.filter(
-        (product) => product.categories.includes(params.id)
+        (product) => product.categories.includes(id)
       );
       setProducts(filteredProducts);
     }

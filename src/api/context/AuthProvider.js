@@ -9,7 +9,7 @@ export const AuthContext = createContext();
 
 const AuthProvider = (props) => {
   // State
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState();
 
   const signIn = async (email, password) => {
     try {
@@ -23,7 +23,7 @@ const AuthProvider = (props) => {
   // Provider value
   const authContextValue = {
     user,
-    signIn,
+    signIn
   };
 
   return (

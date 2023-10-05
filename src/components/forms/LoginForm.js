@@ -62,11 +62,11 @@ const LoginForm = () => {
             background: "aquamarine",
           },
         });
+        setError(false); // --> clean any old error
         // Redirect to backoffice after 2 seconds
         setTimeout(() => {
           navigate("/backoffice");
         }, 2000);
-        setError(false); // --> clean any old error
       }
     } catch (error) {
       setError(true);
@@ -95,7 +95,13 @@ const LoginForm = () => {
           <Form
             className={`flex flex-col border border-slate-200 px-10 py-8 rounded-md
               ${error ? "border border-red-300" : null}
-              ${desktopRes >= 1280 ? "w-1/3 px-10 py-14" : desktopRes >= 1024 ? "w-1/2 px-10 py-14" : ""}
+              ${
+                desktopRes >= 1280
+                  ? "w-1/3 px-10 py-14"
+                  : desktopRes >= 1024
+                  ? "w-1/2 px-10 py-14"
+                  : ""
+              }
             `}
           >
             {/* <div className="flex items-center mt-4"> */}
@@ -112,16 +118,16 @@ const LoginForm = () => {
                 placeholder="example@example.com"
                 type="text"
               />
-
-              {/* Name errors */}
-              {errors.email && touched.email && (
-                <ErrorMessage
-                  name="email"
-                  component="div"
-                  className="w-full text-center mt-2 text-xs font-bold text-red-500"
-                />
-              )}
             </div>
+
+            {/* Name errors */}
+            {errors.email && touched.email && (
+              <ErrorMessage
+                name="email"
+                component="div"
+                className="w-full text-center mt-2 text-xs font-bold text-red-500"
+              />
+            )}
 
             <div className="mt-4 flex items-center">
               <label className="w-[100px] font-bold" htmlFor="password">
@@ -136,19 +142,21 @@ const LoginForm = () => {
                 placeholder="******"
                 type="password"
               />
-
-              {/* Mail errors */}
-              {errors.password && touched.password && (
-                <ErrorMessage
-                  name="password"
-                  component="div"
-                  className="w-full text-center mt-2 text-xs font-bold text-red-500"
-                />
-              )}
             </div>
 
+            {/* Mail errors */}
+            {errors.password && touched.password && (
+              <ErrorMessage
+                name="password"
+                component="div"
+                className="w-full text-center mt-2 text-xs font-bold text-red-500"
+              />
+            )}
+
             <button
-              className={`w-full px-5 py-2.5 mt-6 bg-black text-white font-bold ${desktopRes ? "w-1/3 mx-auto" : ""}`}
+              className={`w-full px-5 py-2.5 mt-6 bg-black text-white font-bold ${
+                desktopRes ? "w-1/3 mx-auto" : ""
+              }`}
               type="submit"
             >
               Login

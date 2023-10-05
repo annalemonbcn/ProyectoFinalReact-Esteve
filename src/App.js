@@ -9,13 +9,17 @@ import Navbar from "./components/NavBar/NavBar";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import Backoffice from "./components/pages/Backoffice";
+import BackofficeContainer from "./components/Containers/BackofficeContainer";
 import LoginForm from "./components/forms/LoginForm";
 
 // Contexts/providers
 import ProductsProvider from "./api/context/ProductsProvider";
+import OrdersProvider from "./api/context/OrdersProvider";
 import CartProvider from "./api/context/CartProvider";
 import AuthProvider from "./api/context/AuthProvider";
+
+// Protected Route
+import ProtectedRoute from "./components/routes/ProtectedRoute";
 
 // Toaster
 import { Toaster } from "sonner";
@@ -23,48 +27,44 @@ import { Toaster } from "sonner";
 // R-suite styles
 import "rsuite/dist/rsuite-no-reset.min.css";
 
-// Hooks
-import { useState } from "react";
-
 function App() {
-  const [isUserAuthenticated] = useState(true);
-
   return (
     <BrowserRouter>
       <AuthProvider>
-        <ProductsProvider>
-          <CartProvider>
-            <Toaster
-              position="top-right"
-              toastOptions={{ style: { top: "70px" } }}
-            />
-            <Routes>
-              <Route
-                path="/*"
-                element={
-                  <>
-                    <Header />
-                    <Navbar />
-                    <Main />
-                    <Footer />
-                  </>
-                }
+        <OrdersProvider>
+          <ProductsProvider>
+            <CartProvider>
+              <Toaster
+                position="top-right"
+                toastOptions={{ style: { top: "70px" } }}
               />
-              {/* <Route path="/backoffice" element={<Backoffice />} /> */}
-              <Route path="/login" element={<LoginForm />} />
-              <Route
+              <Routes>
+                <Route
+                  path="/*"
+                  element={
+                    <>
+                      <Header />
+                      <Navbar />
+                      <Main />
+                      <Footer />
+                    </>
+                  }
+                />
+                <Route path="/login" element={<LoginForm />} />
+                <Route path="/backoffice" element={<BackofficeContainer />} />
+                <Route path="/order/:id" element={<BackofficeContainer />} />
+                {/* <Route
                 path="/backoffice"
                 element={
-                  isUserAuthenticated ? (
-                    <Backoffice />
-                  ) : (
-                    <Navigate to="/login" replace />
-                  )
+                  <ProtectedRoute>
+                    <BackofficeContainer />
+                  </ProtectedRoute>
                 }
-              />
-            </Routes>
-          </CartProvider>
-        </ProductsProvider>
+              /> */}
+              </Routes>
+            </CartProvider>
+          </ProductsProvider>
+        </OrdersProvider>
       </AuthProvider>
     </BrowserRouter>
   );

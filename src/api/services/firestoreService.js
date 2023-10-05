@@ -22,6 +22,26 @@ export const fetchProductsFromFirestore = async (productsQuery) => {
 };
 
 /**
+ * fetchOrdersFromFirestore *
+ * Fetch request to firestore service to get all the orders
+ * @param {*} ordersQuery 
+ * @returns aux --> array with order info + order.id merged
+ */
+export const fetchOrdersFromFirestore = async (ordersQuery) => {
+  try {
+    const allDocs = await getDocs(ordersQuery);
+    const aux = allDocs.docs.map((doc) => {
+      const order = doc.data();
+      order.id = doc.id;
+      return order;
+    });
+    return aux;
+  } catch (error) {
+    throw error;
+  }
+};
+
+/**
  * fetchSingleProductFromFirebase *
  * Fetch request to firestore service to get a single product
  * @param {*} docRef 
