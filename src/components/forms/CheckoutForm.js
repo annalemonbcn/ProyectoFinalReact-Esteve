@@ -18,7 +18,7 @@ import { db } from "../../db/firebase";
 import { collection, serverTimestamp } from "firebase/firestore";
 
 // Services
-import { addDocToFirebase } from "../../api/services/firebaseService";
+import { addDocToFirestore } from "../../api/services/firestoreService";
 
 // Yup form validation
 const loginSchema = Yup.object().shape({
@@ -59,7 +59,7 @@ const CheckoutForm = ({ setToken }) => {
 
     // Push the order into the collection
     try {
-      const tokenId = await addDocToFirebase(ordersCollection, order);
+      const tokenId = await addDocToFirestore(ordersCollection, order);
       // Set token form firebase response
       setToken(tokenId);
       // Toast

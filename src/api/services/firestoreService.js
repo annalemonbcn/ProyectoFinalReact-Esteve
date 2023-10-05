@@ -28,7 +28,7 @@ export const fetchProductsFromFirestore = async (productsQuery) => {
  * @param {*} id 
  * @returns product with info
  */
-export const fetchSingleProductFromFirebase = async (docRef, id) => {
+export const fetchSingleProductFromFirestore = async (docRef, id) => {
   try {
     const docSnap = await getDoc(docRef);
     const product = docSnap.data();
@@ -46,7 +46,7 @@ export const fetchSingleProductFromFirebase = async (docRef, id) => {
  * @param {*} order 
  * @returns tokenId from firebase
  */
-export const addDocToFirebase = async (collection, order) => {
+export const addDocToFirestore = async (collection, order) => {
   try {
     const docRef = await addDoc(collection, order);
     return docRef.id;
