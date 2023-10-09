@@ -5,9 +5,6 @@ import { fetchProductsFromFirestore } from "../services/firestoreService";
 import { db } from "../../db/firebase";
 import { collection } from "firebase/firestore";
 
-// Toaster
-import { toast } from "sonner";
-
 // Context
 import { createContext, useState, useEffect } from "react";
 export const ProductsContext = createContext();
@@ -31,18 +28,9 @@ const ProductsProvider = (props) => {
     try {
       const data = await fetchProductsFromFirestore(productsCollection);
       setProducts(data);
-      toast.success("Products loaded :)", {
-        style: {
-          background: "aquamarine",
-        },
-      });
+      
     } catch (error) {
-      toast.error("There was an error loading the products", {
-        style: {
-          background: "lightpink",
-        },
-      });
-      console.error("Error fetching products:", error);
+      throw error;
     }
   };
 

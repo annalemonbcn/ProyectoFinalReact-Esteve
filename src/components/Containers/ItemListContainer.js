@@ -4,6 +4,9 @@ import { useEffect, useState, useContext } from "react";
 // Routing
 import { useParams } from "react-router-dom";
 
+// Toaster
+import { toast } from "sonner";
+
 // Components
 import ItemListView from "../views/ItemListView";
 
@@ -40,6 +43,15 @@ const ItemListContainer = () => {
       setProducts(filteredProducts);
     }
   };
+
+  if (error) {
+    toast.error("There was an error loading the products", {
+      style: {
+        background: "lightpink",
+      },
+    });
+    console.error("Error fetching products:", error);
+  }
 
   // View
   return <ItemListView products={products} />;

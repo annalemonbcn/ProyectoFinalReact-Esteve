@@ -1,6 +1,9 @@
 // Hooks
 import { useState, useContext, useRef } from "react";
 
+// Toaster
+import { toast } from "sonner";
+
 // Context
 import { CartContext } from "../../api/context/CartProvider";
 
@@ -57,12 +60,29 @@ const CheckoutContainer = () => {
    * Aux method to setShowForm to false when the cart is updated
    */
   const auxUpdateCart = () => {
-    // Update cart 
-    updateCart(itemsToUpdate);
-    // Disable "Update cart" button
-    setIsQtyChanged(false);
-    // In case somebody arrived to the form step, disable the form and make the cart summary appear
-    setShowForm(false);
+    try {
+      // Update cart 
+      updateCart(itemsToUpdate);
+      // Toast
+      toast.success("Your cart has been updated", {
+        style: {
+          background: "aquamarine",
+        },
+      });
+      // Disable "Update cart" button
+      setIsQtyChanged(false);
+      // In case somebody arrived to the form step, disable the form and make the cart summary appear
+      setShowForm(false);
+    } catch (error) {
+      // Toast
+      toast.error("The cart couldn't be updated. Please try again", {
+        style: {
+          background: "lightpink",
+        },
+      });
+      console.error("Error updating the cart:", error);
+    }
+
   };
 
   /**

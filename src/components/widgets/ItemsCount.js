@@ -1,5 +1,5 @@
 // Hooks
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 
 // Components
 import CartSvg from "../svg/Cart";
@@ -11,7 +11,6 @@ import { toast } from "sonner";
 // Context
 import { CartContext } from "../../api/context/CartProvider";
 
-
 const ItemsCount = ({ id, title, price, image }) => {
   // Context
   const { addToCart } = useContext(CartContext);
@@ -19,6 +18,7 @@ const ItemsCount = ({ id, title, price, image }) => {
   // State
   let [qty, setQty] = useState(1);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [error, setError] = useState(null);
 
   // Actions
   const addition = () => {
@@ -34,17 +34,21 @@ const ItemsCount = ({ id, title, price, image }) => {
   const auxAddToCart = async () => {
     try {
       await addToCart(id, title, price, image, qty);
-      setIsDrawerOpen(true);
+      setIsDrawerOpen(true); // --> Open drawer
+      setError(null); // --> Clean any old error
     } catch (error) {
-      // Toast
-      toast.error("There was an error while adding the products to your cart", {
-        style: {
-          background: "lightpink",
-        },
-      });
-      console.error("Error adding products to cart:", error);
+      setError(error);
     }
   };
+
+  if (error) {
+    toast.error("There was an error while adding the products to your cart", {
+      style: {
+        background: "lightpink",
+      },
+    });
+    console.error("Error adding products to cart:", error);
+  }
 
   return (
     <>
