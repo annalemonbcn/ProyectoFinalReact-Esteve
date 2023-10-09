@@ -25,7 +25,21 @@ const ItemListContainer = () => {
 
   // Effects
   useEffect(() => {
-    auxSetProducts();
+    try {
+      auxSetProducts();
+      toast.success("Products loaded :)", {
+        style: {
+          background: "aquamarine"
+        }
+      })
+    } catch (error) {
+      toast.error("There was an error loading the products", {
+        style: {
+          background: "lightpink",
+        },
+      });
+      console.error("Error fetching products:", error);
+    }
   }, [id, allProducts]);
 
   /**
@@ -43,15 +57,6 @@ const ItemListContainer = () => {
       setProducts(filteredProducts);
     }
   };
-
-  if (error) {
-    toast.error("There was an error loading the products", {
-      style: {
-        background: "lightpink",
-      },
-    });
-    console.error("Error fetching products:", error);
-  }
 
   // View
   return <ItemListView products={products} />;
