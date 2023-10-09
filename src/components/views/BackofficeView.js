@@ -7,6 +7,9 @@ import BackofficeModal from "../widgets/BackofficeModal";
 // Utils
 import { convertTimestamp } from "../../utils/utils";
 
+// Routing
+import { NavLink } from "react-router-dom";
+
 const BackofficeView = ({ orders }) => {
   // State
   const [selectedOrder, setSelectedOrder] = useState(null);
@@ -17,23 +20,22 @@ const BackofficeView = ({ orders }) => {
     if (orders.length > 0) {
       setData(orders);
     }
-    console.log("orders", orders)
+    console.log("orders", orders);
   }, [orders]);
 
-  
   // Modify order
   const toggleSeen = (orderId) => {
     // Duplicate the orders array
-    const auxData = [...data]
+    const auxData = [...data];
     // Find element via id
     const elementFound = auxData.find((order) => order.id === orderId);
     // Modify the seen property
-    if(elementFound){
+    if (elementFound) {
       elementFound.seen = !elementFound.seen;
       // Set state
       setData(auxData);
     }
-  }
+  };
 
   // Actions
   const handleOrderClick = (order) => {
@@ -84,6 +86,14 @@ const BackofficeView = ({ orders }) => {
                   </React.Fragment>
                 );
               })}
+            </div>
+            <div className="mt-16 flex justify-end pr-8">
+              <NavLink
+                to="/"
+                className="px-5 py-2.5 bg-black text-white font-bold"
+              >
+                ← /lemoninfilm
+              </NavLink>
             </div>
           </main>
           {selectedOrder && (
