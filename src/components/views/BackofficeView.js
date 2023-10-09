@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 // Rsuite
 import { Loader } from "rsuite";
@@ -10,11 +10,11 @@ import { convertTimestamp } from "../../utils/utils";
 // Routing
 import { NavLink } from "react-router-dom";
 
-const BackofficeView = ({ orders }) => {
+const BackofficeView = ({ orders, toggleSeen }) => {
+  
   // State
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
-  const [data, setData] = useState([]);
 
   // Table values
   const columns = [
@@ -23,26 +23,6 @@ const BackofficeView = ({ orders }) => {
     { title: "User", align: "text-center md:text-left" },
     { title: "Seen", align: "text-center md:text-left" },
   ];
-
-  useEffect(() => {
-    if (orders.length > 0) {
-      setData(orders);
-    }
-  }, [orders]);
-
-  // Modify order
-  const toggleSeen = (orderId) => {
-    // Duplicate the orders array
-    const auxData = [...data];
-    // Find element via id
-    const elementFound = auxData.find((order) => order.id === orderId);
-    // Modify the seen property
-    if (elementFound) {
-      elementFound.seen = !elementFound.seen;
-      // Set state
-      setData(auxData);
-    }
-  };
 
   // Actions
   const handleOrderClick = (order) => {
@@ -61,7 +41,7 @@ const BackofficeView = ({ orders }) => {
 
   return (
     <div>
-      {data.length === 0 ? (
+      {orders.length === 0 ? (
         <Loader content="Loading orders..." />
       ) : (
         <>
@@ -75,7 +55,7 @@ const BackofficeView = ({ orders }) => {
                   {column.title}
                 </div>
               ))}
-              {data.map((order, i) => {
+              {orders.map((order, i) => {
                 const cells = [
                   { value: order.id, align: "text-center md:text-left" },
                   {

@@ -5,7 +5,6 @@ import { fetchOrdersFromFirestore } from "../services/firestoreService";
 import { db } from "../../db/firebase";
 import { collection } from "firebase/firestore";
 
-
 // Context
 import { createContext, useState } from "react";
 export const OrdersContext = createContext();
@@ -16,7 +15,7 @@ const OrdersProvider = (props) => {
   const [orders, setOrders] = useState([]);
 
   /**
-   * * fetchData *
+   * * fetchOrders *
    * aux method to fetch data from firebase
    * @returns data --> all orders from firestore collection "orders"
    */
@@ -31,9 +30,32 @@ const OrdersProvider = (props) => {
     }
   };
 
+  /**
+   *
+   * @param {*} ordersArr
+   * @param {*} orderId
+   * @returns
+   */
+  const toggleSeen = (ordersArr, orderId) => {
+    // Duplicate the orders array
+    const auxOrdersArr = [...ordersArr];
+
+    // Find element via id
+    const elementFound = auxOrdersArr.find((order) => order.id === orderId);
+
+    // Modify the seen property
+    if (elementFound) {
+      elementFound.seen = !elementFound.seen;
+      // Set state
+      return auxOrdersArr;
+    }
+  };
+
   const contextValue = {
-    fetchOrders
-  }
+    orders,
+    setOrders,
+    fetchOrders,
+  };
 
   return (
     <OrdersContext.Provider value={contextValue}>

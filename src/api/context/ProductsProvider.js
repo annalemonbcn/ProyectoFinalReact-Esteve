@@ -1,5 +1,8 @@
 // Services
-import { fetchProductsFromFirestore, fetchSingleProductFromFirestore } from "../services/firestoreService";
+import {
+  fetchProductsFromFirestore,
+  fetchSingleProductFromFirestore,
+} from "../services/firestoreService";
 
 // firestore
 import { db } from "../../db/firebase";
@@ -16,8 +19,8 @@ const ProductsProvider = (props) => {
   const [product, setProduct] = useState({});
 
   /**
-   * * fetchData *
-   * aux method to fetch data from firebase
+   * * fetchProducts *
+   * Method to fetch data from firebase
    * @returns data --> all products from firestore collection "pictures"
    */
   const fetchProducts = async () => {
@@ -31,6 +34,12 @@ const ProductsProvider = (props) => {
     }
   };
 
+  /**
+   * * fetchSingleProduct *
+   * Method to fetch the data from a single product from firebase
+   * @param {*} id --> product to fetch by id
+   * @returns fetchedProduct -->single product from firestore collection "pictures"
+   */
   const fetchSingleProduct = async (id) => {
     const productsCollection = collection(db, "pictures");
     try {
@@ -38,13 +47,12 @@ const ProductsProvider = (props) => {
       const docRef = doc(productsCollection, id);
 
       // Fetch product from firestore
-      const fetchedProduct = await fetchSingleProductFromFirestore(
-        docRef,
-        id
-      );
+      const fetchedProduct = await fetchSingleProductFromFirestore(docRef, id);
       setProduct(fetchedProduct);
       return fetchedProduct;
-    } catch (error) {}
+    } catch (error) {
+      throw error;
+    }
   };
 
   const contextValue = {
