@@ -39,7 +39,7 @@ const OrdersProvider = (props) => {
   const updateSeenOrder = async (orderId, newSeenValue) => {
     const ordersCollection = collection(db, "orders");
     try{
-      await updateDocToFirestore(ordersCollection, orderId, newSeenValue)
+      await updateDocToFirestore(ordersCollection, orderId, "seen", newSeenValue)
     } catch (error) {
       throw error;
     }

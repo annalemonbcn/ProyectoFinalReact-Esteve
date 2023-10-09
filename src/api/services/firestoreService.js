@@ -64,10 +64,11 @@ export const fetchSingleProductFromFirestore = async (docRef, id) => {
  * Add a doc into orders collection
  * @param {*} collection 
  * @param {*} order 
- * @returns tokenId from firebase
+ * @returns tokenId from firestore
  */
 export const addDocToFirestore = async (collection, order) => {
   try {
+    // Create the reference to the doc from firestore
     const docRef = await addDoc(collection, order);
     return docRef.id;
   } catch (error) {
@@ -75,13 +76,22 @@ export const addDocToFirestore = async (collection, order) => {
   }
 }
 
-export const updateDocToFirestore = async (collection, orderId, newSeenValue) => {
+/**
+ * updateDocToFirestore *
+ * Update a doc from firestore
+ * @param {*} collection --> could be any collection
+ * @param {*} orderId --> the id of the doc to update
+ * @param {*} propertyToUpdate --> the property we want to update
+ * @param {*} newSeenValue --> the new value for the property
+ * @returns 
+ */
+export const updateDocToFirestore = async (collection, orderId, propertyToUpdate, newValue) => {
   try {
     // Get ref to the doc
     const docRef = doc(collection, orderId);
     // UpdateDoc method
     const result = await updateDoc(docRef, {
-      seen: newSeenValue
+      propertyToUpdate: newValue
     });
     return result;
   } catch (error) {
