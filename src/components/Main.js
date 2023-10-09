@@ -5,7 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import ItemListContainer from "./Containers/ItemListContainer";
 import ItemDetailContainer from "./Containers/ItemDetailContainer";
 import CheckoutContainer from "./Containers/CheckoutContainer";
-import About from "./pages/About";
+import About from "../pages/About";
 
 
 const Main = () => {

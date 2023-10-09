@@ -1,5 +1,5 @@
 // Firestore
-import { getDocs, getDoc, addDoc } from "firebase/firestore";
+import { getDocs, getDoc, addDoc, doc, updateDoc } from "firebase/firestore";
 
 /**
  * fetchProductsFromFirestore *
@@ -70,6 +70,21 @@ export const addDocToFirestore = async (collection, order) => {
   try {
     const docRef = await addDoc(collection, order);
     return docRef.id;
+  } catch (error) {
+    throw error;
+  }
+}
+
+export const updateDocToFirestore = async (collection, orderId, newSeenValue) => {
+  try {
+    // Get ref to the doc
+    const docRef = doc(collection, orderId);
+
+    // UpdateDoc method
+    const result = await updateDoc(docRef, {
+      seen: newSeenValue
+    });
+    return result;
   } catch (error) {
     throw error;
   }

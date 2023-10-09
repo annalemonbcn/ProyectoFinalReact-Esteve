@@ -55,6 +55,7 @@ const CheckoutForm = ({ setToken }) => {
       },
       date: serverTimestamp(),
       products: cartItems,
+      seen: false
     };
 
     // Push the order into the collection
