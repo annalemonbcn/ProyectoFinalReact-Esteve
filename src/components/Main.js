@@ -18,6 +18,7 @@ const Main = () => {
         <Route path="/category/:id" element={<ItemListContainer />} />
         <Route path="/item/:id" element={<ItemDetailContainer />} />
         <Route path="/checkout" element={<CheckoutContainer />} />
+        <Route path="*" element={<h1>404</h1>} />
       </Routes>
     </main>
   );

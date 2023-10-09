@@ -1,5 +1,5 @@
 // Routing
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 // Styles
 import "./App.css";
@@ -39,7 +39,6 @@ function App() {
                 toastOptions={{ style: { top: "70px" } }}
               />
               <Routes>
-              <Route path="*" element={<h1>404</h1>} />
                 <Route
                   path="/*"
                   element={
