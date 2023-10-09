@@ -39,6 +39,7 @@ function App() {
                 toastOptions={{ style: { top: "70px" } }}
               />
               <Routes>
+              <Route path="*" element={<h1>404</h1>} />
                 <Route
                   path="/*"
                   element={
