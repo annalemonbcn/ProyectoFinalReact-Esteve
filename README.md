@@ -18,6 +18,7 @@ Here is a working live demo : https://lemoninfilm.vercel.app/
 ## Table of Contents
 
 - [Introduction](#introduction)
+- [Features](#features)
 - [Built with](#built-with)
 - [Getting started](#getting-started)
 - [Final conclusions](#final-conclusions)
@@ -33,8 +34,39 @@ This is a photography e-commerce that offers the possibility of purchasing them 
 **Responsive design**
 
 <p align="center">
-  <img src = "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/mobile_mockup_02.jpg?alt=media&token=d3ec3b15-d8ba-47d7-a9c3-f86405ae1aac" width=700>
+  <img src = "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/mobile_mockup_02.jpg?alt=media&token=d3ec3b15-d8ba-47d7-a9c3-f86405ae1aac" width=450>
 </p>
+
+<a name="features"></a>
+## 💡 Features
+
+This project has some interesting features that I want to highlight:
+
+#### Fetch data
+- All the info related to the products (name, title, id, img url, etc) is taken from Firestore.
+- This info is obtained through *fetch* and *promises* methods
+- It was necessary to consult the documentation to find the suitable methods for CRUD operations: **getDocs**, **getDoc**, **addDoc**, **updateDoc**.
+- For more information, follow this links:
+https://firebase.google.com/docs/firestore/query-data/get-data
+https://firebase.google.com/docs/firestore/manage-data/add-data
+
+#### Post data
+- This is an app that doesn't have a payment gateway; however, purchase orders are recorded.
+- In a similar way, orders registered in the purchase confirmation form are sent to Firestore.
+- In this way, the flow of information is bidirectional: from the cloud to the user and from the user to the cloud.
+
+#### Private routes
+- I decided to create a simple and minimalist backoffice to be able to see the orders received without needing to enter the Firestore platform.
+- This is a **protected route** that **requires authentication**: access to the application will be requested using a username and password. If the username is found in the database, navigation to the private route will be allowed.
+
+<img src = "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/form-02.png?alt=media&token=5934b03c-6873-410a-bb7e-de41499504de&_gl=1*1td7218*_ga*OTQ3NjQ5NTE3LjE2OTM0ODAxMjY.*_ga_CW55HF8NVT*MTY5Njg4MTA2NS43Ny4xLjE2OTY4ODI5OTYuMzIuMC4w" width=450>
+
+- Try it here: https://lemoninfilm.vercel.app/backoffice
+- Want a **demo video**? <a href="https://www.awesomescreenshot.com/video/21444969?key=c36d5f81803c94622b21a0c1ab6569c9">Check this out</a>
+
+<img src = "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/back_02_02.png?alt=media&token=bb58da02-00f7-4c76-94ef-333f082cebb4&_gl=1*144xeoo*_ga*OTQ3NjQ5NTE3LjE2OTM0ODAxMjY.*_ga_CW55HF8NVT*MTY5Njg4MTA2NS43Ny4xLjE2OTY4ODMwODUuMzAuMC4w" width=450>
+
+
 
 <a name="built-with"></a>
 ## 🛠️ Built with
@@ -68,7 +100,6 @@ List of technologies used to develop this app:
 - Open the live in your port: http://localhost:3000/
 - Enjoy :)
 
-<!-- - `yarn` to install dependencies -->
 
 <a name="final-conclusions"></a>
 ## 🙏🏻 Final conclusions
