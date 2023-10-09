@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 // Services
-import { fetchSingleProductFromFirebase } from "../../api/services/firebaseService";
+import { fetchSingleProductFromFirestore } from "../../api/services/firestoreService";
 
 // db
 import { db } from "../../db/firebase";
@@ -43,7 +43,7 @@ const ItemDetailContainer = () => {
       const docRef = doc(picturesCollection, params.id);
 
       // Fetch product from firestore
-      const fetchedProduct = await fetchSingleProductFromFirebase(
+      const fetchedProduct = await fetchSingleProductFromFirestore(
         docRef,
         params.id
       );
