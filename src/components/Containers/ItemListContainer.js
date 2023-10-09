@@ -21,17 +21,29 @@ const ItemListContainer = () => {
   const { id } = useParams();
 
   // Context
-  const allProducts = useContext(ProductsContext);
+  const { fetchProducts } = useContext(ProductsContext);
 
   // Effects
   useEffect(() => {
+    auxSetProducts();
+  }, [id]);
+
+  /**
+   * Aux method to fetch all the products from the firestore db
+   * Filter them by params for the different categories
+   */
+  const auxSetProducts = async () => {
     try {
-      auxSetProducts();
-      toast.success("Products loaded :)", {
-        style: {
-          background: "aquamarine"
-        }
-      })
+      const allProducts = await fetchProducts();
+      // Filter products by size if params.id exists
+      if (!id) {
+        setProducts(allProducts);
+      } else {
+        const filteredProducts = allProducts.filter((product) =>
+          product.categories.includes(id)
+        );
+        setProducts(filteredProducts);
+      }
     } catch (error) {
       toast.error("There was an error loading the products", {
         style: {
@@ -39,22 +51,6 @@ const ItemListContainer = () => {
         },
       });
       console.error("Error fetching products:", error);
-    }
-  }, [id, allProducts]);
-
-  /**
-   * Aux method to fetch all the products from the firestore db
-   * Filter them by params for the different categories
-   */
-  const auxSetProducts = () => {
-    // Filter products by size if params.id exists
-    if (!id) {
-      setProducts(allProducts);
-    } else {
-      const filteredProducts = allProducts.filter(
-        (product) => product.categories.includes(id)
-      );
-      setProducts(filteredProducts);
     }
   };
 

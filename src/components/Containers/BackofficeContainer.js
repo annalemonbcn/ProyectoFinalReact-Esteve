@@ -45,10 +45,9 @@ const BackofficeContainer = () => {
       }
     };
 
+    // View
     if(orders){
-      return (
-        <BackofficeView orders={orders} />
-      );
+      return <BackofficeView orders={orders} />
     } else {
       return (<p>Orders loading</p>)
     }

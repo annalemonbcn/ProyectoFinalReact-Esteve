@@ -7,7 +7,7 @@ import { collection } from "firebase/firestore";
 
 
 // Context
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 export const OrdersContext = createContext();
 
 // Provider
@@ -15,14 +15,10 @@ const OrdersProvider = (props) => {
   // State
   const [orders, setOrders] = useState([]);
 
-  // Effects
-  useEffect(() => {
-    // fetchOrders();
-  }, []);
-
   /**
-   * fetchData *
+   * * fetchData *
    * aux method to fetch data from firebase
+   * @returns data --> all orders from firestore collection "orders"
    */
   const fetchOrders = async () => {
     const ordersCollection = collection(db, "orders");
