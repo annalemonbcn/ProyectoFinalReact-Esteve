@@ -5,8 +5,6 @@ import { fetchOrdersFromFirestore } from "../services/firestoreService";
 import { db } from "../../db/firebase";
 import { collection } from "firebase/firestore";
 
-// Toaster
-import { toast } from "sonner";
 
 // Context
 import { createContext, useState, useEffect } from "react";
@@ -19,7 +17,7 @@ const OrdersProvider = (props) => {
 
   // Effects
   useEffect(() => {
-    fetchOrders();
+    // fetchOrders();
   }, []);
 
   /**
@@ -31,23 +29,18 @@ const OrdersProvider = (props) => {
     try {
       const data = await fetchOrdersFromFirestore(ordersCollection);
       setOrders(data);
-      toast.success("Orders loaded :)", {
-        style: {
-          background: "aquamarine",
-        },
-      });
+      return data;
     } catch (error) {
-      toast.error("There was an error loading the orders", {
-        style: {
-          background: "lightpink",
-        },
-      });
-      console.error("Error fetching orders:", error);
+      throw error;
     }
   };
 
+  const contextValue = {
+    fetchOrders
+  }
+
   return (
-    <OrdersContext.Provider value={orders}>
+    <OrdersContext.Provider value={contextValue}>
       {props.children}
     </OrdersContext.Provider>
   );
