@@ -1,41 +1,67 @@
 // Services
-import { fetchProductsFromFirestore } from "../services/firestoreService";
+import {
+  fetchProductsFromFirestore,
+  fetchSingleProductFromFirestore,
+} from "../services/firestoreService";
 
 // firestore
 import { db } from "../../db/firebase";
-import { collection } from "firebase/firestore";
+import { doc, collection } from "firebase/firestore";
 
 // Context
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 export const ProductsContext = createContext();
 
 // Provider
 const ProductsProvider = (props) => {
   // State
   const [products, setProducts] = useState([]);
-
-  // Effects
-  useEffect(() => {
-    fetchData();
-  }, []);
+  const [product, setProduct] = useState({});
 
   /**
-   * fetchData *
-   * aux method to fetch data from firebase
+   * * fetchProducts *
+   * Method to fetch data from firebase
+   * @returns data --> all products from firestore collection "pictures"
    */
-  const fetchData = async () => {
+  const fetchProducts = async () => {
     const productsCollection = collection(db, "pictures");
     try {
       const data = await fetchProductsFromFirestore(productsCollection);
       setProducts(data);
-      
+      return data;
     } catch (error) {
       throw error;
     }
   };
 
+  /**
+   * * fetchSingleProduct *
+   * Method to fetch the data from a single product from firebase
+   * @param {*} id --> product to fetch by id
+   * @returns fetchedProduct -->single product from firestore collection "pictures"
+   */
+  const fetchSingleProduct = async (id) => {
+    const productsCollection = collection(db, "pictures");
+    try {
+      // Create docRef
+      const docRef = doc(productsCollection, id);
+
+      // Fetch product from firestore
+      const fetchedProduct = await fetchSingleProductFromFirestore(docRef, id);
+      setProduct(fetchedProduct);
+      return fetchedProduct;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const contextValue = {
+    fetchProducts,
+    fetchSingleProduct
+  };
+
   return (
-    <ProductsContext.Provider value={products}>
+    <ProductsContext.Provider value={contextValue}>
       {props.children}
     </ProductsContext.Provider>
   );
