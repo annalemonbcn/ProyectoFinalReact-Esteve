@@ -15,6 +15,7 @@ const AuthProvider = (props) => {
     try {
       const result = await signInToAuthenticationService(email, password);
       setUser(result);
+      return result;
     } catch (error) {
       throw error;
     }
@@ -23,6 +24,7 @@ const AuthProvider = (props) => {
   // Provider value
   const authContextValue = {
     user,
+    setUser,
     signIn
   };
 

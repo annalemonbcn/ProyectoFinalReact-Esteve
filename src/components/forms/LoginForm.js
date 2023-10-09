@@ -36,7 +36,7 @@ const LoginForm = () => {
   }, [desktopRes]);
 
   // Context
-  const { user, signIn } = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);  
 
   // Form values
   const initialCredentials = {
@@ -53,20 +53,20 @@ const LoginForm = () => {
 
     try {
       //Call signIn method
-      await signIn(email, password);
+      const result = await signIn(email, password);
 
-      if (user) {
+      if (result) {
         // Toast
         toast.success("Login ok :) Redirecting to backoffice...", {
           style: {
             background: "aquamarine",
           },
         });
-        setError(false); // --> clean any old error
         // Redirect to backoffice after 2 seconds
         setTimeout(() => {
           navigate("/backoffice");
         }, 2000);
+        setError(false); // --> clean any old error
       }
     } catch (error) {
       setError(true);

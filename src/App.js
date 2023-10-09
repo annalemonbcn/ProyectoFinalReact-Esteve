@@ -19,7 +19,7 @@ import CartProvider from "./api/context/CartProvider";
 import AuthProvider from "./api/context/AuthProvider";
 
 // Protected Route
-import ProtectedRoute from "./components/routes/ProtectedRoute";
+import PrivateRoutes from "./components/routes/PrivateRoutes";
 
 // Toaster
 import { Toaster } from "sonner";
@@ -39,6 +39,7 @@ function App() {
                 toastOptions={{ style: { top: "70px" } }}
               />
               <Routes>
+              <Route path="*" element={<h1>404</h1>} />
                 <Route
                   path="/*"
                   element={
@@ -50,17 +51,12 @@ function App() {
                     </>
                   }
                 />
+                {/* Protected route */}
+                <Route element={<PrivateRoutes />}>
+                  <Route path="/backoffice" element={<BackofficeContainer />} />
+                </Route>
+                {/* Login Route */}
                 <Route path="/login" element={<LoginForm />} />
-                <Route path="/backoffice" element={<BackofficeContainer />} />
-                <Route path="/order/:id" element={<BackofficeContainer />} />
-                {/* <Route
-                path="/backoffice"
-                element={
-                  <ProtectedRoute>
-                    <BackofficeContainer />
-                  </ProtectedRoute>
-                }
-              /> */}
               </Routes>
             </CartProvider>
           </ProductsProvider>
