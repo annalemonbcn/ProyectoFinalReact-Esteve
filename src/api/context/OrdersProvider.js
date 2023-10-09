@@ -1,5 +1,5 @@
 // Services
-import { fetchOrdersFromFirestore } from "../services/firestoreService";
+import { fetchOrdersFromFirestore, updateDocToFirestore } from "../services/firestoreService";
 
 // firestore
 import { db } from "../../db/firebase";
@@ -16,7 +16,7 @@ const OrdersProvider = (props) => {
 
   /**
    * * fetchOrders *
-   * aux method to fetch data from firebase
+   * Method to fetch data from firebase
    * @returns data --> all orders from firestore collection "orders"
    */
   const fetchOrders = async () => {
@@ -31,30 +31,25 @@ const OrdersProvider = (props) => {
   };
 
   /**
-   *
-   * @param {*} ordersArr
-   * @param {*} orderId
-   * @returns
+   * * updateSeenOrder *
+   * Method to updatethe seen property from orders from firebase
+   * @param {*} orderId --> the order that needs to be modified
+   * @param {*} newSeenValue --> new value for orderSeen
    */
-  const toggleSeen = (ordersArr, orderId) => {
-    // Duplicate the orders array
-    const auxOrdersArr = [...ordersArr];
-
-    // Find element via id
-    const elementFound = auxOrdersArr.find((order) => order.id === orderId);
-
-    // Modify the seen property
-    if (elementFound) {
-      elementFound.seen = !elementFound.seen;
-      // Set state
-      return auxOrdersArr;
+  const updateSeenOrder = async (orderId, newSeenValue) => {
+    const ordersCollection = collection(db, "orders");
+    try{
+      await updateDocToFirestore(ordersCollection, orderId, newSeenValue)
+    } catch (error) {
+      throw error;
     }
-  };
+  }
 
   const contextValue = {
     orders,
     setOrders,
     fetchOrders,
+    updateSeenOrder
   };
 
   return (

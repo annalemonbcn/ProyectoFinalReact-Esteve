@@ -1,36 +1,39 @@
 // Rsuite
 import { Modal } from "rsuite";
 
-// Db firestore
-import { db } from "../../db/firebase";
-import { collection } from "firebase/firestore";
-
-// Services
-import { updateDocToFirestore } from "../../api/services/firestoreService";
-
 // Utils
 import { convertTimestamp } from "../../utils/utils";
-import { useState } from "react";
+
+// Hooks
+import { useState, useContext } from "react";
+
+// Context
+import { OrdersContext } from "../../api/context/OrdersProvider";
 
 // Toaster
 import { toast } from "sonner";
 
-
 const BackofficeModal = ({ order, open, onClose, toggleSeen }) => {
+  // State
+  const [seenStatus, setSeenStatus] = useState(order.seen);
 
-  const [seenStatus, setSeenStatus] = useState(order.seen)
+  // Context
+  const { updateSeenOrder } = useContext(OrdersContext);
 
-  const updateSeen = async () => {
-    // Ref to Orders collection
-    const ordersCollection = collection(db, "orders");
-
-    // Modify order in Firestore
+  /**
+   *
+   */
+  const auxUpdateSeen = async () => {
     try {
-      await updateDocToFirestore(ordersCollection, order.id, !order.seen)
+      // Modify seen property in remote
+      await updateSeenOrder(order.id, !order.seen);
+
       // Modify seen property in component
-      setSeenStatus(!seenStatus)
+      setSeenStatus(!seenStatus);
+
       // Modify seen property in father component
       toggleSeen(order.id);
+
       // Toast
       toast.success(`Marked as ${!seenStatus ? "seen" : "unseen"} :)`, {
         style: {
@@ -45,7 +48,7 @@ const BackofficeModal = ({ order, open, onClose, toggleSeen }) => {
       });
       console.error("Error updating status:", error);
     }
-  }
+  };
 
   // Calculate total order price
   const calculateTotal = (products) => {
@@ -55,7 +58,7 @@ const BackofficeModal = ({ order, open, onClose, toggleSeen }) => {
       total += product.qty * product.price;
     }
     return total;
-  }
+  };
   const totalPrice = calculateTotal(order.products);
 
   return (
@@ -80,25 +83,44 @@ const BackofficeModal = ({ order, open, onClose, toggleSeen }) => {
                       className="max-w-[100px]"
                     />
 
-                    <p><span className="font-bold">Product id: </span>{product.productId}</p>
+                    <p>
+                      <span className="font-bold">Product id: </span>
+                      {product.productId}
+                    </p>
                     <span>|</span>
-                    <p><span className="font-bold">Quantity: </span>{product.qty}</p>
+                    <p>
+                      <span className="font-bold">Quantity: </span>
+                      {product.qty}
+                    </p>
                     <span>|</span>
-                    <p><span className="font-bold">Price: </span>{product.price} €</p>
+                    <p>
+                      <span className="font-bold">Price: </span>
+                      {product.price} €
+                    </p>
                     <span>|</span>
-                    <p><span className="font-bold">Total: </span>{product.price * product.qty} €</p>
+                    <p>
+                      <span className="font-bold">Total: </span>
+                      {product.price * product.qty} €
+                    </p>
                   </div>
                 );
               })}
-              <p className="pl-2 mt-5 font-bold">ORDER TOTAL → {totalPrice} €</p>
+              <p className="pl-2 mt-5 font-bold">
+                ORDER TOTAL → {totalPrice} €
+              </p>
               <p></p>
               <p className="pl-2">
-              <span className="font-bold">- Date: </span>{convertTimestamp(order.date)}
+                <span className="font-bold">- Date: </span>
+                {convertTimestamp(order.date)}
               </p>
-              <p className="pl-2"><span className="font-bold">- Seen: </span>{seenStatus ? "✅" : "❌"}</p>
-              <button 
-                onClick={updateSeen}
-                className="px-5 py-2.5 mt-6 bg-black text-white font-bold mx-auto">
+              <p className="pl-2">
+                <span className="font-bold">- Seen: </span>
+                {seenStatus ? "✅" : "❌"}
+              </p>
+              <button
+                onClick={auxUpdateSeen}
+                className="px-5 py-2.5 mt-6 bg-black text-white font-bold mx-auto"
+              >
                 Mark as {seenStatus ? "unseen" : "seen"}
               </button>
             </div>

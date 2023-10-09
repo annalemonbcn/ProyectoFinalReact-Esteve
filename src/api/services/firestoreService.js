@@ -79,7 +79,6 @@ export const updateDocToFirestore = async (collection, orderId, newSeenValue) =>
   try {
     // Get ref to the doc
     const docRef = doc(collection, orderId);
-
     // UpdateDoc method
     const result = await updateDoc(docRef, {
       seen: newSeenValue
