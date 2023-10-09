@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 
 // Context
 import { OrdersContext } from "../../api/context/OrdersProvider";
+import { AuthContext } from "../../api/context/AuthProvider";
 
 // Components
 import BackofficeView from "../views/BackofficeView";
@@ -14,11 +15,13 @@ const BackofficeContainer = () => {
   
   // Context
   const allOrders = useContext(OrdersContext);
+  const { user } = useContext(AuthContext);
 
   // Effects
   useEffect(() => {
     auxSetOrders();
-  }, [allOrders]);
+    console.log('user from BackofficeContainer', user)
+  }, [allOrders, user]);
 
   /**
    * Aux method to fetch all the orders from the firestore db
