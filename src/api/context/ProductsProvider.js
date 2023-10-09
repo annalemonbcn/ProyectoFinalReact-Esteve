@@ -1,5 +1,5 @@
 // Services
-import { fetchProductsFromFirestore } from "../services/firebaseService";
+import { fetchProductsFromFirestore } from "../services/firestoreService";
 
 // firestore
 import { db } from "../../db/firebase";

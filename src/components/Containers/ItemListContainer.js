@@ -16,10 +16,9 @@ import { ProductsContext } from "../../api/context/ProductsProvider";
 const ItemListContainer = () => {
   // State
   const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
 
   // Params
-  const params = useParams();
+  const { id } = useParams();
 
   // Context
   const allProducts = useContext(ProductsContext);
@@ -27,26 +26,21 @@ const ItemListContainer = () => {
   // Effects
   useEffect(() => {
     auxSetProducts();
-  }, [params.id, allProducts]);
+  }, [id, allProducts]);
 
   /**
    * Aux method to fetch all the products from the firestore db
    * Filter them by params for the different categories
    */
   const auxSetProducts = () => {
-    try {
-      // Filter products by size if params.id exists
-      if (!params.id) {
-        setProducts(allProducts);
-      } else {
-        const filteredProducts = allProducts.filter((product) =>
-          product.categories.includes(params.id)
-        );
-        setProducts(filteredProducts);
-      }
-      setError(null); // --> Clean any old error
-    } catch (error) {
-      setError(error);
+    // Filter products by size if params.id exists
+    if (!id) {
+      setProducts(allProducts);
+    } else {
+      const filteredProducts = allProducts.filter(
+        (product) => product.categories.includes(id)
+      );
+      setProducts(filteredProducts);
     }
   };
 
