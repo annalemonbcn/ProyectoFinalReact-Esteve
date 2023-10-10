@@ -35,7 +35,7 @@ This is a photography e-commerce that offers the possibility of purchasing them 
 **Responsive design**
 
 <p align="center">
-  <img src = "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/mobile_mockup_02.jpg?alt=media&token=d3ec3b15-d8ba-47d7-a9c3-f86405ae1aac" width=450>
+  <img src = "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/mobile_mockup_02.jpg?alt=media&token=d3ec3b15-d8ba-47d7-a9c3-f86405ae1aac" width=700>
 </p>
 
 <a name="features"></a>
@@ -79,6 +79,7 @@ This project has some interesting features that I want to highlight:
 
 <p align="center">
   <img src= "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/form-02.png?alt=media&token=5934b03c-6873-410a-bb7e-de41499504de&_gl=1*1td7218*_ga*OTQ3NjQ5NTE3LjE2OTM0ODAxMjY.*_ga_CW55HF8NVT*MTY5Njg4MTA2NS43Ny4xLjE2OTY4ODI5OTYuMzIuMC4w" width=700>
+
 </p>
 
 <a name="built-with"></a>
@@ -97,6 +98,7 @@ List of technologies used to develop this app:
 - Since it is a photography e-commerce, the <a href="https://www.npmjs.com/package/react-image-zoom">react-image-zoom</a> library has been used to offer a **quality zoom** to the user
 - The <a href="https://sonner.emilkowal.ski/">Sonner library</a> is used for **toast notifications**
 
+
 <p align="center">
   <img src = "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/tablet_mockup_02.jpg?alt=media&token=0c4241bb-6f0f-4b9f-8c5c-f0eb2288a537" width=700>
 </p>
@@ -106,7 +108,7 @@ List of technologies used to develop this app:
 ## 🔨 Getting started
 
 - Fork the repo
-- Clone the repo: `git clone https://github.com/annalemonbcn/react-final-project`
+- Clone the repo: `git clone https://github.com/annalemonbcn/ProyectoFinalReact-Esteve`
 - Navigate into the project files
 - Open swith VSC
 - Install dependencies: `npm i`
