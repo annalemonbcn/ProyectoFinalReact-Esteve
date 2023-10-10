@@ -63,8 +63,8 @@ const BackofficeModal = ({ order, open, onClose, toggleSeen }) => {
 
   return (
     <Modal open={open} onClose={onClose} size={"lg"}>
-      <div className="py-6 px-8">
-        <div className="text-2xl">
+      <div className="md:py-6 md:px-8">
+        <div className="text-xl md:text-2xl">
           <span className="text-gray-400 font-bold">Order</span>
           <span className="font-bold"> #{order.id}</span>
         </div>
@@ -76,7 +76,7 @@ const BackofficeModal = ({ order, open, onClose, toggleSeen }) => {
               </span>
               {order.products.map((product, i) => {
                 return (
-                  <div className="pl-2 mt-4 flex items-center gap-3" key={i}>
+                  <div className="pl-2 mt-4 flex flex-col md:flex-row md:items-center gap-3" key={i}>
                     <img
                       src={product.image}
                       alt="{product.title}"
@@ -87,17 +87,17 @@ const BackofficeModal = ({ order, open, onClose, toggleSeen }) => {
                       <span className="font-bold">Product id: </span>
                       {product.productId}
                     </p>
-                    <span>|</span>
+                    <span className="hidden lg:block">|</span>
                     <p>
                       <span className="font-bold">Quantity: </span>
                       {product.qty}
                     </p>
-                    <span>|</span>
+                    <span className="hidden lg:block">|</span>
                     <p>
                       <span className="font-bold">Price: </span>
                       {product.price} €
                     </p>
-                    <span>|</span>
+                    <span className="hidden lg:block">|</span>
                     <p>
                       <span className="font-bold">Total: </span>
                       {product.price * product.qty} €
