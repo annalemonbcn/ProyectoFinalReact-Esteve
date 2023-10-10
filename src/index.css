@@ -33,3 +33,17 @@ header, nav{
 footer{
   font-family: 'Inconsolata';
 }
+
+/* Login page */
+.login-page{
+  font-family: 'Inconsolata';
+}
+
+/* Backoffice page */
+main.backoffice{
+  font-family: 'Inconsolata';
+}
+
+.rs-modal-content{
+  font-family: 'Inconsolata';
+}

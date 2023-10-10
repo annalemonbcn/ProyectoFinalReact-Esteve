@@ -1,9 +1,6 @@
 // Hooks
 import { createContext, useState, useEffect } from "react";
 
-// Toaster
-import { toast } from "sonner";
-
 // Routing
 import { useNavigate } from "react-router-dom";
 
@@ -55,13 +52,7 @@ const CartProvider = (props) => {
         setCartItems([...cartItems, { productId, title, price, image, qty }]);
       }
     } catch (error) {
-      // Toast
-      toast.error("There was an error while adding the products to your cart", {
-        style: {
-          background: "lightpink",
-        },
-      });
-      console.error("Error adding products to cart:", error);
+      throw error;
     }
   };
 
@@ -98,21 +89,8 @@ const CartProvider = (props) => {
 
       // Set cartItems
       setCartItems(auxCartItems);
-
-      // Toast
-      toast.success("Your cart has been updated", {
-        style: {
-          background: "aquamarine",
-        },
-      });
     } catch (error) {
-      // Toast
-      toast.error("The cart couldn't be updated. Please try again", {
-        style: {
-          background: "lightpink",
-        },
-      });
-      console.error("Error updating the cart:", error);
+      throw error;
     }
   };
 
