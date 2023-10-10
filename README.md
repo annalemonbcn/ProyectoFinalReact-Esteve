@@ -65,14 +65,21 @@ This project has some interesting features that I want to highlight:
 - This is a **protected route** that **requires authentication**: access to the application will be requested using a username and password. If the username is found in the database, navigation to the private route will be allowed.
 
 <p align="center">
-  <img src= "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/form-02.png?alt=media&token=5934b03c-6873-410a-bb7e-de41499504de&_gl=1*1td7218*_ga*OTQ3NjQ5NTE3LjE2OTM0ODAxMjY.*_ga_CW55HF8NVT*MTY5Njg4MTA2NS43Ny4xLjE2OTY4ODI5OTYuMzIuMC4w" width=700>
+  <img src= "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/back_02_02.png?alt=media&token=2933a3dc-5963-46fc-b833-6e8751ba342f&_gl=1*u4cax5*_ga*OTQ3NjQ5NTE3LjE2OTM0ODAxMjY.*_ga_CW55HF8NVT*MTY5Njk0NDI2NS43OC4xLjE2OTY5NDQ3MDEuNDguMC4w" width=700>
 </p>
 
 - Try it here: https://lemoninfilm.vercel.app/backoffice
 - Want a **demo video**? <a href="https://www.awesomescreenshot.com/video/21444969?key=c36d5f81803c94622b21a0c1ab6569c9">Check this out</a>
 
+
+#### Authentication
+
+- To allow the user to access certain private routes, it is necessary to authenticate.
+- The authentication provider selected was **Authentication**, also from **Firebase**. In this way, cloud services are centralized on the same platform.
+
 <p align="center">
-  <img src= "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/back_02_02.png?alt=media&token=bb58da02-00f7-4c76-94ef-333f082cebb4&_gl=1*144xeoo*_ga*OTQ3NjQ5NTE3LjE2OTM0ODAxMjY.*_ga_CW55HF8NVT*MTY5Njg4MTA2NS43Ny4xLjE2OTY4ODMwODUuMzAuMC4w" width=700>
+  <img src= "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/form-02.png?alt=media&token=5934b03c-6873-410a-bb7e-de41499504de&_gl=1*1td7218*_ga*OTQ3NjQ5NTE3LjE2OTM0ODAxMjY.*_ga_CW55HF8NVT*MTY5Njg4MTA2NS43Ny4xLjE2OTY4ODI5OTYuMzIuMC4w" width=700>
+
 </p>
 
 <a name="built-with"></a>
@@ -85,11 +92,12 @@ List of technologies used to develop this app:
 - <a href="https://create-react-app.dev/">Create React App</a> for starting the file system
 - <a href="https://tailwindcss.com/">Tailwind CSS</a> for styling
 - <a href="https://reactrouter.com/en/main">React-router-dom</a> for everything related to routing and matching URLs
-- All information about the different products is stored in Firestore. Likewise, the information for each order is collected in Firebase Storage. Both products belong to <a href="https://firebase.google.com/">Firebase</a>
-- <a href="https://rsuitejs.com/">React Suite</a> has been used to implement different functionalities, including the Loader and Drawer components
+- All information about the different products is stored in **Firestore**. Likewise, the information for each order is collected in **Firebase Storage**. Also **Authentication** is part of the Firebase family. Those three products belong to <a href="https://firebase.google.com/">Firebase</a>
+- <a href="https://rsuitejs.com/">React Suite</a> has been used to implement different functionalities, including the **Loader** and **Drawer** components. Also the **Modal** component has also been implemented in the backoffice
 - The forms have been created with <a href="https://formik.org/">Formik</a>. Also its validation is done with <a href="https://www.npmjs.com/package/yup">Yup</a>
-- Since it is a photography e-commerce, the <a href="https://www.npmjs.com/package/react-image-zoom">react-image-zoom</a> library has been used to offer a quality zoom to the user
-- The <a href="https://sonner.emilkowal.ski/">Sonner library</a> is used for toast notifications
+- Since it is a photography e-commerce, the <a href="https://www.npmjs.com/package/react-image-zoom">react-image-zoom</a> library has been used to offer a **quality zoom** to the user
+- The <a href="https://sonner.emilkowal.ski/">Sonner library</a> is used for **toast notifications**
+
 
 <p align="center">
   <img src = "https://firebasestorage.googleapis.com/v0/b/lemoninfilm.appspot.com/o/tablet_mockup_02.jpg?alt=media&token=0c4241bb-6f0f-4b9f-8c5c-f0eb2288a537" width=700>
